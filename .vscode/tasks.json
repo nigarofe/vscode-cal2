@@ -5,6 +5,7 @@
             "type": "npm",
             "script": "compile",
             "group": "build",
+            "label": "npm: compile",
             "presentation": {
                 "panel": "dedicated",
                 "reveal": "never"
@@ -25,6 +26,15 @@
             "problemMatcher": [
                 "$tsc-watch"
             ]
+        },
+        {
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "group": "build",
+            "label": "tsc: build - tsconfig.json"
         }
     ]
 }
