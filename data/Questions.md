@@ -1341,7 +1341,7 @@ O deslocamento de um objeto oscilando em função do tempo é mostrado na figura
 (c) o período;
 (d) a frequência angular desse movimento?
 
-![[CAL/question-images/q40.png]]
+![](images/q40.png)
 
 
 ## Step-by-step
@@ -1662,7 +1662,7 @@ b) O sistema está em equilíbrio quando $F_k = F_g$:
 - $\omega_2 = \sqrt{\frac{165}{2}} = 9,08\,\mathrm{rad/s}$
 - $A_2 = A_1 + \bigl(x_{\text{eq1}} - x_{\text{eq2}}\bigr) = 15 + (21,21 - 12,12) = 24,09\,\mathrm{cm}$
 
-![[q46.png]]
+![](images/q46.png)
 
 
 ## Metadata
@@ -1706,7 +1706,7 @@ Você deseja determinar o momento de inércia de certa parte complicada de uma m
 - $T = 2\pi \sqrt{m/k}$
 - $T = 2\pi \sqrt{J/k}$
 
-![[q47.png]]
+![](images/q47.png)
 
 
 ## Answer
@@ -1788,7 +1788,7 @@ Uma pequena esfera de massa $m$ está presa a uma barra de comprimento $L$ com u
 $$a = g \sin(\theta)$$
 $$v_{\max} = \sqrt{2\,m\,g\,L\,\bigl(1 - \cos(\theta)\bigr)}$$
 
-![[q49.png]]
+![](images/q49.png)
 
 
 ## Metadata
@@ -1847,7 +1847,7 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 	i) $b = 0{,}2\,\sqrt{k\,m}$ e
 	ii) $b = 0{,}4\,\sqrt{k\,m}$? Compare seus resultados com a Figura 13.28.
 
-![[CAL/question-images/q51.png]]
+![](images/q51.png)
 
 
 ## Step-by-step
@@ -3210,7 +3210,7 @@ Sendo $x', y', z'$ um giro de $30^\circ$, sentido anti-horário, em torno de $y$
 3. Represente em forma matricial
 4. Represente as componentes nas faces de um cubo (elemento do contínuo) nos eixos $x'$, $y'$ e $z'$
 
-![[q88.png]]
+![](images/q88.png)
 
 
 ## Step-by-step
@@ -3288,7 +3288,7 @@ Sendo $x', y', z'$ um giro de $30^\circ$, sentido anti-horário, em torno de $z$
 3. Represente em forma matricial
 4. Represente as componentes nas faces de um cubo (elemento do contínuo) nos eixos $x'$, $y'$ e $z'$
 
-![[q88.png]]
+![](images/q88.png)
 
 
 ## Step-by-step
@@ -3319,7 +3319,7 @@ Sendo $x', y', z'$ um giro de $30^\circ$, sentido anti-horário, em torno de $y$
 3. Represente em forma matricial
 4. Represente as componentes nas faces de um cubo (elemento do contínuo) nos eixos $x'$, $y'$ e $z'$
 
-![[q91.png]]
+![](images/q91.png)
 
 
 ## Step-by-step
@@ -3959,12 +3959,13 @@ $$\vec r(\theta,\phi) = \{\,x(\theta,\phi),\;y(\theta,\phi),\;z(\theta,\phi)\},\
 
 $$\vec r(\theta,\phi) = \{\,a\cos\theta\sin\phi,\;a\sin\theta\sin\phi,\;a\cos\phi\},\quad \theta\in[0,2\pi],\ \phi\in[0,\pi]$$
 
+
 $$\vec n_\theta = \bigl(\frac{\partial r_x}{\partial\theta},\frac{\partial r_y}{\partial\theta},\frac{\partial r_z}{\partial\theta}\bigr) = (-a\sin\theta\sin\phi,\;a\cos\theta\sin\phi,\;0)$$
 
 $$\vec n_\phi = \bigl(\frac{\partial r_x}{\partial\phi},\frac{\partial r_y}{\partial\phi},\frac{\partial r_z}{\partial\phi}\bigr) = (a\cos\theta\cos\phi,\;a\sin\theta\cos\phi,\;-a\sin\phi)$$
 
 $$\vec n_\theta\times\vec n_\phi
-= \text{\"det\"}\begin{bmatrix}
+= \text{"det"}\begin{bmatrix}
 \mathbf{i} & \mathbf{j} & \mathbf{k} \\
  -a\sin\theta\sin\phi & a\cos\theta\sin\phi & 0 \\
  a\cos\theta\cos\phi & a\sin\theta\cos\phi & -a\sin\phi
@@ -4140,7 +4141,7 @@ Em um ponto na superfície de um sólido, os extensômetros da roseta retangular
 $$
 \varepsilon_A = 2\times10^{-6},\quad \varepsilon_B = 6\times10^{-6},\quad \varepsilon_C = -9\times10^{-6}.
 $$
-![[q110.png]]
+![](images/q110.png)
 (Legenda: $\varepsilon_A$ no eixo X, $\varepsilon_C$ no eixo Y e $\varepsilon_B$ à 45°, entre o eixo X e Y)
 
 Dado
@@ -5005,7 +5006,7 @@ Faça o desenvolvimento da questão de duas formas:
 ## Step-by-step
 
 ### Círculo de Mohr
-![[q96.png]]
+![](images/q96.png)
 
 >[!info] ![[ps11#^tensaoMedia]]
 
@@ -5034,7 +5035,7 @@ $$\hat{n}_{s_{2}} = (\cos\theta_{s1}, \sin\theta_{s1}) = (\cos(55.161^\circ), \s
 ---
 ou, de maneira simplificada
 
-![[q121.png]]
+![](images/q121.png)
 
 ### Autovalores e autovetores
 ![[ps11#^autovaloreAutovetores]]
@@ -5139,7 +5140,7 @@ a) $\Delta T$ para que a dimensão $a$ não seja alterada.
 b) Variação $\Delta b$ da dimensão $b$ para a situação em que $a$ não seja alterada, com $\Delta T$ e $\sigma_{xx}$ atuando.
 
 Expresse os resultados em função de $\Delta T, \sigma_{xx}, E, \nu, a, b$ e $\alpha$
-![[q123.png|]]
+![](images/q123.png)
 ### Descrição da figura  %% fold %%
 A figura apresenta um diagrama de um corpo retangular, possivelmente uma placa ou um bloco, em duas dimensões.
 
@@ -5215,7 +5216,7 @@ c) Verifique se haverá escoamento do material da placa sabendo que $\sigma_{esc
 c.1) Critério de TRESCA
 c.2) Critério de Von Mises.
 
-![[q124.png]]
+![](images/q124.png)
 
 
 ## Step-by-step
@@ -5245,7 +5246,7 @@ a) Componentes principais tensões.
 b) Componentes principais deformação.
 c) Deformação longitudinal na direção de $30^{\circ}$ (sentido anti-horário) com eixo $x$.
 
-![[q125.png]]
+![](images/q125.png)
 
 
 ## Step-by-step
@@ -5275,7 +5276,7 @@ a) $\sigma_{yy}$ para que a dimensão "$b$" não altere.
 b) Variação $\Delta a$ da dimensão "$a$" na situação da letra (a).
 
 Expresse seus resultados em termos de $E, \nu, \sigma_{xx}, "a"$ e "$b"$. $\sigma_{xx}$ e $\sigma_{yy}$ são uniformemente distribuídas.
-![[q126.png]]
+![](images/q126.png)
 
 
 ## Step-by-step
@@ -5365,7 +5366,7 @@ c) Verifique se haverá escoamento da placa.
 c.1) segundo TRESCA ($\tau_{escoamento} = 400 MPa$)
 c.2) Segundo Von MISES.
 
-![[q129.png]]
+![](images/q129.png)
 
 
 ## Step-by-step
@@ -5396,7 +5397,7 @@ a) $\Delta T_e$ para que a barra encoste no apoio B sem gerar tensão normal na 
 b) Tensor tensão e tensor deformação para $\Delta T \leq \Delta T_e$. (em termos de $E, \alpha \text{ e } \Delta T$)
 c) Tensor tensão e tensor deformação para $\Delta T > \Delta T_e$. (em termos de $E, \alpha, \Delta, L \text{ e } \Delta T$)
 d) Expresse a condição de Tresca em função de $E, \alpha, \Delta, L \text{ e } \Delta T \text{ e } \sigma_{esc}$ para que não ocorra escoamento.
-![[q130.png]]
+![](images/q130.png)
 
 
 ## Step-by-step
