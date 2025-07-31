@@ -695,6 +695,52 @@ function convertMarkdownToHtml(markdown: string): string {
 	// Pre-process custom tags before markdown conversion
 	html = preprocessCustomTags(html);
 	
+	// Process LaTeX expressions BEFORE markdown conversion to prevent corruption
+	const latexPlaceholders = new Map<string, string>();
+	let placeholderIndex = 0;
+	
+	if (katex) {
+		try {
+			// Process display math ($$...$$) - supports multi-line expressions
+			html = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, latex) => {
+				try {
+					const rendered = katex.renderToString(latex.trim(), {
+						displayMode: true,
+						throwOnError: false
+					});
+					const placeholder = `<!--LATEX_DISPLAY_${placeholderIndex++}-->`;
+					latexPlaceholders.set(placeholder, rendered);
+					return placeholder;
+				} catch (error) {
+					const errorHtml = `<span class="latex-error">LaTeX Error: ${latex}</span>`;
+					const placeholder = `<!--LATEX_ERROR_${placeholderIndex++}-->`;
+					latexPlaceholders.set(placeholder, errorHtml);
+					return placeholder;
+				}
+			});
+			
+			// Process inline math ($...$) - but avoid double processing
+			html = html.replace(/(?<!\$)\$([^$\n]+)\$(?!\$)/g, (match, latex) => {
+				try {
+					const rendered = katex.renderToString(latex.trim(), {
+						displayMode: false,
+						throwOnError: false
+					});
+					const placeholder = `<!--LATEX_INLINE_${placeholderIndex++}-->`;
+					latexPlaceholders.set(placeholder, rendered);
+					return placeholder;
+				} catch (error) {
+					const errorHtml = `<span class="latex-error">LaTeX Error: ${latex}</span>`;
+					const placeholder = `<!--LATEX_ERROR_${placeholderIndex++}-->`;
+					latexPlaceholders.set(placeholder, errorHtml);
+					return placeholder;
+				}
+			});
+		} catch (error) {
+			console.warn('Error rendering LaTeX expressions');
+		}
+	}
+	
 	// If marked is available, use it for better markdown conversion
 	if (marked) {
 		try {
@@ -712,36 +758,16 @@ function convertMarkdownToHtml(markdown: string): string {
 		html = basicMarkdownToHtml(html);
 	}
 	
-	// Process LaTeX expressions if KaTeX is available
-	if (katex) {
-		try {
-			// Process display math ($$...$$)
-			html = html.replace(/\$\$([^$]+)\$\$/g, (match, latex) => {
-				try {
-					return katex.renderToString(latex.trim(), {
-						displayMode: true,
-						throwOnError: false
-					});
-				} catch (error) {
-					return `<span class="latex-error">LaTeX Error: ${latex}</span>`;
-				}
-			});
-			
-			// Process inline math ($...$) - but avoid double processing
-			html = html.replace(/(?<!\$)\$([^$\n]+)\$(?!\$)/g, (match, latex) => {
-				try {
-					return katex.renderToString(latex.trim(), {
-						displayMode: false,
-						throwOnError: false
-					});
-				} catch (error) {
-					return `<span class="latex-error">LaTeX Error: ${latex}</span>`;
-				}
-			});
-		} catch (error) {
-			console.warn('Error rendering LaTeX expressions');
-		}
-	}
+	// Restore LaTeX content after markdown processing using more flexible replacement
+	latexPlaceholders.forEach((rendered, placeholder) => {
+		// Handle both the original placeholder and potential HTML-encoded versions
+		const encodedPlaceholder = placeholder.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+		html = html.replace(new RegExp(placeholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), rendered);
+		html = html.replace(new RegExp(encodedPlaceholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), rendered);
+		// Also handle if it's wrapped in <p> tags
+		html = html.replace(new RegExp(`<p>${placeholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</p>`, 'g'), rendered);
+		html = html.replace(new RegExp(`<p>${encodedPlaceholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</p>`, 'g'), rendered);
+	});
 	
 	return html;
 }
