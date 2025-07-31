@@ -85,6 +85,65 @@ While processing images in markdown content, when workspace contains multiple fo
 
 
 
+# Requirements for [](Premises.md)
+
+## Generic
+The system shall provide live preview functionality for Premises.md files
+
+## Ubiquitous
+The system shall validate Premises.md files for proper formatting and structure
+The system shall render LaTeX expressions using KaTeX library
+The system shall handle both inline ($...$) and display ($$...$$) LaTeX expressions
+The system shall preserve LaTeX rendering during markdown-to-HTML conversion
+The system shall render images referenced in markdown format with relative paths to the images folder
+The system shall convert relative image paths to proper VS Code webview URIs for secure resource access
+
+## State driven
+While a file named `Premises.md` is open, the system shall display a webview panel with the rendered markdown of the current premise set section
+While editing a Premises.md file, the system shall preserve the user's cursor position and editor focus
+
+## Event driven
+When the user is editing a file named `Premises.md`, the system shall open a VS Code Webview panel with the md rendering of the premise set specified in the level 1 heading of where the cursor is
+When the user moves the cursor to a different premise set section in a `Premises.md` file, the system shall update the webview panel to show the new premise set content
+When the user edits content in a `Premises.md` file, the system shall update the webview panel in real-time to reflect the changes
+When a Premises.md file is opened or modified, the system shall validate first-level headings against the regex pattern
+When a Premises.md file is opened or modified, the system shall validate blank line spacing above headings
+When LaTeX expressions are detected in markdown content, the system shall process them with KaTeX before markdown conversion
+When markdown conversion occurs, the system shall use placeholder substitution to prevent LaTeX corruption
+When images are detected in markdown content, the system shall process them before markdown conversion to ensure proper URI resolution
+When relative image paths starting with 'images/' are found, the system shall convert them to webview-compatible URIs
+
+## Optional feature
+Where webview functionality is enabled, the webview panel should open in the "Beside" column to provide a split-view experience
+Where webview functionality is enabled, the webview should use VS Code's theme variables for consistent styling with the editor
+Where basic markdown support is included, the system should provide formatting support including headings, bold, italic, and bullet points
+Where KaTeX library is not available, the system should gracefully degrade to showing LaTeX source with error indication
+Where marked library is not available, the system should fall back to basic markdown-to-HTML conversion
+Where image files exist in the data/images folder, the system should display them with responsive styling and VS Code theme integration
+Where workspace has multiple folders, the system should intelligently locate the correct data folder for image resolution
+
+## Unwanted behavior
+If a file named `Premises.md` is open and each first level heading doesn't match the regex `^Premise Set \d+\s*$`, then the system shall output this in the VS Code Problems panel
+If a file named `Premises.md` is open and each first level heading doesn't have exactly 10 blank lines above it, then the system shall output this in the VS Code Problems panel
+If a file named `Premises.md` is open and each second level heading doesn't have exactly 2 blank lines above it, then the system shall output this in the VS Code Problems panel
+If webview updates occur too frequently, then the system shall debounce updates to prevent performance issues
+If the webview panel flickers or recreates unnecessarily, then the system shall reuse existing panels
+If the webview steals focus from the editor, then the system shall restore focus and cursor position
+If LaTeX placeholders conflict with markdown syntax, then the system shall use syntax-neutral placeholder formats
+If LaTeX expressions fail to render, then the system shall display error messages instead of raw placeholders
+If image paths resolve to non-existent files, then the system shall handle gracefully without breaking the webview rendering
+If image path resolution creates double folder paths, then the system shall detect and correct the path construction logic
+
+## Complex
+While a Premises.md file is open, when the cursor position changes or content is modified, the system shall automatically detect which premise set section the cursor is in based on the first-level headings and show the appropriate content in the webview
+While providing real-time updates, when content changes occur, the system shall handle markdown-to-HTML conversion and coordinate between multiple event listeners using proper debouncing mechanisms
+While managing the webview lifecycle, when panels are created or updated, the system shall handle creation, updates, and disposal without disrupting the user's editing experience
+While processing LaTeX expressions, when markdown conversion occurs, the system shall use placeholder substitution strategy to prevent markdown parser interference with LaTeX syntax, then restore rendered LaTeX content after HTML conversion is complete
+While processing images in markdown content, when workspace contains multiple folders including data folder, the system shall implement intelligent folder detection strategy to locate correct image paths by checking for data folders directly in workspace, checking for data subfolders in workspace folders, and providing fallback path construction with proper debugging output for troubleshooting path resolution issues
+
+
+
+
 # Requirements for image rendering
 
 ## Generic
