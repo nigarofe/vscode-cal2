@@ -193,6 +193,26 @@ function checkQuestionsFile(document: vscode.TextDocument): void {
 				
 				diagnostics.push(diagnostic);
 			}
+			
+			// Check if there are exactly 10 blank lines above this heading
+			let blankLineCount = 0;
+			for (let i = index - 1; i >= 0; i--) {
+				if (lines[i].trim() === '') {
+					blankLineCount++;
+				} else {
+					break;
+				}
+			}
+			
+			if (blankLineCount !== 10) {
+				const diagnostic = new vscode.Diagnostic(
+					new vscode.Range(index, 0, index, line.length),
+					`First-level heading in Questions.md must have exactly 10 blank lines above it. Found: ${blankLineCount} blank lines`,
+					vscode.DiagnosticSeverity.Error
+				);
+				
+				diagnostics.push(diagnostic);
+			}
 		}
 	});
 
