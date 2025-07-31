@@ -7,6 +7,9 @@
 		{
 			"name": "vscode-cal2",
 			"path": "."
+		},
+		{
+			"path": "data"
 		}
 	]
 }
