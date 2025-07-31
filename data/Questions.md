@@ -10,6 +10,7 @@
 
 # Question 1
 
+
 ## Proposition
 this is the q1 proposition
 
@@ -23,8 +24,10 @@ Linha nova
 
 $$\oint$$
 
+
 ## Step-by-step
 <ref id="newtons-law" />
+
 
 ## Answer
 this is the q1 a
@@ -40,8 +43,10 @@ this is the q1 a
 
 # Question 2
 
+
 ## Proposition
 $$\frac{d^2}{dt^2} \left( e^{\gamma t} \right)$$
+
 
 ## Step-by-step
 
@@ -60,6 +65,7 @@ $$e^{\gamma t} \gamma^2$$
 
 # Question 96
 
+
 ## Proposition
 >[!attention] A versão 2D dessa questão é [[q121]]
 
@@ -75,6 +81,7 @@ $$
 0 & 0 & 80
 \end{bmatrix} MPa
 $$
+
 
 ## Step-by-step
 

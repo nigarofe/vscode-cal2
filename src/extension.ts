@@ -61,11 +61,10 @@ function checkRequirementsOrPremisesFile(document: vscode.TextDocument): void {
 	
 	const diagnostics: vscode.Diagnostic[] = [];
 	
-	// Required second-level headings (updated to include "State driven")
+	// Required second-level headings as specified in Requirements.md
 	const requiredSecondLevelHeadings = [
 		'Generic',
 		'Ubiquitous',
-		'State driven',
 		'Event driven',
 		'Optional feature',
 		'Unwanted behavior',
@@ -175,7 +174,7 @@ function checkQuestionsFile(document: vscode.TextDocument): void {
 	// Regex pattern for Questions.md first-level headings (allows optional trailing whitespace)
 	const questionHeadingRegex = /^Question \d+\s*$/;
 	
-	// Parse the document to find first-level headings
+	// Parse the document to find first-level and second-level headings
 	lines.forEach((line, index) => {
 		const trimmedLine = line.trim();
 		
@@ -208,6 +207,28 @@ function checkQuestionsFile(document: vscode.TextDocument): void {
 				const diagnostic = new vscode.Diagnostic(
 					new vscode.Range(index, 0, index, line.length),
 					`First-level heading in Questions.md must have exactly 10 blank lines above it. Found: ${blankLineCount} blank lines`,
+					vscode.DiagnosticSeverity.Error
+				);
+				
+				diagnostics.push(diagnostic);
+			}
+		}
+		// Check if this is a second-level heading
+		else if (trimmedLine.startsWith('## ') && trimmedLine.length > 3) {
+			// Check if there are exactly 2 blank lines above this heading
+			let blankLineCount = 0;
+			for (let i = index - 1; i >= 0; i--) {
+				if (lines[i].trim() === '') {
+					blankLineCount++;
+				} else {
+					break;
+				}
+			}
+			
+			if (blankLineCount !== 2) {
+				const diagnostic = new vscode.Diagnostic(
+					new vscode.Range(index, 0, index, line.length),
+					`Second-level heading in Questions.md must have exactly 2 blank lines above it. Found: ${blankLineCount} blank lines`,
 					vscode.DiagnosticSeverity.Error
 				);
 				

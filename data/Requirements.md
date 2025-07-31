@@ -33,7 +33,7 @@
 ## Event driven
 - If a file named `Questions.md` is open and each first level heading doesn't math the regex `^Question \d+\s*$`, then the system shall output this in the VS Code Problems panel
 - If a file named `Questions.md` is open and each first level heading doesn't have exactly 10 blank lines above it, then the system shall output this in the VS Code Problems panel
-
+- If a file named `Questions.md` is open and each second level heading doesn't have exactly 2 blank lines above it, then the system shall output this in the VS Code Problems panel
 
 ## Optional feature
 
