@@ -11,22 +11,24 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Check currently open documents when extension activates
 	vscode.workspace.textDocuments.forEach(document => {
-		checkRequirementsFile(document);
+		checkDocumentFile(document);
 	});
 
 	// Listen for document open events
 	const onDidOpenDisposable = vscode.workspace.onDidOpenTextDocument(document => {
-		checkRequirementsFile(document);
+		checkDocumentFile(document);
 	});
 
 	// Listen for document change events
 	const onDidChangeDisposable = vscode.workspace.onDidChangeTextDocument(event => {
-		checkRequirementsFile(event.document);
+		checkDocumentFile(event.document);
 	});
 
 	// Listen for document close events to clear diagnostics
 	const onDidCloseDisposable = vscode.workspace.onDidCloseTextDocument(document => {
-		if (document.fileName.endsWith('Requirements.md')) {
+		if (document.fileName.endsWith('Requirements.md') || 
+			document.fileName.endsWith('Questions.md') || 
+			document.fileName.endsWith('Premises.md')) {
 			diagnosticCollection.delete(document.uri);
 		}
 	});
@@ -43,21 +45,27 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 }
 
-function checkRequirementsFile(document: vscode.TextDocument): void {
-	// Check if the file is named "Requirements.md"
-	if (!document.fileName.endsWith('Requirements.md')) {
-		return;
+function checkDocumentFile(document: vscode.TextDocument): void {
+	const fileName = document.fileName;
+	
+	if (fileName.endsWith('Requirements.md') || fileName.endsWith('Premises.md')) {
+		checkRequirementsOrPremisesFile(document);
+	} else if (fileName.endsWith('Questions.md')) {
+		checkQuestionsFile(document);
 	}
+}
 
+function checkRequirementsOrPremisesFile(document: vscode.TextDocument): void {
 	const text = document.getText();
 	const lines = text.split('\n');
 	
 	const diagnostics: vscode.Diagnostic[] = [];
 	
-	// Required second-level headings
+	// Required second-level headings (updated to include "State driven")
 	const requiredSecondLevelHeadings = [
 		'Generic',
 		'Ubiquitous',
+		'State driven',
 		'Event driven',
 		'Optional feature',
 		'Unwanted behavior',
@@ -146,6 +154,40 @@ function checkRequirementsFile(document: vscode.TextDocument): void {
 				const diagnostic = new vscode.Diagnostic(
 					new vscode.Range(firstLevel.line, 0, firstLevel.line, lines[firstLevel.line].length),
 					`First-level heading "${firstLevel.text}" must have second-level headings in exact order: ${requiredSecondLevelHeadings.join(', ')}`,
+					vscode.DiagnosticSeverity.Error
+				);
+				
+				diagnostics.push(diagnostic);
+			}
+		}
+	});
+
+	// Set diagnostics for this document
+	diagnosticCollection.set(document.uri, diagnostics);
+}
+
+function checkQuestionsFile(document: vscode.TextDocument): void {
+	const text = document.getText();
+	const lines = text.split('\n');
+	
+	const diagnostics: vscode.Diagnostic[] = [];
+	
+	// Regex pattern for Questions.md first-level headings (allows optional trailing whitespace)
+	const questionHeadingRegex = /^Question \d+\s*$/;
+	
+	// Parse the document to find first-level headings
+	lines.forEach((line, index) => {
+		const trimmedLine = line.trim();
+		
+		// Check if this is a first-level heading
+		if (trimmedLine.startsWith('# ') && trimmedLine.length > 2) {
+			const headingText = trimmedLine.substring(2).trim();
+			
+			// Check if the heading matches the required regex
+			if (!questionHeadingRegex.test(headingText)) {
+				const diagnostic = new vscode.Diagnostic(
+					new vscode.Range(index, 0, index, line.length),
+					`First-level heading in Questions.md must match the pattern "Question [number]". Found: "${headingText}"`,
 					vscode.DiagnosticSeverity.Error
 				);
 				

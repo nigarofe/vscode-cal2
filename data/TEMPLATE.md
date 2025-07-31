@@ -18,7 +18,7 @@ When `<trigger>`, the `<system name>` shall `<system response>`
 Where `<feature is included>`, the `<system name>` shall `<system response>`
 
 ---
-## Unwanted behaviour
+## Unwanted behavior
 If `<trigger>`, then the `<system name>` shall `<system response>`
 
 ---
@@ -26,3 +26,26 @@ If `<trigger>`, then the `<system name>` shall `<system response>`
 While `<precondition(s)>`, when `<trigger>`, the `<system name>` shall `<system response>`
 
 ---
+
+
+# Requirements for
+
+## Generic
+
+
+## Ubiquitous
+
+
+## State driven
+
+
+## Event driven
+
+
+## Optional feature
+
+
+## Unwanted behavior
+
+
+## Complex
