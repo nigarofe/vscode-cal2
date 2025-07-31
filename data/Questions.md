@@ -3866,7 +3866,7 @@ $$S = \vec r(u,v) = (u^2, v^2, u + 2v)$$
 
 ## Step-by-step
 
-### a)S é lisa em todo ponto?
+### a) S é lisa em todo ponto?
 
 - Para que a superfície seja lisa em um ponto específico, os vetores tangentes àquele ponto devem não podem ser paralelos, em outras palavras, obrigatoriamente são linearmente independentes (LI).
 - Os vetores tangentes à um ponto $(x,y,z)$ qualquer em função de $(u,v)$ são definidos por

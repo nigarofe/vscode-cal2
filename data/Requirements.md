@@ -32,7 +32,9 @@ The system shall provide live preview functionality for Questions.md files
 
 ## Ubiquitous
 The system shall validate Questions.md files for proper formatting and structure
-The system shall render LaTeX expressions
+The system shall render LaTeX expressions using KaTeX library
+The system shall handle both inline ($...$) and display ($$...$$) LaTeX expressions
+The system shall preserve LaTeX rendering during markdown-to-HTML conversion
 
 ## State driven
 While a file named `Questions.md` is open, the system shall display a webview panel with the rendered markdown of the current question section
@@ -44,25 +46,65 @@ When the user moves the cursor to a different question section in a `Questions.m
 When the user edits content in a `Questions.md` file, the system shall update the webview panel in real-time to reflect the changes
 When a Questions.md file is opened or modified, the system shall validate first-level headings against the regex pattern
 When a Questions.md file is opened or modified, the system shall validate blank line spacing above headings
+When LaTeX expressions are detected in markdown content, the system shall process them with KaTeX before markdown conversion
+When markdown conversion occurs, the system shall use placeholder substitution to prevent LaTeX corruption
 
 ## Optional feature
 Where webview functionality is enabled, the webview panel should open in the "Beside" column to provide a split-view experience
 Where webview functionality is enabled, the webview should use VS Code's theme variables for consistent styling with the editor
 Where basic markdown support is included, the system should provide formatting support including headings, bold, italic, and bullet points
+Where KaTeX library is not available, the system should gracefully degrade to showing LaTeX source with error indication
+Where marked library is not available, the system should fall back to basic markdown-to-HTML conversion
 
 ## Unwanted behavior
-If a file named `Questions.md` is open and each first level heading doesn't include all of the second level headings `Proposition`, `Step-by-step`, `Answer` and `Metadata in this exact order, then the system shall output this in the VS Code Problems panel
+If a file named `Questions.md` is open and each first level heading doesn't include all of the second level headings `Proposition`, `Step-by-step`, `Answer` and `Metadata` in this exact order, then the system shall output this in the VS Code Problems panel
 If a file named `Questions.md` is open and each first level heading doesn't match the regex `^Question \d+\s*$`, then the system shall output this in the VS Code Problems panel
 If a file named `Questions.md` is open and each first level heading doesn't have exactly 10 blank lines above it, then the system shall output this in the VS Code Problems panel
 If a file named `Questions.md` is open and each second level heading doesn't have exactly 2 blank lines above it, then the system shall output this in the VS Code Problems panel
 If webview updates occur too frequently, then the system shall debounce updates to prevent performance issues
 If the webview panel flickers or recreates unnecessarily, then the system shall reuse existing panels
 If the webview steals focus from the editor, then the system shall restore focus and cursor position
+If LaTeX placeholders conflict with markdown syntax, then the system shall use syntax-neutral placeholder formats
+If LaTeX expressions fail to render, then the system shall display error messages instead of raw placeholders
 
 ## Complex
 While a Questions.md file is open, when the cursor position changes or content is modified, the system shall automatically detect which question section the cursor is in based on the first-level headings and show the appropriate content in the webview
 While providing real-time updates, when content changes occur, the system shall handle markdown-to-HTML conversion and coordinate between multiple event listeners using proper debouncing mechanisms
 While managing the webview lifecycle, when panels are created or updated, the system shall handle creation, updates, and disposal without disrupting the user's editing experience
+While processing LaTeX expressions, when markdown conversion occurs, the system shall use placeholder substitution strategy to prevent markdown parser interference with LaTeX syntax, then restore rendered LaTeX content after HTML conversion is complete
+
+
+
+
+# Requirements for markdown renderer
+
+## Generic
+While `markdown content contains LaTeX expressions`, when `conversion to HTML is required`, the `markdown renderer` shall `process LaTeX before markdown conversion and restore rendered content afterward`
+
+## Ubiquitous
+The `markdown renderer` shall `support both KaTeX and marked libraries with graceful degradation when dependencies are unavailable`
+
+## State driven
+While `dependencies are loading`, the `markdown renderer` shall `wait for async dependency loading before processing content`
+While `LaTeX expressions are present`, the `markdown renderer` shall `maintain placeholder mappings to prevent content loss during conversion`
+
+## Event driven
+When `convertMarkdownToHtml is called`, the `markdown renderer` shall `load dependencies asynchronously before processing`
+When `LaTeX expressions are detected`, the `markdown renderer` shall `create syntax-neutral placeholders that won't trigger markdown parsing`
+When `markdown conversion is complete`, the `markdown renderer` shall `restore all LaTeX placeholders with their rendered KaTeX content`
+
+## Optional feature
+Where `KaTeX library is available`, the `markdown renderer` shall `render both inline and display math expressions with proper styling`
+Where `marked library is available`, the `markdown renderer` shall `use enhanced markdown parsing with GitHub Flavored Markdown support`
+Where `dependencies fail to load`, the `markdown renderer` shall `log warnings and provide fallback functionality`
+
+## Unwanted behavior
+If `LaTeX placeholders use markdown syntax characters`, then the `markdown renderer` shall `avoid underscore-based placeholders that trigger emphasis parsing`
+If `placeholder restoration fails`, then the `markdown renderer` shall `log warnings and maintain placeholder visibility for debugging`
+If `dependencies are not loaded`, then the `markdown renderer` shall `not attempt to process content until dependencies are available`
+
+## Complex
+While `processing markdown with embedded LaTeX`, when `content conversion is requested`, the `markdown renderer` shall `first extract and render LaTeX expressions using KaTeX with syntax-neutral placeholders, then process remaining markdown using marked library, and finally restore all rendered LaTeX content by replacing placeholders in the resulting HTML`
 
 
 
