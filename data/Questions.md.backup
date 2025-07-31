@@ -1,13 +1,5 @@
 
 
-
-
-
-
-
-
-
-
 # Question 1
 
 
@@ -42,14 +34,6 @@ this is the q1 a
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 2
 
 
@@ -69,14 +53,6 @@ $$e^{\gamma t} \gamma^2$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 3
 
 
@@ -90,14 +66,6 @@ $$e^{\gamma t} \gamma^2$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 4
@@ -126,14 +94,6 @@ $$y = 2 + 3e^{4x}$$
 Tags: ps20
 
 
-
-
-
-
-
-
-
-
 # Question 5
 
 
@@ -147,14 +107,6 @@ Tags: ps20
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 6
@@ -220,14 +172,6 @@ $$
 Tags: ps20
 
 
-
-
-
-
-
-
-
-
 # Question 7
 
 
@@ -253,14 +197,6 @@ $$y = e^{-x} + e^{-2x}$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 8
@@ -289,14 +225,6 @@ $$y = e^{-x} + 4e^{-6x}$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 9
 
 
@@ -323,14 +251,6 @@ $$y(x) = e^{-x/2} \cos\left(\frac{x}{2}\right) + e^{-x/2} \sin\left(\frac{x}{2}\
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 10
 
 
@@ -352,14 +272,6 @@ $$y = c_1e^{-x} + c_2e^{2x} + e^{4x}$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 11
 
 
@@ -373,14 +285,6 @@ $$y = c_1e^{-x} + c_2e^{2x} + e^{4x}$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 12
@@ -404,14 +308,6 @@ $$6\pi$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 13
@@ -441,14 +337,6 @@ $$84$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 14
@@ -483,14 +371,6 @@ $$2\sqrt{2}-1.$$
 Tags: ps1
 
 
-
-
-
-
-
-
-
-
 # Question 15
 
 
@@ -518,14 +398,6 @@ $$
 Tags: ps17
 
 
-
-
-
-
-
-
-
-
 # Question 16
 
 
@@ -549,14 +421,6 @@ $$-\frac{\pi}{2}.$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 17
@@ -584,14 +448,6 @@ $$e - 1$$
 Tags: ps1
 
 
-
-
-
-
-
-
-
-
 # Question 18
 
 
@@ -617,14 +473,6 @@ $$1 + e^5$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 19
 
 
@@ -648,14 +496,6 @@ $$e + e^{\pi + 1} + \frac{1}{3}.$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 20
@@ -694,14 +534,6 @@ $$x \ln(x) - x + C$$
 Tags: ps17
 
 
-
-
-
-
-
-
-
-
 # Question 21
 
 
@@ -730,14 +562,6 @@ $$\frac{x^4}{4} (\ln(x) - 1/4) + C$$
 ## Metadata
 
 Tags: ps17
-
-
-
-
-
-
-
-
 
 
 # Question 22
@@ -769,14 +593,6 @@ $= -\frac{\cos^2(x)}{2} + C_2$.
 ## Metadata
 
 Tags: ps17
-
-
-
-
-
-
-
-
 
 
 # Question 23
@@ -812,14 +628,6 @@ $$-1/4 \sin(2x) + 1/2 x$$
 Tags: ps17
 
 
-
-
-
-
-
-
-
-
 # Question 24
 
 
@@ -843,14 +651,6 @@ $$121\sqrt{26}\pi$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 25
 
 
@@ -868,14 +668,6 @@ $$2\pi(a^2 - a)$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 26
@@ -899,14 +691,6 @@ $$\dfrac{15\pi}{2}$$
 Tags: ps2
 
 
-
-
-
-
-
-
-
-
 # Question 27
 
 
@@ -920,14 +704,6 @@ Tags: ps2
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 28
@@ -947,14 +723,6 @@ $$243\pi$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 29
@@ -978,14 +746,6 @@ $$-\pi$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 30
 
 
@@ -1005,14 +765,6 @@ Seja S a parte do plano $2x + 2y + z = 4$ que está no primeiro octante.
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 31
 
 
@@ -1026,14 +778,6 @@ Seja S a parte do plano $2x + 2y + z = 4$ que está no primeiro octante.
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 32
@@ -1060,14 +804,6 @@ $$\frac{1}{4}\ln|4y - 8| + c = \frac{1}{4}\ln|y - 2| + c'$$
 ## Metadata
 
 Tags: ps17
-
-
-
-
-
-
-
-
 
 
 # Question 33
@@ -1107,14 +843,6 @@ $$e^y\bigl(y^5 - 5y^4 + 20y^3 - 60y^2 + 120y - 120\bigr) + C$$
 Tags: ps17
 
 
-
-
-
-
-
-
-
-
 # Question 34
 
 
@@ -1130,14 +858,6 @@ Tags: ps17
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 35
 
 
@@ -1151,14 +871,6 @@ Tags: ps17
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 36
@@ -1207,14 +919,6 @@ $$\int \cos^3(x)\,dx = \sin(x) - \frac{\sin^3(x)}{3} + C$$
 Tags: ps17
 
 
-
-
-
-
-
-
-
-
 # Question 37
 
 
@@ -1251,14 +955,6 @@ $$y = \frac{x^2}{2} + \frac{x^3}{3} + 1$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 38
 
 
@@ -1292,14 +988,6 @@ $$\frac{y^2}{2} - \frac{y^3}{3} = \frac{x^3}{3} + c$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 39
 
 
@@ -1320,14 +1008,6 @@ $$y = \left( c x^8 - x^4 \right)^{1/4}$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 40
@@ -1365,14 +1045,6 @@ A frequência angular é expressa em radianos por segundo (rad/s), e o valor for
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 41
 
 
@@ -1400,14 +1072,6 @@ Tente resolver este problema sem achar a constante da mola.
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 42
 
 
@@ -1430,14 +1094,6 @@ c) $x(t) = \frac{12}{\sqrt{150}} \sin(\sqrt{150}t + \frac{\pi}{2})$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 43
@@ -1494,14 +1150,6 @@ $$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 44
@@ -1580,14 +1228,6 @@ $$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 45
 
 
@@ -1628,14 +1268,6 @@ e) $E = 0,36\,\mathrm{J}$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 46
 
 
@@ -1666,14 +1298,6 @@ b) O sistema está em equilíbrio quando $F_k = F_g$:
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 47
@@ -1722,14 +1346,6 @@ $$0,051 \,kg\,m^2$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 48
 
 
@@ -1749,14 +1365,6 @@ $$2,6s$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 49
@@ -1794,14 +1402,6 @@ $$v_{\max} = \sqrt{2\,m\,g\,L\,\bigl(1 - \cos(\theta)\bigr)}$$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 50
 
 
@@ -1825,14 +1425,6 @@ $$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 51
@@ -1859,14 +1451,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 52
 
 
@@ -1880,14 +1464,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 53
@@ -1905,14 +1481,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 54
 
 
@@ -1926,14 +1494,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 55
@@ -1951,14 +1511,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 56
 
 
@@ -1972,14 +1524,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 57
@@ -1997,14 +1541,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 58
 
 
@@ -2018,14 +1554,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 59
@@ -2043,14 +1571,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 60
 
 
@@ -2064,14 +1584,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 61
@@ -2089,14 +1601,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 62
 
 
@@ -2110,14 +1614,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 63
@@ -2135,14 +1631,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 64
 
 
@@ -2158,14 +1646,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 65
 
 
@@ -2179,14 +1659,6 @@ c) Em termos de $F_{\max}$ e de $k$, qual é a amplitude para $\omega = \sqrt{k/
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 66
@@ -2210,14 +1682,6 @@ $$ -\ln\bigl|3 - y\bigr| + C $$
 Tags: ps17
 
 
-
-
-
-
-
-
-
-
 # Question 67
 
 
@@ -2239,14 +1703,6 @@ $$ \frac{1}{2}t + \frac{1}{4}\sin\bigl(2t\bigr) + C $$
 Tags: ps17
 
 
-
-
-
-
-
-
-
-
 # Question 68
 
 
@@ -2260,14 +1716,6 @@ Tags: ps17
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 69
@@ -2383,14 +1831,6 @@ The conservative force field does $-3$ J of work along that curve—i.e.\ you 
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 70
 
 
@@ -2406,14 +1846,6 @@ The conservative force field does $-3$ J of work along that curve—i.e.\ you 
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 71
 
 
@@ -2427,14 +1859,6 @@ The conservative force field does $-3$ J of work along that curve—i.e.\ you 
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 72
@@ -2476,14 +1900,6 @@ $$
 ## Metadata
 
 Tags: ps12
-
-
-
-
-
-
-
-
 
 
 # Question 73
@@ -2547,14 +1963,6 @@ $$
 Tags: ps12
 
 
-
-
-
-
-
-
-
-
 # Question 74
 
 
@@ -2596,14 +2004,6 @@ $$
 ## Metadata
 
 Tags: ps12
-
-
-
-
-
-
-
-
 
 
 # Question 75
@@ -2684,14 +2084,6 @@ $$
 Tags: ps12
 
 
-
-
-
-
-
-
-
-
 # Question 76
 
 
@@ -2737,14 +2129,6 @@ $$
 ## Metadata
 
 Tags: ps12
-
-
-
-
-
-
-
-
 
 
 # Question 77
@@ -2813,14 +2197,6 @@ $$
 Tags: ps12
 
 
-
-
-
-
-
-
-
-
 # Question 78
 
 
@@ -2882,14 +2258,6 @@ $$
 Tags: ps12
 
 
-
-
-
-
-
-
-
-
 # Question 79
 
 
@@ -2938,14 +2306,6 @@ $$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 80
 
 
@@ -2971,14 +2331,6 @@ $$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 81
@@ -3015,14 +2367,6 @@ $$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 82
 
 
@@ -3050,14 +2394,6 @@ $$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 83
 
 
@@ -3076,14 +2412,6 @@ $$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 84
@@ -3117,14 +2445,6 @@ $$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 85
 
 
@@ -3145,14 +2465,6 @@ $$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 86
 
 
@@ -3168,14 +2480,6 @@ $$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 87
 
 
@@ -3189,14 +2493,6 @@ $$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 88
@@ -3246,14 +2542,6 @@ $$\sigma' = \begin{bmatrix} 198.923 & 0 & 51.340 \\ 0 & 20 & 0 \\ 51.340 & 0 & -
 Tags: ps4
 
 
-
-
-
-
-
-
-
-
 # Question 89
 
 
@@ -3267,14 +2555,6 @@ Tags: ps4
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 90
@@ -3300,14 +2580,6 @@ Sendo $x', y', z'$ um giro de $30^\circ$, sentido anti-horário, em torno de $z$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 91
 
 
@@ -3331,14 +2603,6 @@ Sendo $x', y', z'$ um giro de $30^\circ$, sentido anti-horário, em torno de $y$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 92
 
 
@@ -3358,14 +2622,6 @@ Pode-se observar que como a rotação em ambas questões acontecem em torno do e
 ## Metadata
 
 Tags: ps4
-
-
-
-
-
-
-
-
 
 
 # Question 93
@@ -3494,14 +2750,6 @@ $$
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 94
 
 
@@ -3523,14 +2771,6 @@ $$[\sigma] = \begin{bmatrix}
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 95
@@ -3565,14 +2805,6 @@ A tensão de normal média é a tensão de tração quando a tensão de cisalham
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 96
@@ -3615,14 +2847,6 @@ $$\tau_{\max}^{(3D)} = \tau_{\max}^{(2D)} = 143,962 \, MPa$$
 Tags: ps10,ps11
 
 
-
-
-
-
-
-
-
-
 # Question 97
 
 
@@ -3636,14 +2860,6 @@ Tags: ps10,ps11
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 98
@@ -3661,14 +2877,6 @@ Tags: ps10,ps11
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 99
 
 
@@ -3682,14 +2890,6 @@ Tags: ps10,ps11
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 100
@@ -3707,14 +2907,6 @@ Tags: ps10,ps11
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 101
 
 
@@ -3728,14 +2920,6 @@ Tags: ps10,ps11
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 102
@@ -3753,14 +2937,6 @@ Tags: ps10,ps11
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 103
 
 
@@ -3774,14 +2950,6 @@ Tags: ps10,ps11
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 104
@@ -3799,14 +2967,6 @@ Tags: ps10,ps11
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 105
 
 
@@ -3822,14 +2982,6 @@ Tags: ps10,ps11
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 106
 
 
@@ -3843,14 +2995,6 @@ Tags: ps10,ps11
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 107
@@ -3935,14 +3079,6 @@ b) $$\Pi:x + 2y - 2z + 3 = 0$$
 Tags: ps22,ps29
 
 
-
-
-
-
-
-
-
-
 # Question 108
 
 
@@ -3998,14 +3134,6 @@ $$4\pi a^2$$
 ## Metadata
 
 Tags: ps29
-
-
-
-
-
-
-
-
 
 
 # Question 109
@@ -4123,14 +3251,6 @@ $$\frac{\pi}{6}(5^{3/2}-1)$$
 Tags: ps29
 
 
-
-
-
-
-
-
-
-
 # Question 110
 
 
@@ -4239,14 +3359,6 @@ $$[\sigma] = \begin{pmatrix} -0,15 & 1,46 & 0 \\ 1,46 & -1,85 & 0 \\ 0 & 0 & 0 \
 Tags: ps34,ps7
 
 
-
-
-
-
-
-
-
-
 # Question 111
 
 
@@ -4338,14 +3450,6 @@ $$\frac{\gamma_{max}}{2} = 8,9\times 10^{-6}$$
 Tags: ps11
 
 
-
-
-
-
-
-
-
-
 # Question 112
 
 
@@ -4421,14 +3525,6 @@ $$[\sigma'] = [\sigma]$$
 Tags: ps7
 
 
-
-
-
-
-
-
-
-
 # Question 113
 
 
@@ -4444,14 +3540,6 @@ Tags: ps7
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 114
 
 
@@ -4465,14 +3553,6 @@ Tags: ps7
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 115
@@ -4510,14 +3590,6 @@ $$\varepsilon = \frac{L - L_0}{L_0} = \frac{\Delta L}{L_0} \;\to\; L = \varepsil
 ## Metadata
 
 Tags: ps5,ps7
-
-
-
-
-
-
-
-
 
 
 # Question 116
@@ -4665,14 +3737,6 @@ Pois em um estado tridimensional as deformações são acopladas em todas as dir
 Tags: ps5, ps7, ps8
 
 
-
-
-
-
-
-
-
-
 # Question 117
 
 
@@ -4702,14 +3766,6 @@ $$= \frac{\sqrt2}{5}\int_{0}^{2\pi}\cos\theta\sin\theta\,d\theta = 0$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 118
@@ -4753,14 +3809,6 @@ $$\frac{4\pi}{3}$$
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 119
@@ -4894,14 +3942,6 @@ $$\boxed{\iint_{S}{\vec{F} \, d\vec{S}}  = -\frac{\pi}{2}}$$
 Tags: ps19, ps30
 
 
-
-
-
-
-
-
-
-
 # Question 120
 
 
@@ -4970,14 +4010,6 @@ $$\oint_{C}\vec F\cdot d\vec r =\boxed{\pi}$$
 ## Metadata
 
 Tags: ps19, ps28
-
-
-
-
-
-
-
-
 
 
 # Question 121
@@ -5085,14 +4117,6 @@ $$\hat{n}_{s_{1}} = (0.821, -0.571) \quad\hat{n}_{s_{2}} = (0.571, 0.821)$$
 Tags: ps10, ps11
 
 
-
-
-
-
-
-
-
-
 # Question 122
 
 
@@ -5117,14 +4141,6 @@ $$A = (5.5, -9.5) \quad B = (9.5, 5.5)$$
 ## Metadata
 
 Tags: ps33
-
-
-
-
-
-
-
-
 
 
 # Question 123
@@ -5194,14 +4210,6 @@ $$\Delta b = b \cdot \frac{1+\nu}{E} \sigma_{xx}$$
 Tags: ps7
 
 
-
-
-
-
-
-
-
-
 # Question 124
 
 
@@ -5227,14 +4235,6 @@ c.2) Critério de Von Mises.
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 125
 
 
@@ -5255,14 +4255,6 @@ c) Deformação longitudinal na direção de $30^{\circ}$ (sentido anti-horário
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 126
@@ -5287,14 +4279,6 @@ Expresse seus resultados em termos de $E, \nu, \sigma_{xx}, "a"$ e "$b"$. $\sigm
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 127
 
 
@@ -5316,14 +4300,6 @@ b) Os valores destas componentes principais de deformação.
 ## Metadata
 
 
-
-
-
-
-
-
-
-
 # Question 128
 
 
@@ -5341,14 +4317,6 @@ b) Variação $\Delta a$ da dimensão "$a$" na situação da letra (a), ou seja,
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 129
@@ -5375,14 +4343,6 @@ c.2) Segundo Von MISES.
 
 
 ## Metadata
-
-
-
-
-
-
-
-
 
 
 # Question 130
