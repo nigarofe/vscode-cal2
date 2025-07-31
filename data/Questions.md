@@ -17,7 +17,7 @@ this is the q1 propositional
 $$\sin \alpha$$
 
 <snippet id="newtons-law">
-$\oiint$ Esse é um exemplo de snippet
+$\oiint$ Esse é um exemplo de snippeta
 
 Linha nova
 </snippet>
@@ -28,6 +28,7 @@ $$\oint$$
 
 
 ## Step-by-step
+<ref id="teste" />
 <ref id="newtons-law" />
 
 
@@ -51,6 +52,7 @@ $$\frac{d^2}{dt^2} \left( e^{\gamma t} \right)$$
 
 
 ## Step-by-step
+<ref id="newtons-law" />
 
 
 ## Answer

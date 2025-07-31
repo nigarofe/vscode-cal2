@@ -5,6 +5,9 @@ let currentQuestionPanel: vscode.WebviewPanel | undefined;
 let lastQuestionHeading: string = '';
 let debounceTimer: NodeJS.Timeout | undefined;
 
+// Snippet cache to store all snippet definitions
+let snippetCache: Map<string, string> = new Map();
+
 // Lazy load dependencies to avoid startup performance issues
 let marked: any;
 let katex: any;
@@ -38,6 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Check currently open documents when extension activates
 	vscode.workspace.textDocuments.forEach(document => {
+		updateSnippetCache(document);
 		checkDocumentFile(document);
 	});
 
@@ -59,6 +63,25 @@ export function activate(context: vscode.ExtensionContext) {
 			debounceTimer = setTimeout(() => {
 				updateWebviewContent(event.document);
 			}, 300); // Shorter delay for content updates
+		}
+		
+		// If snippet content changed, trigger re-rendering of all Questions.md webviews
+		if ((event.document.fileName.endsWith('Questions.md') || event.document.fileName.endsWith('Premises.md')) && currentQuestionPanel) {
+			// Check if any snippet definitions were affected
+			const hasSnippetChanges = event.contentChanges.some(change => 
+				change.text.includes('<snippet') || change.text.includes('<ref') ||
+				change.rangeLength > 0 // Something was deleted
+			);
+			
+			if (hasSnippetChanges) {
+				// Re-validate all open Questions.md and Premises.md documents
+				vscode.workspace.textDocuments.forEach(doc => {
+					if (doc.fileName.endsWith('Questions.md') || doc.fileName.endsWith('Premises.md')) {
+						updateSnippetCache(doc);
+						checkDocumentFile(doc);
+					}
+				});
+			}
 		}
 	});
 
@@ -82,6 +105,11 @@ export function activate(context: vscode.ExtensionContext) {
 			document.fileName.endsWith('Questions.md') || 
 			document.fileName.endsWith('Premises.md')) {
 			diagnosticCollection.delete(document.uri);
+			
+			// Clean up snippet cache for closed document
+			const documentPath = document.uri.toString();
+			const keysToDelete = Array.from(snippetCache.keys()).filter(key => key.startsWith(documentPath + '#'));
+			keysToDelete.forEach(key => snippetCache.delete(key));
 		}
 	});
 
@@ -103,8 +131,10 @@ function checkDocumentFile(document: vscode.TextDocument): void {
 	
 	if (fileName.endsWith('Requirements.md') || fileName.endsWith('Premises.md')) {
 		checkRequirementsOrPremisesFile(document);
+		updateSnippetCache(document);
 	} else if (fileName.endsWith('Questions.md')) {
 		checkQuestionsFile(document);
+		updateSnippetCache(document);
 	}
 }
 
@@ -215,6 +245,10 @@ function checkRequirementsOrPremisesFile(document: vscode.TextDocument): void {
 		}
 	});
 
+	// Validate snippets in Requirements.md and Premises.md files
+	const snippetDiagnostics = validateSnippets(document);
+	diagnostics.push(...snippetDiagnostics);
+
 	// Set diagnostics for this document
 	diagnosticCollection.set(document.uri, diagnostics);
 }
@@ -291,8 +325,152 @@ function checkQuestionsFile(document: vscode.TextDocument): void {
 		}
 	});
 
+	// Validate snippets in Questions.md files
+	const snippetDiagnostics = validateSnippets(document);
+	diagnostics.push(...snippetDiagnostics);
+
 	// Set diagnostics for this document
 	diagnosticCollection.set(document.uri, diagnostics);
+}
+
+function updateSnippetCache(document: vscode.TextDocument): void {
+	const fileName = document.fileName;
+	if (!fileName.endsWith('Questions.md') && !fileName.endsWith('Premises.md')) {
+		return;
+	}
+
+	const text = document.getText();
+	
+	// Clear existing snippets from this document
+	const documentPath = document.uri.toString();
+	const existingKeys = Array.from(snippetCache.keys()).filter(key => key.startsWith(documentPath + '#'));
+	existingKeys.forEach(key => snippetCache.delete(key));
+	
+	// Parse snippet definitions
+	const snippetRegex = /<snippet\s+id="([^"]+)">\s*([\s\S]*?)\s*<\/snippet>/g;
+	let match;
+	
+	while ((match = snippetRegex.exec(text)) !== null) {
+		const snippetId = match[1];
+		const snippetContent = match[2].trim();
+		const key = `${documentPath}#${snippetId}`;
+		
+		snippetCache.set(key, snippetContent);
+	}
+}
+
+function validateSnippets(document: vscode.TextDocument): vscode.Diagnostic[] {
+	const text = document.getText();
+	const lines = text.split('\n');
+	const diagnostics: vscode.Diagnostic[] = [];
+	
+	// Find all snippet definitions and references
+	const snippetDefs = new Map<string, number[]>(); // id -> line numbers
+	const snippetRefs = new Map<string, number[]>(); // id -> line numbers
+	
+	// Parse snippet definitions
+	const snippetDefRegex = /<snippet\s+id="([^"]+)">/g;
+	let match;
+	
+	lines.forEach((line, index) => {
+		// Find snippet definitions
+		let defMatch;
+		const defRegex = /<snippet\s+id="([^"]+)">/g;
+		while ((defMatch = defRegex.exec(line)) !== null) {
+			const snippetId = defMatch[1];
+			if (!snippetDefs.has(snippetId)) {
+				snippetDefs.set(snippetId, []);
+			}
+			snippetDefs.get(snippetId)!.push(index);
+		}
+		
+		// Find snippet references
+		let refMatch;
+		const refRegex = /<ref\s+id="([^"]+)"\s*\/>/g;
+		while ((refMatch = refRegex.exec(line)) !== null) {
+			const snippetId = refMatch[1];
+			if (!snippetRefs.has(snippetId)) {
+				snippetRefs.set(snippetId, []);
+			}
+			snippetRefs.get(snippetId)!.push(index);
+		}
+	});
+	
+	// Check for duplicate snippet IDs
+	snippetDefs.forEach((lineNumbers, snippetId) => {
+		if (lineNumbers.length > 1) {
+			lineNumbers.forEach(lineNumber => {
+				const diagnostic = new vscode.Diagnostic(
+					new vscode.Range(lineNumber, 0, lineNumber, lines[lineNumber].length),
+					`Duplicate snippet ID "${snippetId}". Snippet IDs must be unique within the document.`,
+					vscode.DiagnosticSeverity.Error
+				);
+				diagnostics.push(diagnostic);
+			});
+		}
+	});
+	
+	// Check for unresolved snippet references
+	snippetRefs.forEach((lineNumbers, snippetId) => {
+		if (!snippetDefs.has(snippetId)) {
+			// Check if the snippet exists in other open documents
+			const allSnippetIds = Array.from(snippetCache.keys()).map(key => key.split('#')[1]);
+			if (!allSnippetIds.includes(snippetId)) {
+				lineNumbers.forEach(lineNumber => {
+					const diagnostic = new vscode.Diagnostic(
+						new vscode.Range(lineNumber, 0, lineNumber, lines[lineNumber].length),
+						`Unresolved snippet reference "${snippetId}". No snippet definition found with this ID.`,
+						vscode.DiagnosticSeverity.Error
+					);
+					diagnostics.push(diagnostic);
+				});
+			}
+		}
+	});
+	
+	// Check for circular references (basic check)
+	const checkCircularReferences = (snippetId: string, visited: Set<string>): boolean => {
+		if (visited.has(snippetId)) {
+			return true; // Circular reference detected
+		}
+		
+		visited.add(snippetId);
+		
+		// Find the content of this snippet
+		const snippetKey = Array.from(snippetCache.keys()).find(key => key.endsWith('#' + snippetId));
+		if (snippetKey) {
+			const content = snippetCache.get(snippetKey);
+			if (content) {
+				// Check if this snippet references other snippets
+				const refRegex = /<ref\s+id="([^"]+)"\s*\/>/g;
+				let refMatch;
+				while ((refMatch = refRegex.exec(content)) !== null) {
+					const referencedId = refMatch[1];
+					if (checkCircularReferences(referencedId, new Set(visited))) {
+						return true;
+					}
+				}
+			}
+		}
+		
+		visited.delete(snippetId);
+		return false;
+	};
+	
+	snippetDefs.forEach((lineNumbers, snippetId) => {
+		if (checkCircularReferences(snippetId, new Set())) {
+			lineNumbers.forEach(lineNumber => {
+				const diagnostic = new vscode.Diagnostic(
+					new vscode.Range(lineNumber, 0, lineNumber, lines[lineNumber].length),
+					`Circular reference detected in snippet "${snippetId}". Snippets cannot reference themselves directly or indirectly.`,
+					vscode.DiagnosticSeverity.Error
+				);
+				diagnostics.push(diagnostic);
+			});
+		}
+	});
+	
+	return diagnostics;
 }
 
 function showQuestionWebview(document: vscode.TextDocument, cursorPosition: vscode.Position): void {
@@ -436,6 +614,9 @@ function convertMarkdownToHtml(markdown: string): string {
 	
 	let html = markdown;
 	
+	// Process snippets before markdown conversion
+	html = processSnippets(html);
+	
 	// Pre-process custom tags before markdown conversion
 	html = preprocessCustomTags(html);
 	
@@ -488,6 +669,26 @@ function convertMarkdownToHtml(markdown: string): string {
 	}
 	
 	return html;
+}
+
+function processSnippets(content: string): string {
+	// First, resolve all snippet references
+	content = content.replace(/<ref\s+id="([^"]+)"\s*\/>/g, (match, id) => {
+		// Find the snippet content in the cache
+		const snippetKey = Array.from(snippetCache.keys()).find(key => key.endsWith('#' + id));
+		if (snippetKey) {
+			const snippetContent = snippetCache.get(snippetKey);
+			return snippetContent || `[Missing snippet: ${id}]`;
+		}
+		return `[Unresolved snippet: ${id}]`;
+	});
+	
+	// Then, unwrap snippet definitions to show only their content
+	content = content.replace(/<snippet\s+id="([^"]+)">\s*([\s\S]*?)\s*<\/snippet>/g, (match, id, snippetContent) => {
+		return snippetContent.trim();
+	});
+	
+	return content;
 }
 
 function preprocessCustomTags(markdown: string): string {
@@ -596,31 +797,6 @@ function getWebviewContent(htmlContent: string): string {
 			border-radius: 3px;
 			font-family: monospace;
 		}
-		/* Custom snippet styling */
-		snippet {
-			display: block;
-			background-color: var(--vscode-textCodeBlock-background);
-			border: 1px solid var(--vscode-textBlockQuote-border);
-			border-radius: 5px;
-			padding: 10px;
-			margin: 10px 0;
-		}
-		snippet::before {
-			content: "Snippet: " attr(id);
-			font-weight: bold;
-			color: var(--vscode-textLink-foreground);
-			display: block;
-			margin-bottom: 5px;
-		}
-		/* Reference styling */
-		ref {
-			color: var(--vscode-textLink-foreground);
-			text-decoration: underline;
-			cursor: pointer;
-		}
-		ref::before {
-			content: "→ Ref: " attr(id);
-		}
 	</style>
 </head>
 <body>
@@ -639,4 +815,6 @@ export function deactivate() {
 	if (debounceTimer) {
 		clearTimeout(debounceTimer);
 	}
+	// Clear snippet cache
+	snippetCache.clear();
 }
