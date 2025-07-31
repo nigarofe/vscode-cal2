@@ -22,9 +22,9 @@ export class MarkdownRenderer {
 		}
 	}
 
-	convertMarkdownToHtml(markdown: string): string {
+	async convertMarkdownToHtml(markdown: string): Promise<string> {
 		// Load dependencies if not already loaded
-		this.loadDependencies();
+		await this.loadDependencies();
 		
 		let html = markdown;
 		
@@ -50,7 +50,7 @@ export class MarkdownRenderer {
 							displayMode: true,
 							throwOnError: false
 						});
-						const placeholder = `__LATEX_PLACEHOLDER_${placeholderIndex++}__`;
+						const placeholder = `LATEXPLACEHOLDER${placeholderIndex++}LATEXPLACEHOLDER`;
 						console.log('Created placeholder:', placeholder, 'for rendered content:', rendered.substring(0, 50) + '...');
 						latexPlaceholders.set(placeholder, rendered);
 						return placeholder;
@@ -68,7 +68,7 @@ export class MarkdownRenderer {
 							displayMode: false,
 							throwOnError: false
 						});
-						const placeholder = `__LATEX_PLACEHOLDER_${placeholderIndex++}__`;
+						const placeholder = `LATEXPLACEHOLDER${placeholderIndex++}LATEXPLACEHOLDER`;
 						console.log('Created placeholder:', placeholder, 'for rendered content:', rendered.substring(0, 50) + '...');
 						latexPlaceholders.set(placeholder, rendered);
 						return placeholder;
@@ -109,18 +109,14 @@ export class MarkdownRenderer {
 			console.log('Restoring placeholder:', placeholder);
 			const beforeReplace = html.includes(placeholder);
 			
-			// Use split and join instead of replaceAll for compatibility
+			// Direct replacement
 			html = html.split(placeholder).join(rendered);
 			
-			// Handle HTML-encoded versions
-			const encodedPlaceholder = placeholder.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-			html = html.split(encodedPlaceholder).join(rendered);
-			
-			// Handle if wrapped in <p> tags
-			html = html.split(`<p>${placeholder}</p>`).join(rendered);
-			html = html.split(`<p>${encodedPlaceholder}</p>`).join(rendered);
-			
-			console.log('Placeholder found before replacement:', beforeReplace, 'Still exists after:', html.includes(placeholder));
+			const afterReplace = html.includes(placeholder);
+			console.log('Placeholder found before replacement:', beforeReplace, 'Still exists after:', afterReplace);
+			if (afterReplace) {
+				console.warn('Placeholder still exists after replacement:', placeholder);
+			}
 		});
 		
 		console.log('Final HTML after LaTeX restoration:', html);

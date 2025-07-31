@@ -5,7 +5,7 @@ export class QuestionWebview {
 	private panel?: vscode.WebviewPanel;
 	private lastQuestionHeading: string = '';
 
-	show(document: vscode.TextDocument, cursorPosition: vscode.Position): void {
+	async show(document: vscode.TextDocument, cursorPosition: vscode.Position): Promise<void> {
 		const text = document.getText();
 		const lines = text.split('\n');
 		
@@ -67,7 +67,7 @@ export class QuestionWebview {
 			}
 			
 			// Convert markdown to HTML
-			const htmlContent = markdownRenderer.convertMarkdownToHtml(questionContent);
+			const htmlContent = await markdownRenderer.convertMarkdownToHtml(questionContent);
 			
 			// Update the webview content
 			this.panel.webview.html = markdownRenderer.getWebviewContent(htmlContent);
@@ -85,7 +85,7 @@ export class QuestionWebview {
 		}
 	}
 
-	updateContent(document: vscode.TextDocument): void {
+	async updateContent(document: vscode.TextDocument): Promise<void> {
 		if (!this.panel) {
 			return;
 		}
@@ -135,7 +135,7 @@ export class QuestionWebview {
 			}
 			
 			// Convert markdown to HTML and update content
-			const htmlContent = markdownRenderer.convertMarkdownToHtml(questionContent);
+			const htmlContent = await markdownRenderer.convertMarkdownToHtml(questionContent);
 			this.panel.webview.html = markdownRenderer.getWebviewContent(htmlContent);
 		}
 	}
