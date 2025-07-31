@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+import * as path from 'path';
 import { Dependencies } from '../types';
 import { snippetCache } from '../snippets/snippetCache';
 
@@ -22,7 +24,7 @@ export class MarkdownRenderer {
 		}
 	}
 
-	async convertMarkdownToHtml(markdown: string): Promise<string> {
+	async convertMarkdownToHtml(markdown: string, webview?: vscode.Webview): Promise<string> {
 		// Load dependencies if not already loaded
 		await this.loadDependencies();
 		
@@ -30,6 +32,9 @@ export class MarkdownRenderer {
 		
 		// Process snippets before markdown conversion
 		html = snippetCache.processSnippets(html);
+		
+		// Process images before markdown conversion
+		html = this.processImages(html, webview);
 		
 		// Pre-process custom tags before markdown conversion
 		html = this.preprocessCustomTags(html);
@@ -138,6 +143,74 @@ export class MarkdownRenderer {
 			});
 		
 		return markdown;
+	}
+
+	private processImages(markdown: string, webview?: any): string {
+		// Process markdown images and convert relative paths to webview URIs
+		return markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+			// Check if it's a relative path to images folder
+			if (src.startsWith('images/')) {
+				if (webview) {
+					// Convert to webview URI when webview is available
+					const workspaceFolders = vscode.workspace.workspaceFolders;
+					if (workspaceFolders && workspaceFolders.length > 0) {
+						let imagePath: vscode.Uri;
+						
+						// Try different strategies to find the correct path
+						for (const folder of workspaceFolders) {
+							const folderPath = folder.uri.fsPath;
+							console.log('Checking workspace folder:', folderPath);
+							
+							// Strategy 1: If this folder ends with 'data', use it directly
+							if (folderPath.endsWith('data')) {
+								imagePath = vscode.Uri.file(path.join(folderPath, src));
+								console.log('Strategy 1 - Using data folder directly:', imagePath.fsPath);
+								break;
+							}
+							
+							// Strategy 2: If this folder contains 'data' subfolder, use that
+							const dataSubfolder = path.join(folderPath, 'data');
+							try {
+								// Check if data subfolder exists
+								const fs = require('fs');
+								if (fs.existsSync(dataSubfolder)) {
+									imagePath = vscode.Uri.file(path.join(dataSubfolder, src));
+									console.log('Strategy 2 - Using data subfolder:', imagePath.fsPath);
+									break;
+								}
+							} catch (error) {
+								// Continue to next strategy
+							}
+						}
+						
+						// Fallback: use first folder + data + src
+						if (!imagePath!) {
+							const fallbackPath = path.join(workspaceFolders[0].uri.fsPath, 'data', src);
+							imagePath = vscode.Uri.file(fallbackPath);
+							console.log('Fallback strategy:', imagePath.fsPath);
+						}
+						
+						const webviewUri = webview.asWebviewUri(imagePath);
+						console.log('Final image URI:', webviewUri.toString());
+						return `![${alt}](${webviewUri})`;
+					}
+				} else {
+					// For now, keep the relative path - will be processed later in webview
+					return `<img src="${src}" alt="${alt}" style="max-width: 100%; height: auto; display: block; margin: 1em 0;">`;
+				}
+			}
+			// Keep absolute URLs or other formats as-is
+			return match;
+		});
+	}
+
+	private getDataFolderPath(): string {
+		// Get the workspace folder and construct path to data folder
+		const workspaceFolders = vscode.workspace.workspaceFolders;
+		if (workspaceFolders && workspaceFolders.length > 0) {
+			return path.join(workspaceFolders[0].uri.fsPath, 'data');
+		}
+		return '';
 	}
 
 	private basicMarkdownToHtml(markdown: string): string {
@@ -343,6 +416,17 @@ export class MarkdownRenderer {
 		/* Ensure proper spacing around math elements */
 		.katex + p, p + .katex {
 			margin-top: 1em;
+		}
+		
+		/* Image styling */
+		img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 1em auto;
+			border-radius: 4px;
+			border: 1px solid var(--vscode-textBlockQuote-border);
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 		}
 		
 		/* Responsive design for smaller screens */

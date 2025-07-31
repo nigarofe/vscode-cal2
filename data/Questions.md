@@ -23,7 +23,7 @@ $\oiint$ Esse é um exemplo de snippeta
 Linha nova
 </snippet>
 
-![A diagram explaining the concept](diagram.png)
+![](images/ps11.png)
 
 $$\oint$$
 

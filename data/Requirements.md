@@ -35,6 +35,8 @@ The system shall validate Questions.md files for proper formatting and structure
 The system shall render LaTeX expressions using KaTeX library
 The system shall handle both inline ($...$) and display ($$...$$) LaTeX expressions
 The system shall preserve LaTeX rendering during markdown-to-HTML conversion
+The system shall render images referenced in markdown format with relative paths to the images folder
+The system shall convert relative image paths to proper VS Code webview URIs for secure resource access
 
 ## State driven
 While a file named `Questions.md` is open, the system shall display a webview panel with the rendered markdown of the current question section
@@ -48,6 +50,8 @@ When a Questions.md file is opened or modified, the system shall validate first-
 When a Questions.md file is opened or modified, the system shall validate blank line spacing above headings
 When LaTeX expressions are detected in markdown content, the system shall process them with KaTeX before markdown conversion
 When markdown conversion occurs, the system shall use placeholder substitution to prevent LaTeX corruption
+When images are detected in markdown content, the system shall process them before markdown conversion to ensure proper URI resolution
+When relative image paths starting with 'images/' are found, the system shall convert them to webview-compatible URIs
 
 ## Optional feature
 Where webview functionality is enabled, the webview panel should open in the "Beside" column to provide a split-view experience
@@ -55,6 +59,8 @@ Where webview functionality is enabled, the webview should use VS Code's theme v
 Where basic markdown support is included, the system should provide formatting support including headings, bold, italic, and bullet points
 Where KaTeX library is not available, the system should gracefully degrade to showing LaTeX source with error indication
 Where marked library is not available, the system should fall back to basic markdown-to-HTML conversion
+Where image files exist in the data/images folder, the system should display them with responsive styling and VS Code theme integration
+Where workspace has multiple folders, the system should intelligently locate the correct data folder for image resolution
 
 ## Unwanted behavior
 If a file named `Questions.md` is open and each first level heading doesn't include all of the second level headings `Proposition`, `Step-by-step`, `Answer` and `Metadata` in this exact order, then the system shall output this in the VS Code Problems panel
@@ -66,12 +72,49 @@ If the webview panel flickers or recreates unnecessarily, then the system shall 
 If the webview steals focus from the editor, then the system shall restore focus and cursor position
 If LaTeX placeholders conflict with markdown syntax, then the system shall use syntax-neutral placeholder formats
 If LaTeX expressions fail to render, then the system shall display error messages instead of raw placeholders
+If image paths resolve to non-existent files, then the system shall handle gracefully without breaking the webview rendering
+If image path resolution creates double folder paths, then the system shall detect and correct the path construction logic
 
 ## Complex
 While a Questions.md file is open, when the cursor position changes or content is modified, the system shall automatically detect which question section the cursor is in based on the first-level headings and show the appropriate content in the webview
 While providing real-time updates, when content changes occur, the system shall handle markdown-to-HTML conversion and coordinate between multiple event listeners using proper debouncing mechanisms
 While managing the webview lifecycle, when panels are created or updated, the system shall handle creation, updates, and disposal without disrupting the user's editing experience
 While processing LaTeX expressions, when markdown conversion occurs, the system shall use placeholder substitution strategy to prevent markdown parser interference with LaTeX syntax, then restore rendered LaTeX content after HTML conversion is complete
+While processing images in markdown content, when workspace contains multiple folders including data folder, the system shall implement intelligent folder detection strategy to locate correct image paths by checking for data folders directly in workspace, checking for data subfolders in workspace folders, and providing fallback path construction with proper debugging output for troubleshooting path resolution issues
+
+
+
+
+# Requirements for image rendering
+
+## Generic
+While `markdown content contains image references with relative paths`, when `webview rendering is requested`, the `image rendering system` shall `convert relative paths to secure webview URIs and display images with responsive styling`
+
+## Ubiquitous
+The `image rendering system` shall `support markdown image syntax ![alt](src) for all relative image paths starting with 'images/'`
+The `image rendering system` shall `apply consistent styling with borders, shadows, and responsive scaling that integrates with VS Code themes`
+
+## State driven
+While `webview is active and displaying markdown content`, the `image rendering system` shall `maintain proper resource access permissions through localResourceRoots configuration`
+While `workspace contains multiple folder configurations`, the `image rendering system` shall `intelligently locate the data folder containing images`
+
+## Event driven
+When `markdown images are detected during processing`, the `image rendering system` shall `process them before markdown conversion to ensure proper URI resolution`
+When `relative image paths starting with 'images/' are found`, the `image rendering system` shall `convert them to VS Code webview-compatible URIs using asWebviewUri method`
+When `webview panel is created`, the `image rendering system` shall `configure localResourceRoots to include all potential data folder locations`
+
+## Optional feature
+Where `workspace has data folder as direct workspace folder`, the `image rendering system` shall `use the data folder URI directly for optimal performance`
+Where `workspace has data as subfolder of root workspace`, the `image rendering system` shall `detect and use the data subfolder path`
+Where `debugging is enabled`, the `image rendering system` shall `provide console logging of path resolution strategies and final URIs`
+
+## Unwanted behavior
+If `image path resolution creates double folder paths like data/data/images`, then the `image rendering system` shall `implement path validation to prevent duplicate folder segments`
+If `image files do not exist at resolved paths`, then the `image rendering system` shall `handle gracefully without breaking webview rendering`
+If `workspace folder detection fails`, then the `image rendering system` shall `provide fallback path construction with appropriate error logging`
+
+## Complex
+While `processing markdown with image references`, when `multiple workspace folder configurations exist including dedicated data folders and root folders with data subfolders`, the `image rendering system` shall `iterate through workspace folders using multiple detection strategies including direct data folder matching, data subfolder existence checking, and fallback path construction, then convert successful paths to webview URIs while providing comprehensive debugging output for troubleshooting path resolution issues`
 
 
 

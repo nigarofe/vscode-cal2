@@ -1,9 +1,45 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 import { markdownRenderer } from './markdownRenderer';
 
 export class QuestionWebview {
 	private panel?: vscode.WebviewPanel;
 	private lastQuestionHeading: string = '';
+
+	private getLocalResourceRoots(): vscode.Uri[] {
+		const roots: vscode.Uri[] = [];
+		const workspaceFolders = vscode.workspace.workspaceFolders;
+		
+		if (workspaceFolders && workspaceFolders.length > 0) {
+			// Add the data folder if it exists as a workspace folder
+			const dataFolder = workspaceFolders.find(folder => 
+				folder.name === 'data' || folder.uri.fsPath.endsWith('\\data')
+			);
+			
+			if (dataFolder) {
+				roots.push(dataFolder.uri);
+			}
+			
+			// Also add root workspace folder + data path as fallback
+			const rootFolder = workspaceFolders.find(folder => 
+				folder.name === 'vscode-cal2' || folder.uri.fsPath.endsWith('vscode-cal2')
+			);
+			
+			if (rootFolder) {
+				roots.push(vscode.Uri.file(path.join(rootFolder.uri.fsPath, 'data')));
+			}
+			
+			// Add all workspace folders as potential roots
+			workspaceFolders.forEach(folder => {
+				if (!roots.some(root => root.fsPath === folder.uri.fsPath)) {
+					roots.push(folder.uri);
+				}
+			});
+		}
+		
+		console.log('Local resource roots:', roots.map(r => r.fsPath));
+		return roots;
+	}
 
 	async show(document: vscode.TextDocument, cursorPosition: vscode.Position): Promise<void> {
 		const text = document.getText();
@@ -49,7 +85,8 @@ export class QuestionWebview {
 					`Question: ${questionHeading}`,
 					vscode.ViewColumn.Beside,
 					{
-						enableScripts: true
+						enableScripts: true,
+						localResourceRoots: this.getLocalResourceRoots()
 					}
 				);
 				
@@ -67,7 +104,7 @@ export class QuestionWebview {
 			}
 			
 			// Convert markdown to HTML
-			const htmlContent = await markdownRenderer.convertMarkdownToHtml(questionContent);
+			const htmlContent = await markdownRenderer.convertMarkdownToHtml(questionContent, this.panel.webview);
 			
 			// Update the webview content
 			this.panel.webview.html = markdownRenderer.getWebviewContent(htmlContent);
@@ -135,7 +172,7 @@ export class QuestionWebview {
 			}
 			
 			// Convert markdown to HTML and update content
-			const htmlContent = await markdownRenderer.convertMarkdownToHtml(questionContent);
+			const htmlContent = await markdownRenderer.convertMarkdownToHtml(questionContent, this.panel.webview);
 			this.panel.webview.html = markdownRenderer.getWebviewContent(htmlContent);
 		}
 	}
