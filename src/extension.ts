@@ -745,57 +745,187 @@ function getWebviewContent(htmlContent: string): string {
 	${katexCss}
 	<style>
 		body {
-			font-family: var(--vscode-font-family);
-			font-size: var(--vscode-font-size);
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+			font-size: 16px;
 			color: var(--vscode-foreground);
 			background-color: var(--vscode-editor-background);
-			line-height: 1.6;
-			padding: 20px;
-			max-width: none;
+			line-height: 1.7;
+			padding: 32px 40px;
+			max-width: 800px;
+			margin: 0 auto;
 		}
-		h1, h2, h3 {
+		
+		h1, h2, h3, h4, h5, h6 {
 			color: var(--vscode-textLink-foreground);
-			margin-top: 1.5em;
-			margin-bottom: 0.5em;
+			font-weight: 600;
+			line-height: 1.3;
+			margin-top: 2em;
+			margin-bottom: 0.8em;
 		}
+		
 		h1 {
-			border-bottom: 1px solid var(--vscode-textBlockQuote-border);
-			padding-bottom: 0.3em;
+			font-size: 2em;
+			border-bottom: 2px solid var(--vscode-textBlockQuote-border);
+			padding-bottom: 0.5em;
+			margin-top: 0;
 		}
-		ul, ol {
-			padding-left: 20px;
+		
+		h2 {
+			font-size: 1.5em;
+			margin-top: 2.5em;
 		}
-		li {
-			margin-bottom: 5px;
+		
+		h3 {
+			font-size: 1.25em;
+			margin-top: 2em;
 		}
+		
 		p {
-			margin-bottom: 1em;
+			margin-bottom: 1.2em;
+			text-align: justify;
 		}
-		pre, code {
-			font-family: var(--vscode-editor-font-family);
-			background-color: var(--vscode-textBlockQuote-background);
-			padding: 2px 4px;
-			border-radius: 3px;
+		
+		ul, ol {
+			padding-left: 28px;
+			margin-bottom: 1.2em;
 		}
+		
+		li {
+			margin-bottom: 0.6em;
+			line-height: 1.6;
+		}
+		
+		li p {
+			margin-bottom: 0.6em;
+		}
+		
+		strong {
+			font-weight: 600;
+			color: var(--vscode-textLink-foreground);
+		}
+		
+		em {
+			font-style: italic;
+			color: var(--vscode-descriptionForeground);
+		}
+		
+		code {
+			font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+			background-color: var(--vscode-textCodeBlock-background);
+			color: var(--vscode-textPreformat-foreground);
+			padding: 3px 6px;
+			border-radius: 4px;
+			font-size: 0.9em;
+			border: 1px solid var(--vscode-textBlockQuote-border);
+		}
+		
 		pre {
-			padding: 10px;
+			font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+			background-color: var(--vscode-textCodeBlock-background);
+			color: var(--vscode-textPreformat-foreground);
+			padding: 16px 20px;
+			border-radius: 6px;
 			overflow-x: auto;
+			margin: 1.2em 0;
+			border: 1px solid var(--vscode-textBlockQuote-border);
+			line-height: 1.5;
 		}
+		
+		pre code {
+			background: none;
+			padding: 0;
+			border: none;
+			border-radius: 0;
+		}
+		
 		blockquote {
-			border-left: 4px solid var(--vscode-textBlockQuote-border);
-			padding-left: 16px;
-			margin-left: 0;
+			border-left: 4px solid var(--vscode-textLink-foreground);
+			padding: 16px 20px;
+			margin: 1.2em 0;
+			background-color: var(--vscode-textBlockQuote-background);
 			color: var(--vscode-textBlockQuote-foreground);
+			border-radius: 0 4px 4px 0;
+			font-style: italic;
 		}
+		
+		blockquote p {
+			margin-bottom: 0.8em;
+		}
+		
+		blockquote p:last-child {
+			margin-bottom: 0;
+		}
+		
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			margin: 1.2em 0;
+		}
+		
+		th, td {
+			border: 1px solid var(--vscode-textBlockQuote-border);
+			padding: 8px 12px;
+			text-align: left;
+		}
+		
+		th {
+			background-color: var(--vscode-textBlockQuote-background);
+			font-weight: 600;
+		}
+		
+		hr {
+			border: none;
+			border-top: 1px solid var(--vscode-textBlockQuote-border);
+			margin: 2em 0;
+		}
+		
 		.katex {
 			font-size: 1.1em;
 		}
+		
+		.katex-display {
+			margin: 1.2em 0;
+		}
+		
 		.latex-error {
 			color: var(--vscode-errorForeground);
 			background-color: var(--vscode-inputValidation-errorBackground);
-			padding: 2px 4px;
-			border-radius: 3px;
+			padding: 4px 8px;
+			border-radius: 4px;
 			font-family: monospace;
+			border: 1px solid var(--vscode-inputValidation-errorBorder);
+		}
+		
+		/* Improve readability with better spacing for nested content */
+		li ul, li ol {
+			margin-top: 0.4em;
+			margin-bottom: 0.4em;
+		}
+		
+		/* Better spacing for consecutive headings */
+		h1 + h2, h2 + h3, h3 + h4 {
+			margin-top: 1em;
+		}
+		
+		/* Ensure proper spacing around math elements */
+		.katex + p, p + .katex {
+			margin-top: 1em;
+		}
+		
+		/* Responsive design for smaller screens */
+		@media (max-width: 768px) {
+			body {
+				padding: 20px 24px;
+				font-size: 15px;
+			}
+			
+			h1 {
+				font-size: 1.75em;
+			}
+			
+			h2 {
+				font-size: 1.35em;
+			}
 		}
 	</style>
 </head>
