@@ -14,6 +14,8 @@
 ## Proposition
 this is the q1 propositional 
 
+$$\sin \alpha$$
+
 <snippet id="newtons-law">
 $\oiint$ Esse é um exemplo de snippet
 
@@ -43,8 +45,9 @@ this is the q1 a
 
 # Question 2
 
+
 ## Proposition
-$$\frac{d^2}{dt^2} \left( e^{\gamma t} \right)$$s
+$$\frac{d^2}{dt^2} \left( e^{\gamma t} \right)$$
 
 
 ## Step-by-step

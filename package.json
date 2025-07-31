@@ -30,5 +30,9 @@
     "@types/vscode": "^1.74.0",
     "@types/node": "16.x",
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "katex": "^0.16.8",
+    "marked": "^9.1.2"
   }
 }

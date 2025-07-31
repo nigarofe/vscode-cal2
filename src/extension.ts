@@ -5,8 +5,32 @@ let currentQuestionPanel: vscode.WebviewPanel | undefined;
 let lastQuestionHeading: string = '';
 let debounceTimer: NodeJS.Timeout | undefined;
 
+// Lazy load dependencies to avoid startup performance issues
+let marked: any;
+let katex: any;
+
+async function loadDependencies() {
+	if (!marked) {
+		try {
+			marked = require('marked');
+		} catch (error) {
+			console.warn('Marked library not available, using basic markdown conversion');
+		}
+	}
+	if (!katex) {
+		try {
+			katex = require('katex');
+		} catch (error) {
+			console.warn('KaTeX library not available, LaTeX expressions will not be rendered');
+		}
+	}
+}
+
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "vscode-cal2" is now active!');
+
+	// Load dependencies asynchronously
+	loadDependencies();
 
 	// Create a diagnostic collection for our extension
 	diagnosticCollection = vscode.languages.createDiagnosticCollection('vscode-cal2');
@@ -407,7 +431,83 @@ function updateWebviewContent(document: vscode.TextDocument): void {
 }
 
 function convertMarkdownToHtml(markdown: string): string {
-	// Basic markdown to HTML conversion
+	// Load dependencies if not already loaded
+	loadDependencies();
+	
+	let html = markdown;
+	
+	// Pre-process custom tags before markdown conversion
+	html = preprocessCustomTags(html);
+	
+	// If marked is available, use it for better markdown conversion
+	if (marked) {
+		try {
+			// Configure marked for better HTML output
+			marked.setOptions({
+				breaks: true,
+				gfm: true
+			});
+			html = marked.parse(html);
+		} catch (error) {
+			console.warn('Error parsing markdown with marked, falling back to basic conversion');
+			html = basicMarkdownToHtml(html);
+		}
+	} else {
+		html = basicMarkdownToHtml(html);
+	}
+	
+	// Process LaTeX expressions if KaTeX is available
+	if (katex) {
+		try {
+			// Process display math ($$...$$)
+			html = html.replace(/\$\$([^$]+)\$\$/g, (match, latex) => {
+				try {
+					return katex.renderToString(latex.trim(), {
+						displayMode: true,
+						throwOnError: false
+					});
+				} catch (error) {
+					return `<span class="latex-error">LaTeX Error: ${latex}</span>`;
+				}
+			});
+			
+			// Process inline math ($...$) - but avoid double processing
+			html = html.replace(/(?<!\$)\$([^$\n]+)\$(?!\$)/g, (match, latex) => {
+				try {
+					return katex.renderToString(latex.trim(), {
+						displayMode: false,
+						throwOnError: false
+					});
+				} catch (error) {
+					return `<span class="latex-error">LaTeX Error: ${latex}</span>`;
+				}
+			});
+		} catch (error) {
+			console.warn('Error rendering LaTeX expressions');
+		}
+	}
+	
+	return html;
+}
+
+function preprocessCustomTags(markdown: string): string {
+	// Convert custom snippet tags to HTML
+	markdown = markdown.replace(/<snippet\s+id="([^"]+)">\s*([\s\S]*?)\s*<\/snippet>/g, 
+		(match, id, content) => {
+			return `<snippet id="${id}">\n${content}\n</snippet>`;
+		});
+	
+	// Convert custom ref tags to HTML
+	markdown = markdown.replace(/<ref\s+id="([^"]+)"\s*\/>/g, 
+		(match, id) => {
+			return `<ref id="${id}"></ref>`;
+		});
+	
+	return markdown;
+}
+
+function basicMarkdownToHtml(markdown: string): string {
+	// Basic markdown to HTML conversion (fallback when marked is not available)
 	let html = markdown;
 	
 	// Convert headings
@@ -430,12 +530,18 @@ function convertMarkdownToHtml(markdown: string): string {
 }
 
 function getWebviewContent(htmlContent: string): string {
+	// Include KaTeX CSS for LaTeX rendering
+	const katexCss = katex ? `
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+	` : '';
+	
 	return `<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Question Viewer</title>
+	${katexCss}
 	<style>
 		body {
 			font-family: var(--vscode-font-family);
@@ -444,15 +550,76 @@ function getWebviewContent(htmlContent: string): string {
 			background-color: var(--vscode-editor-background);
 			line-height: 1.6;
 			padding: 20px;
+			max-width: none;
 		}
 		h1, h2, h3 {
 			color: var(--vscode-textLink-foreground);
+			margin-top: 1.5em;
+			margin-bottom: 0.5em;
 		}
-		ul {
+		h1 {
+			border-bottom: 1px solid var(--vscode-textBlockQuote-border);
+			padding-bottom: 0.3em;
+		}
+		ul, ol {
 			padding-left: 20px;
 		}
 		li {
 			margin-bottom: 5px;
+		}
+		p {
+			margin-bottom: 1em;
+		}
+		pre, code {
+			font-family: var(--vscode-editor-font-family);
+			background-color: var(--vscode-textBlockQuote-background);
+			padding: 2px 4px;
+			border-radius: 3px;
+		}
+		pre {
+			padding: 10px;
+			overflow-x: auto;
+		}
+		blockquote {
+			border-left: 4px solid var(--vscode-textBlockQuote-border);
+			padding-left: 16px;
+			margin-left: 0;
+			color: var(--vscode-textBlockQuote-foreground);
+		}
+		.katex {
+			font-size: 1.1em;
+		}
+		.latex-error {
+			color: var(--vscode-errorForeground);
+			background-color: var(--vscode-inputValidation-errorBackground);
+			padding: 2px 4px;
+			border-radius: 3px;
+			font-family: monospace;
+		}
+		/* Custom snippet styling */
+		snippet {
+			display: block;
+			background-color: var(--vscode-textCodeBlock-background);
+			border: 1px solid var(--vscode-textBlockQuote-border);
+			border-radius: 5px;
+			padding: 10px;
+			margin: 10px 0;
+		}
+		snippet::before {
+			content: "Snippet: " attr(id);
+			font-weight: bold;
+			color: var(--vscode-textLink-foreground);
+			display: block;
+			margin-bottom: 5px;
+		}
+		/* Reference styling */
+		ref {
+			color: var(--vscode-textLink-foreground);
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		ref::before {
+			content: "→ Ref: " attr(id);
 		}
 	</style>
 </head>
