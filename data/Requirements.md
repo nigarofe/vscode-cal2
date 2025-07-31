@@ -31,15 +31,15 @@
 
 
 ## Event driven
-- If a file named `Questions.md` is open and each first level heading doesn't math the regex `^Question \d+\s*$`, then the system shall output this in the VS Code Problems panel
-- If a file named `Questions.md` is open and each first level heading doesn't have exactly 10 blank lines above it, then the system shall output this in the VS Code Problems panel
-- If a file named `Questions.md` is open and each second level heading doesn't have exactly 2 blank lines above it, then the system shall output this in the VS Code Problems panel
+- When the user is editing a file named `Questions.md`, the system shall open a VS Code Webview panel with the md rendering of the question specified in the level 1 heading of where the cursor is
 
 ## Optional feature
 
 
 ## Unwanted behavior
-
+- If a file named `Questions.md` is open and each first level heading doesn't math the regex `^Question \d+\s*$`, then the system shall output this in the VS Code Problems panel
+- If a file named `Questions.md` is open and each first level heading doesn't have exactly 10 blank lines above it, then the system shall output this in the VS Code Problems panel
+- If a file named `Questions.md` is open and each second level heading doesn't have exactly 2 blank lines above it, then the system shall output this in the VS Code Problems panel
 
 ## Complex
 
