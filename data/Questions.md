@@ -5141,7 +5141,7 @@ b) Variação $\Delta b$ da dimensão $b$ para a situação em que $a$ não seja
 
 Expresse os resultados em função de $\Delta T, \sigma_{xx}, E, \nu, a, b$ e $\alpha$
 ![](images/q123.png)
-### Descrição da figura  %% fold %%
+### Descrição da figura  
 A figura apresenta um diagrama de um corpo retangular, possivelmente uma placa ou um bloco, em duas dimensões.
 
 Aqui está uma descrição detalhada dos elementos da figura:
