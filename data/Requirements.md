@@ -51,6 +51,7 @@ Where webview functionality is enabled, the webview should use VS Code's theme v
 Where basic markdown support is included, the system should provide formatting support including headings, bold, italic, and bullet points
 
 ## Unwanted behavior
+If a file named `Questions.md` is open and each first level heading doesn't include all of the second level headings `Proposition`, `Step-by-step`, `Answer` and `Metadata in this exact order, then the system shall output this in the VS Code Problems panel
 If a file named `Questions.md` is open and each first level heading doesn't match the regex `^Question \d+\s*$`, then the system shall output this in the VS Code Problems panel
 If a file named `Questions.md` is open and each first level heading doesn't have exactly 10 blank lines above it, then the system shall output this in the VS Code Problems panel
 If a file named `Questions.md` is open and each second level heading doesn't have exactly 2 blank lines above it, then the system shall output this in the VS Code Problems panel

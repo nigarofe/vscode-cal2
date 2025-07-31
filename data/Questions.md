@@ -29,11 +29,14 @@ $$\oint$$
 
 ## Step-by-step
 <ref id="teste"/>
-<ref id="newtons-law" />
+<ref id="newtons-law" />a
 
 
 ## Answer
 this is the q1 a
+
+
+## Metadata
 
 
 
@@ -57,6 +60,9 @@ $$\frac{d^2}{dt^2} \left( e^{\gamma t} \right)$$
 
 ## Answer
 $$e^{\gamma t} \gamma^2$$
+
+
+## Metadata
 
 
 
@@ -98,3 +104,6 @@ $$\vec n_1  = (0.984, 0.176,0) \quad \vec{n}_{2}=(0,0,1) \quad \vec n_{3} = (-0
 $$\vec n_s (0.821, -0.571)$$
 
 $$\tau_{\max}^{(3D)} = \tau_{\max}^{(2D)} = 143,962 \, MPa$$
+
+
+## Metadata
