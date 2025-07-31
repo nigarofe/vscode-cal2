@@ -1,6 +1,9 @@
 import * as vscode from 'vscode';
 
 let diagnosticCollection: vscode.DiagnosticCollection;
+let currentQuestionPanel: vscode.WebviewPanel | undefined;
+let lastQuestionHeading: string = '';
+let debounceTimer: NodeJS.Timeout | undefined;
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "vscode-cal2" is now active!');
@@ -22,6 +25,31 @@ export function activate(context: vscode.ExtensionContext) {
 	// Listen for document change events
 	const onDidChangeDisposable = vscode.workspace.onDidChangeTextDocument(event => {
 		checkDocumentFile(event.document);
+		
+		// Update webview content in real time for Questions.md files
+		if (event.document.fileName.endsWith('Questions.md') && currentQuestionPanel) {
+			// Debounce the content updates to prevent excessive firing
+			if (debounceTimer) {
+				clearTimeout(debounceTimer);
+			}
+			debounceTimer = setTimeout(() => {
+				updateWebviewContent(event.document);
+			}, 300); // Shorter delay for content updates
+		}
+	});
+
+	// Listen for cursor position changes in Questions.md files
+	const onDidChangeSelectionDisposable = vscode.window.onDidChangeTextEditorSelection(event => {
+		const document = event.textEditor.document;
+		if (document.fileName.endsWith('Questions.md')) {
+			// Debounce the webview updates to prevent constant firing
+			if (debounceTimer) {
+				clearTimeout(debounceTimer);
+			}
+			debounceTimer = setTimeout(() => {
+				showQuestionWebview(document, event.selections[0].active);
+			}, 500); // Wait 500ms before updating
+		}
 	});
 
 	// Listen for document close events to clear diagnostics
@@ -41,7 +69,8 @@ export function activate(context: vscode.ExtensionContext) {
 		disposable,
 		onDidOpenDisposable,
 		onDidChangeDisposable,
-		onDidCloseDisposable
+		onDidCloseDisposable,
+		onDidChangeSelectionDisposable
 	);
 }
 
@@ -61,10 +90,11 @@ function checkRequirementsOrPremisesFile(document: vscode.TextDocument): void {
 	
 	const diagnostics: vscode.Diagnostic[] = [];
 	
-	// Required second-level headings as specified in Requirements.md
+	// Required second-level headings as specified in Requirements.md (including State driven which appears in the actual structure)
 	const requiredSecondLevelHeadings = [
 		'Generic',
 		'Ubiquitous',
+		'State driven',
 		'Event driven',
 		'Optional feature',
 		'Unwanted behavior',
@@ -241,8 +271,205 @@ function checkQuestionsFile(document: vscode.TextDocument): void {
 	diagnosticCollection.set(document.uri, diagnostics);
 }
 
+function showQuestionWebview(document: vscode.TextDocument, cursorPosition: vscode.Position): void {
+	const text = document.getText();
+	const lines = text.split('\n');
+	
+	// Find the first-level heading that contains the cursor position
+	let questionHeading = '';
+	let questionContent = '';
+	let currentQuestionStartLine = -1;
+	let nextQuestionStartLine = lines.length;
+	
+	// Find all first-level headings and determine which one contains the cursor
+	for (let i = 0; i < lines.length; i++) {
+		const line = lines[i].trim();
+		if (line.startsWith('# ') && line.length > 2) {
+			if (i <= cursorPosition.line) {
+				// This heading is at or before the cursor
+				currentQuestionStartLine = i;
+				questionHeading = line.substring(2).trim();
+			} else if (currentQuestionStartLine >= 0 && nextQuestionStartLine === lines.length) {
+				// This is the next heading after our current question
+				nextQuestionStartLine = i;
+				break;
+			}
+		}
+	}
+	
+	// Extract the content for the current question
+	if (currentQuestionStartLine >= 0) {
+		questionContent = lines.slice(currentQuestionStartLine, nextQuestionStartLine).join('\n');
+	}
+	
+	// Store the active editor and cursor position before opening webview
+	const activeEditor = vscode.window.activeTextEditor;
+	const originalSelection = activeEditor?.selection;
+	
+	// Only show webview if we found valid content
+	if (questionContent) {
+		// Create panel if it doesn't exist, otherwise reuse it
+		if (!currentQuestionPanel) {
+			currentQuestionPanel = vscode.window.createWebviewPanel(
+				'questionViewer',
+				`Question: ${questionHeading}`,
+				vscode.ViewColumn.Beside,
+				{
+					enableScripts: true
+				}
+			);
+			
+			// Clear the reference when panel is disposed
+			currentQuestionPanel.onDidDispose(() => {
+				currentQuestionPanel = undefined;
+				lastQuestionHeading = '';
+			});
+		}
+		
+		// Update the title and content (either for new question or content changes)
+		if (questionHeading !== lastQuestionHeading) {
+			lastQuestionHeading = questionHeading;
+			currentQuestionPanel.title = `Question: ${questionHeading}`;
+		}
+		
+		// Convert markdown to HTML (basic conversion)
+		const htmlContent = convertMarkdownToHtml(questionContent);
+		
+		// Update the webview content
+		currentQuestionPanel.webview.html = getWebviewContent(htmlContent);
+		
+		// Restore focus and cursor position to the original editor
+		setTimeout(() => {
+			if (activeEditor && originalSelection) {
+				vscode.window.showTextDocument(activeEditor.document, {
+					viewColumn: activeEditor.viewColumn,
+					selection: originalSelection,
+					preserveFocus: false
+				});
+			}
+		}, 50);
+	}
+}
+
+function updateWebviewContent(document: vscode.TextDocument): void {
+	if (!currentQuestionPanel) {
+		return;
+	}
+	
+	const activeEditor = vscode.window.activeTextEditor;
+	if (!activeEditor || activeEditor.document !== document) {
+		return;
+	}
+	
+	const cursorPosition = activeEditor.selection.active;
+	const text = document.getText();
+	const lines = text.split('\n');
+	
+	// Find the first-level heading that contains the cursor position
+	let questionHeading = '';
+	let questionContent = '';
+	let currentQuestionStartLine = -1;
+	let nextQuestionStartLine = lines.length;
+	
+	// Find all first-level headings and determine which one contains the cursor
+	for (let i = 0; i < lines.length; i++) {
+		const line = lines[i].trim();
+		if (line.startsWith('# ') && line.length > 2) {
+			if (i <= cursorPosition.line) {
+				// This heading is at or before the cursor
+				currentQuestionStartLine = i;
+				questionHeading = line.substring(2).trim();
+			} else if (currentQuestionStartLine >= 0 && nextQuestionStartLine === lines.length) {
+				// This is the next heading after our current question
+				nextQuestionStartLine = i;
+				break;
+			}
+		}
+	}
+	
+	// Extract the content for the current question
+	if (currentQuestionStartLine >= 0) {
+		questionContent = lines.slice(currentQuestionStartLine, nextQuestionStartLine).join('\n');
+	}
+	
+	// Update the webview if we have content
+	if (questionContent) {
+		// Update title if question changed
+		if (questionHeading !== lastQuestionHeading) {
+			lastQuestionHeading = questionHeading;
+			currentQuestionPanel.title = `Question: ${questionHeading}`;
+		}
+		
+		// Convert markdown to HTML and update content
+		const htmlContent = convertMarkdownToHtml(questionContent);
+		currentQuestionPanel.webview.html = getWebviewContent(htmlContent);
+	}
+}
+
+function convertMarkdownToHtml(markdown: string): string {
+	// Basic markdown to HTML conversion
+	let html = markdown;
+	
+	// Convert headings
+	html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+	html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+	html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+	
+	// Convert bold and italic
+	html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+	html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+	
+	// Convert line breaks
+	html = html.replace(/\n/g, '<br>');
+	
+	// Convert bullet points
+	html = html.replace(/^- (.+$)/gim, '<li>$1</li>');
+	html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+	
+	return html;
+}
+
+function getWebviewContent(htmlContent: string): string {
+	return `<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Question Viewer</title>
+	<style>
+		body {
+			font-family: var(--vscode-font-family);
+			font-size: var(--vscode-font-size);
+			color: var(--vscode-foreground);
+			background-color: var(--vscode-editor-background);
+			line-height: 1.6;
+			padding: 20px;
+		}
+		h1, h2, h3 {
+			color: var(--vscode-textLink-foreground);
+		}
+		ul {
+			padding-left: 20px;
+		}
+		li {
+			margin-bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+	${htmlContent}
+</body>
+</html>`;
+}
+
 export function deactivate() {
 	if (diagnosticCollection) {
 		diagnosticCollection.dispose();
+	}
+	if (currentQuestionPanel) {
+		currentQuestionPanel.dispose();
+	}
+	if (debounceTimer) {
+		clearTimeout(debounceTimer);
 	}
 }
