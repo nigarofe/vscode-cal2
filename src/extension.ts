@@ -1,9 +1,10 @@
 import * as vscode from 'vscode';
 import { ExtensionState } from './types';
-import { isRelevantFile, isQuestionsFile, debounce } from './utils';
+import { isRelevantFile, isQuestionsFile, isPremisesFile, debounce } from './utils';
 import { snippetCache } from './snippets/snippetCache';
 import { validateDocument } from './diagnostics/documentValidator';
 import { questionWebview } from './webview/questionWebview';
+import { premiseWebview } from './webview/premiseWebview';
 import { markdownRenderer } from './webview/markdownRenderer';
 
 let state: ExtensionState;
@@ -38,6 +39,14 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	const debouncedShowWebview = debounce(async (document: vscode.TextDocument, position: vscode.Position) => {
 		await questionWebview.show(document, position);
+	}, 500);
+
+	const debouncedUpdatePremiseWebview = debounce(async (document: vscode.TextDocument) => {
+		await premiseWebview.updateContent(document);
+	}, 300);
+
+	const debouncedShowPremiseWebview = debounce(async (document: vscode.TextDocument, position: vscode.Position) => {
+		await premiseWebview.show(document, position);
 	}, 500);
 
 	// Listen for document open events
@@ -97,13 +106,20 @@ export async function activate(context: vscode.ExtensionContext) {
 		if (isQuestionsFile(event.document.fileName) && questionWebview.isActive) {
 			debouncedUpdateWebview(event.document);
 		}
+		
+		// Update webview content in real time for Premises.md files
+		if (isPremisesFile(event.document.fileName) && premiseWebview.isActive) {
+			debouncedUpdatePremiseWebview(event.document);
+		}
 	});
 
-	// Listen for cursor position changes in Questions.md files
+	// Listen for cursor position changes in Questions.md and Premises.md files
 	const onDidChangeSelectionDisposable = vscode.window.onDidChangeTextEditorSelection(event => {
 		const document = event.textEditor.document;
 		if (isQuestionsFile(document.fileName)) {
 			debouncedShowWebview(document, event.selections[0].active);
+		} else if (isPremisesFile(document.fileName)) {
+			debouncedShowPremiseWebview(document, event.selections[0].active);
 		}
 	});
 
@@ -133,6 +149,7 @@ export function deactivate() {
 		state.diagnosticCollection.dispose();
 	}
 	questionWebview.dispose();
+	premiseWebview.dispose();
 	if (state?.debounceTimer) {
 		clearTimeout(state.debounceTimer);
 	}

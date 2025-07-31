@@ -16,10 +16,22 @@ export function isRequirementsOrPremisesFile(fileName: string): boolean {
 	return fileName.endsWith('Requirements.md') || fileName.endsWith('Premises.md');
 }
 
+export function isRequirementsFile(fileName: string): boolean {
+	return fileName.endsWith('Requirements.md');
+}
+
+export function isPremisesFileForValidation(fileName: string): boolean {
+	return fileName.endsWith('Premises.md');
+}
+
 export function isQuestionsFile(fileName: string): boolean {
 	return fileName.endsWith('Questions.md');
 }
 
+export function isPremisesFile(fileName: string): boolean {
+	return fileName.endsWith('Premises.md');
+}
+
 export function isRelevantFile(fileName: string): boolean {
-	return isRequirementsOrPremisesFile(fileName) || isQuestionsFile(fileName);
+	return isRequirementsFile(fileName) || isPremisesFileForValidation(fileName) || isQuestionsFile(fileName);
 }
