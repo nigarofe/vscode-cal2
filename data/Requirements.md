@@ -156,25 +156,29 @@ While `processing markdown with embedded LaTeX`, when `content conversion is req
 # Requirements for [](Premises.md)
 
 ## Generic
-The system shall validate Premises.md files using the same validation rules as Requirements.md files
+The system shall validate Premises.md files for proper structure and formatting
+The system shall enforce specific spacing rules for headings in Premises.md files
 
 ## Ubiquitous
-The system shall apply consistent validation across all supported markdown file types
+The system shall output validation errors to the VS Code Problems panel
 
 ## State driven
-While a file named `Premises.md` is open, the system shall continuously validate the document structure
+While a file named `Premises.md` is open, the system shall continuously validate the document structure and spacing requirements
 
 ## Event driven
-When a Premises.md file is opened or modified, the system shall check if each first level heading starts with "Requirements for"
-When a Premises.md file is opened or modified, the system shall validate the presence and order of required second level headings
+When a Premises.md file is opened or modified, the system shall validate that each first level heading has exactly 10 blank lines before it
+When a Premises.md file is opened or modified, the system shall validate that each second level heading has exactly 2 blank lines before it
+When a Premises.md file is opened or modified, the system shall check document structure and content formatting
 
 ## Optional feature
 
 ## Unwanted behavior
-If a file named `Premises.md` violates the structural requirements, then the system shall output errors to the VS Code Problems panel
+If a file named `Premises.md` is open and each first level heading doesn't have exactly 10 blank lines before it, then the system shall output this in the VS Code Problems panel
+If a file named `Premises.md` is open and each second level heading doesn't have exactly 2 blank lines before it, then the system shall output this in the VS Code Problems panel
+If a file named `Premises.md` violates any other structural requirements, then the system shall output errors to the VS Code Problems panel
 
 ## Complex
-While a Premises.md file is open, when the document content changes, the system shall apply the same complex validation logic used for Requirements.md files
+While a Premises.md file is open, when the document content changes, the system shall parse all headings and validate both the document structure and spacing requirements, ensuring proper blank line counts before level 1 and level 2 headings
 
 
 
