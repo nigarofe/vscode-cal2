@@ -29,7 +29,51 @@ async function loadDependencies() {
 	}
 }
 
-export function activate(context: vscode.ExtensionContext) {
+async function initializeSnippetCache(): Promise<void> {
+	// Clear existing cache
+	snippetCache.clear();
+	
+	console.log('Initializing snippet cache...');
+	
+	// First, load snippets from all currently open documents
+	vscode.workspace.textDocuments.forEach(document => {
+		console.log(`Processing open document for snippets: ${document.fileName}`);
+		updateSnippetCache(document);
+	});
+	
+	// Then, search for and load snippets from all .md files in the workspace
+	try {
+		const mdFiles = await vscode.workspace.findFiles('**/*.md', '**/node_modules/**');
+		console.log(`Found ${mdFiles.length} markdown files in workspace`);
+		
+		for (const fileUri of mdFiles) {
+			// Skip if this file is already open (already processed above)
+			const isAlreadyOpen = vscode.workspace.textDocuments.some(doc => doc.uri.toString() === fileUri.toString());
+			if (isAlreadyOpen) {
+				console.log(`Skipping already open file: ${fileUri.fsPath}`);
+				continue;
+			}
+			
+			// Only process Questions.md and Premises.md files
+			if (fileUri.fsPath.endsWith('Questions.md') || fileUri.fsPath.endsWith('Premises.md')) {
+				console.log(`Loading snippets from closed file: ${fileUri.fsPath}`);
+				try {
+					const document = await vscode.workspace.openTextDocument(fileUri);
+					updateSnippetCache(document);
+				} catch (error) {
+					console.warn(`Failed to load document ${fileUri.fsPath}:`, error);
+				}
+			}
+		}
+	} catch (error) {
+		console.warn('Failed to search for markdown files:', error);
+	}
+	
+	console.log(`Snippet cache initialization complete. Total snippets: ${snippetCache.size}`);
+	console.log('Final snippet cache keys:', Array.from(snippetCache.keys()));
+}
+
+export async function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "vscode-cal2" is now active!');
 
 	// Load dependencies asynchronously
@@ -39,20 +83,80 @@ export function activate(context: vscode.ExtensionContext) {
 	diagnosticCollection = vscode.languages.createDiagnosticCollection('vscode-cal2');
 	context.subscriptions.push(diagnosticCollection);
 
-	// Check currently open documents when extension activates
+	// Initialize snippet cache first by loading all snippet definitions from all open documents and workspace files
+	await initializeSnippetCache();
+
+	// Check currently open documents when extension activates - but only after all snippets are loaded
 	vscode.workspace.textDocuments.forEach(document => {
-		updateSnippetCache(document);
-		checkDocumentFile(document);
+		if (document.fileName.endsWith('Requirements.md') || 
+			document.fileName.endsWith('Questions.md') || 
+			document.fileName.endsWith('Premises.md')) {
+			
+			// Only validate, don't update cache again since initializeSnippetCache already did it
+			if (document.fileName.endsWith('Requirements.md') || document.fileName.endsWith('Premises.md')) {
+				checkRequirementsOrPremisesFile(document);
+			} else if (document.fileName.endsWith('Questions.md')) {
+				checkQuestionsFile(document);
+			}
+		}
 	});
 
 	// Listen for document open events
 	const onDidOpenDisposable = vscode.workspace.onDidOpenTextDocument(document => {
-		checkDocumentFile(document);
+		// When a new document is opened, reload all snippet caches to ensure cross-references work
+		if (document.fileName.endsWith('Questions.md') || document.fileName.endsWith('Premises.md')) {
+			// First update snippet cache for all documents
+			vscode.workspace.textDocuments.forEach(doc => {
+				if (doc.fileName.endsWith('Questions.md') || doc.fileName.endsWith('Premises.md')) {
+					updateSnippetCache(doc);
+				}
+			});
+			
+			// Then validate all documents
+			vscode.workspace.textDocuments.forEach(doc => {
+				if (doc.fileName.endsWith('Questions.md') || doc.fileName.endsWith('Premises.md')) {
+					checkDocumentFile(doc);
+				}
+			});
+		} else {
+			// For other file types, just validate
+			checkDocumentFile(document);
+		}
 	});
 
 	// Listen for document change events
 	const onDidChangeDisposable = vscode.workspace.onDidChangeTextDocument(event => {
-		checkDocumentFile(event.document);
+		// If snippet content changed, reload snippet cache for all documents before validation
+		if ((event.document.fileName.endsWith('Questions.md') || event.document.fileName.endsWith('Premises.md'))) {
+			// Check if any snippet definitions were affected
+			const hasSnippetChanges = event.contentChanges.some(change => 
+				change.text.includes('<snippet') || change.text.includes('<ref') ||
+				change.rangeLength > 0 // Something was deleted
+			);
+			
+			if (hasSnippetChanges) {
+				// First, update snippet cache for all relevant documents
+				vscode.workspace.textDocuments.forEach(doc => {
+					if (doc.fileName.endsWith('Questions.md') || doc.fileName.endsWith('Premises.md')) {
+						updateSnippetCache(doc);
+					}
+				});
+				
+				// Then re-validate all documents
+				vscode.workspace.textDocuments.forEach(doc => {
+					if (doc.fileName.endsWith('Questions.md') || doc.fileName.endsWith('Premises.md')) {
+						checkDocumentFile(doc);
+					}
+				});
+			} else {
+				// For other changes, update cache for this document and then validate
+				updateSnippetCache(event.document);
+				checkDocumentFile(event.document);
+			}
+		} else {
+			// For non-snippet files, just validate
+			checkDocumentFile(event.document);
+		}
 		
 		// Update webview content in real time for Questions.md files
 		if (event.document.fileName.endsWith('Questions.md') && currentQuestionPanel) {
@@ -63,25 +167,6 @@ export function activate(context: vscode.ExtensionContext) {
 			debounceTimer = setTimeout(() => {
 				updateWebviewContent(event.document);
 			}, 300); // Shorter delay for content updates
-		}
-		
-		// If snippet content changed, trigger re-rendering of all Questions.md webviews
-		if ((event.document.fileName.endsWith('Questions.md') || event.document.fileName.endsWith('Premises.md')) && currentQuestionPanel) {
-			// Check if any snippet definitions were affected
-			const hasSnippetChanges = event.contentChanges.some(change => 
-				change.text.includes('<snippet') || change.text.includes('<ref') ||
-				change.rangeLength > 0 // Something was deleted
-			);
-			
-			if (hasSnippetChanges) {
-				// Re-validate all open Questions.md and Premises.md documents
-				vscode.workspace.textDocuments.forEach(doc => {
-					if (doc.fileName.endsWith('Questions.md') || doc.fileName.endsWith('Premises.md')) {
-						updateSnippetCache(doc);
-						checkDocumentFile(doc);
-					}
-				});
-			}
 		}
 	});
 
@@ -131,10 +216,8 @@ function checkDocumentFile(document: vscode.TextDocument): void {
 	
 	if (fileName.endsWith('Requirements.md') || fileName.endsWith('Premises.md')) {
 		checkRequirementsOrPremisesFile(document);
-		updateSnippetCache(document);
 	} else if (fileName.endsWith('Questions.md')) {
 		checkQuestionsFile(document);
-		updateSnippetCache(document);
 	}
 }
 
@@ -421,6 +504,8 @@ function updateSnippetCache(document: vscode.TextDocument): void {
 	const existingKeys = Array.from(snippetCache.keys()).filter(key => key.startsWith(documentPath + '#'));
 	existingKeys.forEach(key => snippetCache.delete(key));
 	
+	console.log(`Updating snippet cache for document: ${fileName}`);
+	
 	// Parse snippet definitions
 	const snippetRegex = /<snippet\s+id="([^"]+)">\s*([\s\S]*?)\s*<\/snippet>/g;
 	let match;
@@ -430,8 +515,12 @@ function updateSnippetCache(document: vscode.TextDocument): void {
 		const snippetContent = match[2].trim();
 		const key = `${documentPath}#${snippetId}`;
 		
+		console.log(`Found snippet: ${snippetId} in ${fileName}`);
 		snippetCache.set(key, snippetContent);
 	}
+	
+	console.log(`Updated snippet cache. Total snippets: ${snippetCache.size}`);
+	console.log(`Snippet cache keys: ${Array.from(snippetCache.keys())}`);
 }
 
 function validateSnippets(document: vscode.TextDocument): vscode.Diagnostic[] {
@@ -490,6 +579,9 @@ function validateSnippets(document: vscode.TextDocument): vscode.Diagnostic[] {
 		if (!snippetDefs.has(snippetId)) {
 			// Check if the snippet exists in other open documents
 			const allSnippetIds = Array.from(snippetCache.keys()).map(key => key.split('#')[1]);
+			console.log(`Validating snippet reference "${snippetId}". Available snippets in cache:`, allSnippetIds);
+			console.log(`Snippet cache contents:`, Array.from(snippetCache.entries()));
+			
 			if (!allSnippetIds.includes(snippetId)) {
 				lineNumbers.forEach(lineNumber => {
 					const diagnostic = new vscode.Diagnostic(

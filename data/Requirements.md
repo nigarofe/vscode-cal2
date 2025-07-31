@@ -97,31 +97,53 @@ While a Premises.md file is open, when the document content changes, the system 
 # Requirements for snippets
 
 ## Generic
-The system shall support reusable content snippets that can be defined in `Questions.md` and `Premises.md` and referenced elsewhere
-Snippets shall be identified by unique string identifiers
+While `Questions.md` or `Premises.md` files are open, when `snippet definitions or references are present`, the `snippet system` shall `maintain a cache of all snippet definitions and resolve references during rendering`
 
 ## Ubiquitous
-The system shall build and maintain a snippet cache containing all snippet definitions
-The system shall process snippet definitions and references during question rendering
+The `snippet system` shall `support reusable content snippets identified by unique string identifiers across Questions.md and Premises.md files`
 
 ## State driven
-While a `Questions.md` or `Premises.md` file is open, the system shall maintain an up-to-date, in-memory model of all snippet definitions and their content
+While `Questions.md or Premises.md files are open`, the `snippet system` shall `maintain an up-to-date in-memory cache of all snippet definitions and their content`
 
 ## Event driven
-When a `Questions.md` or `Premises.md` file is opened, saved, or modified, the system shall parse the document to update the snippet cache
-When a change affects a snippet definition, the system shall trigger a re-rendering of all parts of the document that reference that snippet
+When `Questions.md or Premises.md files are opened, saved, or modified`, the `snippet system` shall `parse the document to update the snippet cache and trigger re-validation of all relevant documents`
 
 ## Optional feature
-The system could provide autocompletion for snippet IDs within `<ref id="" />` attributes
-The system could support a "Go to Definition" feature, allowing a user to navigate from a `<ref />` tag to its corresponding `<snippet>` definition
+Where `autocompletion is implemented`, the `snippet system` shall `provide autocompletion for snippet IDs within ref id attributes`
+Where `navigation features are implemented`, the `snippet system` shall `support Go to Definition functionality from ref tags to their corresponding snippet definitions`
 
 ## Unwanted behavior
-If a file contains multiple `<snippet>` definitions with the same `id`, then the system shall output a "duplicate snippet ID" error in the VS Code Problems panel
-If a file contains a `<ref />` tag with an `id` that does not match any defined snippet, then the system shall output an "unresolved snippet reference" error in the VS Code Problems panel
-If resolving snippets leads to a circular reference, then the system shall detect the loop and report an error
+If `multiple snippet definitions exist with the same id`, then the `snippet system` shall `output a duplicate snippet ID error in the VS Code Problems panel`
+If `a ref tag references an id that does not match any defined snippet`, then the `snippet system` shall `output an unresolved snippet reference error in the VS Code Problems panel`
+If `resolving snippets leads to a circular reference`, then the `snippet system` shall `detect the loop and report a circular reference error`
 
 ## Complex
-While inside `Questions.md` and `Premises.md`, when the line contains the snippet definition `<snippet id="newtons-law">F = ma</snippet>`, the system shall store the content "F = ma" with the identifier "newtons-law"
-While inside `Questions.md` and `Premises.md`, and a line contains the reference `<ref id="newtons-law" />` in its proposition, when the question is previewed, the system shall replace the reference with the content "F = ma" from the snippet cache
-While a question contains both snippet definitions and references, when the question is rendered, the system shall first resolve all references with cached content, then unwrap all snippet definitions to show only their inner content
-While processing question content for rendering, when a snippet definition `<snippet id="formula">E = mc²</snippet>` is encountered, the system shall display only "E = mc²" in the rendered output without the snippet tags
+While `Questions.md and Premises.md files contain snippet definitions like <snippet id="newtons-law">F = ma</snippet>`, when `the extension initializes or files are modified`, the `snippet system` shall `parse all workspace markdown files, store content with identifiers in cache, and resolve references during question rendering by replacing <ref id="newtons-law" /> with cached content while unwrapping snippet definitions to show only inner content`
+
+
+
+
+# Requirements for snippet cache initialization
+
+## Generic
+While `the extension activates`, when `workspace contains Questions.md or Premises.md files`, the `snippet cache initialization system` shall `load all snippet definitions before validation occurs`
+
+## Ubiquitous
+The `snippet cache initialization system` shall `search the entire workspace for markdown files and load snippets even from files that are not currently open`
+
+## State driven
+While `the extension is starting up`, the `snippet cache initialization system` shall `ensure all snippet definitions are loaded into memory before any document validation begins`
+
+## Event driven
+When `the extension activates`, the `snippet cache initialization system` shall `asynchronously search for all .md files in the workspace and parse snippet definitions`
+When `new markdown files are opened`, the `snippet cache initialization system` shall `update the cache for all relevant documents before validation`
+
+## Optional feature
+Where `debugging is enabled`, the `snippet cache initialization system` shall `provide console logging of cache loading progress and final cache contents`
+
+## Unwanted behavior
+If `validation occurs before snippet cache is fully loaded`, then the `snippet cache initialization system` shall `prevent validation until all workspace snippets are loaded`
+If `files are not found during workspace search`, then the `snippet cache initialization system` shall `log warnings but continue with available files`
+
+## Complex
+While `the extension initializes`, when `both open documents and workspace files need to be processed`, the `snippet cache initialization system` shall `first load snippets from currently open documents, then search workspace for additional markdown files, load snippets from closed files, and only then proceed with validation to ensure cross-document snippet references work correctly`
