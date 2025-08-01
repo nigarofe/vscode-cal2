@@ -8,91 +8,49 @@
 
 
 
-# Requirements for [](Requirements.md)
+# Requirements for document validation and automatic spacing
 
 
 ## Generic
-While `Requirements.md and Premises.md files are being edited`, when `structure validation is required`, the `document validation system` shall `validate proper structure and format`
-While `markdown documents are being edited`, when `spacing rules are violated`, the `automatic spacing system` shall `enforce proper spacing between headings`
+While `markdown files in the data folder are being edited`, when `structure validation is required`, the `document validation system` shall `validate proper structure and format`
+While `markdown files in the data folder are being edited`, when `spacing rules are violated`, the `automatic spacing system` shall `enforce proper spacing between headings`
 
 
 ## Ubiquitous
 The `document validation system` shall `output validation errors to the VS Code Problems panel`
 The `automatic spacing system` shall `automatically format spacing after the user stops typing`
-
-
-## State driven
-While `a file named Requirements.md or Premises.md is open`, the `document validation system` shall `continuously validate the document structure`
-While `a user is actively typing in a markdown document`, the `automatic spacing system` shall `wait before applying automatic formatting`
-
-
-## Event driven
-When `a Requirements.md or Premises.md file is opened or modified`, the `document validation system` shall `check if each first level heading starts with "Requirements for"`
-When `a Requirements.md or Premises.md file is opened or modified`, the `document validation system` shall `check if each first level heading includes all required second level headings in exact order`
-When `a user stops typing for 2 seconds in a Questions.md or Premises.md file`, the `automatic spacing system` shall `automatically add correct spacing before level 1 and level 2 headings`
-When `automatic spacing is applied`, the `automatic spacing system` shall `preserve the user's cursor position relative to the content`
-
-
-## Optional feature
-Where `automatic formatting is enabled`, the `automatic spacing system` shall `provide visual feedback when spacing corrections are applied`
-
-
-## Unwanted behavior
-If `a file named Requirements.md is open and each first level heading doesn't start with "Requirements for"`, then the `document validation system` shall `output this in the VS Code Problems panel`
-If `a file named Requirements.md is open and each first level heading doesn't include all of the second level headings Generic, Ubiquitous, State driven, Event driven, Optional feature, Unwanted behavior and Complex in this exact order`, then the `document validation system` shall `output this in the VS Code Problems panel`
-If `automatic spacing is applied while the user is still typing`, then the `automatic spacing system` shall `cancel the formatting to avoid disrupting the user's flow`
-If `automatic spacing changes the user's cursor position unexpectedly`, then the `automatic spacing system` shall `restore the cursor to the appropriate location`
-
-
-## Complex
-While `a Requirements.md or Premises.md file is open`, when `the document content changes`, the `document validation system` shall `parse all headings and validate the complete document structure against the required format`
-While `a user is editing Questions.md or Premises.md files`, when `typing activity stops for 2 seconds`, the `automatic spacing system` shall `analyze the document structure, identify all level 1 and level 2 headings, calculate the correct spacing (10 blank lines before level 1 headings, 2 blank lines before level 2 headings), apply the corrections while preserving cursor position, and update the document without disrupting the user's workflow`
-
-
-
-
-
-
-
-
-
-
-# Requirements for automatic spacing enforcement
-
-
-## Generic
-While `markdown documents are being edited`, when `formatting rules are violated`, the `automatic spacing system` shall `correct spacing after user activity stops`
-
-
-## Ubiquitous
 The `automatic spacing system` shall `enforce 10 blank lines before level 1 headings and 2 blank lines before level 2 headings`
 The `automatic spacing system` shall `preserve user cursor position during formatting operations`
 
 
 ## State driven
-While `a user is actively typing`, the `automatic spacing system` shall `defer formatting to avoid interruption`
-While `Questions.md or Premises.md files are open`, the `automatic spacing system` shall `monitor for spacing violations`
+While `any markdown file in the data folder is open`, the `document validation system` shall `continuously validate the document structure`
+While `a user is actively typing in a markdown document`, the `automatic spacing system` shall `wait before applying automatic formatting`
+While `markdown files in the data folder are open`, the `automatic spacing system` shall `monitor for spacing violations`
 
 
 ## Event driven
-When `user typing activity stops for 2 seconds`, the `automatic spacing system` shall `analyze document structure and apply necessary spacing corrections`
-When `automatic formatting is applied`, the `automatic spacing system` shall `calculate and preserve the user's cursor position relative to content`
+When `any markdown file in the data folder is opened or modified`, the `document validation system` shall `validate document structure according to file-specific rules`
+When `a user stops typing for 2 seconds in any markdown file in the data folder`, the `automatic spacing system` shall `automatically add correct spacing before level 1 and level 2 headings`
+When `automatic spacing is applied`, the `automatic spacing system` shall `preserve the user's cursor position relative to the content`
 When `spacing corrections are made`, the `automatic spacing system` shall `update the document using VS Code edit operations`
 
 
 ## Optional feature
+Where `automatic formatting is enabled`, the `automatic spacing system` shall `provide visual feedback when spacing corrections are applied`
 Where `automatic formatting is enabled`, the `automatic spacing system` shall `provide configuration options to enable or disable the feature`
-Where `visual feedback is desired`, the `automatic spacing system` shall `show brief status messages when corrections are applied`
 
 
 ## Unwanted behavior
+If `automatic spacing is applied while the user is still typing`, then the `automatic spacing system` shall `cancel the formatting to avoid disrupting the user's flow`
+If `automatic spacing changes the user's cursor position unexpectedly`, then the `automatic spacing system` shall `restore the cursor to the appropriate location`
 If `formatting occurs while user is still typing`, then the `automatic spacing system` shall `cancel the operation to prevent workflow disruption`
-If `cursor position is lost during formatting`, then the `automatic spacing system` shall `restore the cursor to the appropriate location`
 If `formatting creates infinite loops`, then the `automatic spacing system` shall `implement safeguards to prevent recursive formatting`
 
 
 ## Complex
-While `monitoring user typing activity in Questions.md and Premises.md files`, when `the user stops typing for 2 seconds`, the `automatic spacing system` shall `debounce the formatting operation, analyze the entire document to identify all level 1 and level 2 headings, calculate current spacing and required spacing for each heading, generate workspace edits that add or remove blank lines as needed, preserve the user's cursor position by calculating line offset changes, apply all edits atomically using VS Code's workspace edit API, and restore focus to the editor without disrupting the user's workflow`
+While `any markdown file in the data folder is open`, when `the document content changes`, the `document validation system` shall `parse all headings and validate the complete document structure against the required format for that specific file type`
+While `a user is editing any markdown file in the data folder`, when `typing activity stops for 2 seconds`, the `automatic spacing system` shall `debounce the formatting operation, analyze the entire document to identify all level 1 and level 2 headings, calculate current spacing and required spacing for each heading, generate workspace edits that add or remove blank lines as needed, preserve the user's cursor position by calculating line offset changes, apply all edits atomically using VS Code's workspace edit API, and restore focus to the editor without disrupting the user's workflow`
 
 
 
@@ -103,42 +61,48 @@ While `monitoring user typing activity in Questions.md and Premises.md files`, w
 
 
 
-# Requirements for spacing calculation
+# Requirements for file-specific validation rules
 
 
 ## Generic
-While `document structure analysis is required`, when `heading spacing needs to be calculated`, the `spacing calculation system` shall `identify all headings and determine proper blank line requirements`
+While `specific file types require unique validation rules`, when `document structure validation is performed`, the `document validation system` shall `apply file-type-specific rules in addition to common formatting rules`
 
 
 ## Ubiquitous
-The `spacing calculation system` shall `enforce 10 blank lines before level 1 headings and 2 blank lines before level 2 headings`
-The `spacing calculation system` shall `preserve document content while adjusting only spacing`
+The `document validation system` shall `validate Requirements.md files to ensure first level headings start with "Requirements for"`
+The `document validation system` shall `validate Requirements.md files to ensure proper section ordering`
+The `document validation system` shall `validate Questions.md files to ensure proper question numbering and section structure`
+The `document validation system` shall `validate Premises.md files to ensure proper premise set numbering`
 
 
 ## State driven
-While `analyzing document structure`, the `spacing calculation system` shall `maintain accurate line counts and heading positions`
-While `calculating edits`, the `spacing calculation system` shall `track line offset changes to preserve cursor position`
+While `a Requirements.md file is open`, the `document validation system` shall `check for proper heading structure and section ordering`
+While `a Questions.md file is open`, the `document validation system` shall `check for proper question numbering format`
+While `a Premises.md file is open`, the `document validation system` shall `check for proper premise set numbering format`
 
 
 ## Event driven
-When `spacing analysis is requested`, the `spacing calculation system` shall `parse the entire document to identify all headings and their current spacing`
-When `spacing violations are found`, the `spacing calculation system` shall `generate precise edit operations to add or remove blank lines`
-When `edits are calculated`, the `spacing calculation system` shall `determine the impact on cursor position`
+When `a Requirements.md file is opened or modified`, the `document validation system` shall `check if each first level heading starts with "Requirements for"`
+When `a Requirements.md file is opened or modified`, the `document validation system` shall `check if each first level heading includes all required second level headings in exact order`
+When `a Questions.md file is opened or modified`, the `document validation system` shall `validate first-level headings against the regex pattern ^Question \d+\s*$`
+When `a Questions.md file is opened or modified`, the `document validation system` shall `validate that each question includes required subsections`
+When `a Premises.md file is opened or modified`, the `document validation system` shall `validate first-level headings against the regex pattern ^Premise Set \d+\s*$`
 
 
 ## Optional feature
-Where `debugging is enabled`, the `spacing calculation system` shall `provide detailed logging of spacing analysis and edit calculations`
-Where `preview is requested`, the `spacing calculation system` shall `show what changes would be made without applying them`
+Where `file-specific rules are defined`, the `document validation system` shall `allow configuration of validation rules per file type`
 
 
 ## Unwanted behavior
-If `spacing calculation creates conflicts`, then the `spacing calculation system` shall `prioritize document integrity over formatting`
-If `cursor position calculation fails`, then the `spacing calculation system` shall `maintain the original cursor position as fallback`
-If `edit operations would corrupt content`, then the `spacing calculation system` shall `abort the formatting operation`
+If `a file named Requirements.md is open and each first level heading doesn't start with "Requirements for"`, then the `document validation system` shall `output this in the VS Code Problems panel`
+If `a file named Requirements.md is open and each first level heading doesn't include all of the second level headings Generic, Ubiquitous, State driven, Event driven, Optional feature, Unwanted behavior and Complex in this exact order`, then the `document validation system` shall `output this in the VS Code Problems panel`
+If `a file named Questions.md is open and each first level heading doesn't include all of the second level headings Proposition, Step-by-step, Answer and Metadata in this exact order`, then the `document validation system` shall `output this in the VS Code Problems panel`
+If `a file named Questions.md is open and each first level heading doesn't match the regex ^Question \d+\s*$`, then the `document validation system` shall `output this in the VS Code Problems panel`
+If `a file named Premises.md is open and each first level heading doesn't match the regex ^Premise Set \d+\s*$`, then the `document validation system` shall `output this in the VS Code Problems panel`
 
 
 ## Complex
-While `processing documents with mixed heading levels and varying current spacing`, when `automatic formatting is triggered`, the `spacing calculation system` shall `iterate through all headings in document order, calculate the difference between current and required spacing for each heading, generate workspace edit operations that add or remove blank lines while preserving all other content, calculate cumulative line offset changes to maintain accurate cursor positioning, and return edit operations sorted by position to ensure proper application order`
+While `different file types have different validation requirements`, when `document validation is performed`, the `document validation system` shall `determine the file type from the filename and apply the appropriate validation rules while also applying common spacing and formatting validation to all markdown files in the data folder`
 
 
 
@@ -157,7 +121,6 @@ While `Questions.md files are being edited`, when `live preview functionality is
 
 
 ## Ubiquitous
-The `question preview system` shall `validate Questions.md files for proper formatting and structure`
 The `question preview system` shall `render LaTeX expressions using KaTeX library`
 The `question preview system` shall `handle both inline ($...$) and display ($$...$$) LaTeX expressions`
 The `question preview system` shall `preserve LaTeX rendering during markdown-to-HTML conversion`
@@ -174,8 +137,6 @@ While `editing a Questions.md file`, the `question preview system` shall `preser
 When `the user is editing a file named Questions.md`, the `question preview system` shall `open a VS Code Webview panel with the md rendering of the question specified in the level 1 heading of where the cursor is`
 When `the user moves the cursor to a different question section in a Questions.md file`, the `question preview system` shall `update the webview panel to show the new question content`
 When `the user edits content in a Questions.md file`, the `question preview system` shall `update the webview panel in real-time to reflect the changes`
-When `a Questions.md file is opened or modified`, the `question preview system` shall `validate first-level headings against the regex pattern`
-When `a Questions.md file is opened or modified`, the `question preview system` shall `validate blank line spacing above headings`
 When `LaTeX expressions are detected in markdown content`, the `question preview system` shall `process them with KaTeX before markdown conversion`
 When `markdown conversion occurs`, the `question preview system` shall `use placeholder substitution to prevent LaTeX corruption`
 When `images are detected in markdown content`, the `question preview system` shall `process them before markdown conversion to ensure proper URI resolution`
@@ -193,10 +154,6 @@ Where `workspace has multiple folders`, the `question preview system` shall `int
 
 
 ## Unwanted behavior
-If `a file named Questions.md is open and each first level heading doesn't include all of the second level headings Proposition, Step-by-step, Answer and Metadata in this exact order`, then the `question preview system` shall `output this in the VS Code Problems panel`
-If `a file named Questions.md is open and each first level heading doesn't match the regex ^Question \d+\s*$`, then the `question preview system` shall `output this in the VS Code Problems panel`
-If `a file named Questions.md is open and each first level heading doesn't have exactly 10 blank lines above it`, then the `question preview system` shall `output this in the VS Code Problems panel`
-If `a file named Questions.md is open and each second level heading doesn't have exactly 2 blank lines above it`, then the `question preview system` shall `output this in the VS Code Problems panel`
 If `webview updates occur too frequently`, then the `question preview system` shall `debounce updates to prevent performance issues`
 If `the webview panel flickers or recreates unnecessarily`, then the `question preview system` shall `reuse existing panels`
 If `the webview steals focus from the editor`, then the `question preview system` shall `prevent focus theft by using preserveFocus: true during panel creation and reveal operations`
@@ -230,7 +187,6 @@ While `Premises.md files are being edited`, when `live preview functionality is 
 
 
 ## Ubiquitous
-The `premise preview system` shall `validate Premises.md files for proper formatting and structure`
 The `premise preview system` shall `render LaTeX expressions using KaTeX library`
 The `premise preview system` shall `handle both inline ($...$) and display ($$...$$) LaTeX expressions`
 The `premise preview system` shall `preserve LaTeX rendering during markdown-to-HTML conversion`
@@ -247,8 +203,6 @@ While `editing a Premises.md file`, the `premise preview system` shall `preserve
 When `the user is editing a file named Premises.md`, the `premise preview system` shall `open a VS Code Webview panel with the md rendering of the premise set specified in the level 1 heading of where the cursor is`
 When `the user moves the cursor to a different premise set section in a Premises.md file`, the `premise preview system` shall `update the webview panel to show the new premise set content`
 When `the user edits content in a Premises.md file`, the `premise preview system` shall `update the webview panel in real-time to reflect the changes`
-When `a Premises.md file is opened or modified`, the `premise preview system` shall `validate first-level headings against the regex pattern`
-When `a Premises.md file is opened or modified`, the `premise preview system` shall `validate blank line spacing above headings`
 When `LaTeX expressions are detected in markdown content`, the `premise preview system` shall `process them with KaTeX before markdown conversion`
 When `markdown conversion occurs`, the `premise preview system` shall `use placeholder substitution to prevent LaTeX corruption`
 When `images are detected in markdown content`, the `premise preview system` shall `process them before markdown conversion to ensure proper URI resolution`
@@ -266,9 +220,6 @@ Where `workspace has multiple folders`, the `premise preview system` shall `inte
 
 
 ## Unwanted behavior
-If `a file named Premises.md is open and each first level heading doesn't match the regex ^Premise Set \d+\s*$`, then the `premise preview system` shall `output this in the VS Code Problems panel`
-If `a file named Premises.md is open and each first level heading doesn't have exactly 10 blank lines above it`, then the `premise preview system` shall `output this in the VS Code Problems panel`
-If `a file named Premises.md is open and each second level heading doesn't have exactly 2 blank lines above it`, then the `premise preview system` shall `output this in the VS Code Problems panel`
 If `webview updates occur too frequently`, then the `premise preview system` shall `debounce updates to prevent performance issues`
 If `the webview panel flickers or recreates unnecessarily`, then the `premise preview system` shall `reuse existing panels`
 If `the webview steals focus from the editor`, then the `premise preview system` shall `prevent focus theft by using preserveFocus: true during panel creation and reveal operations`
