@@ -5407,3 +5407,26 @@ d) Expresse a condição de Tresca em função de $E, \alpha, \Delta, L \text{ e
 
 
 ## Metadata
+
+
+
+
+
+
+
+
+
+
+# Question 131
+
+
+## Proposition
+
+
+## Step-by-step
+
+
+## Answer
+
+
+## Metadata 

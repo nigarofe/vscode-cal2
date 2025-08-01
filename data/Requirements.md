@@ -69,7 +69,7 @@ If a file named `Questions.md` is open and each first level heading doesn't have
 If a file named `Questions.md` is open and each second level heading doesn't have exactly 2 blank lines above it, then the system shall output this in the VS Code Problems panel
 If webview updates occur too frequently, then the system shall debounce updates to prevent performance issues
 If the webview panel flickers or recreates unnecessarily, then the system shall reuse existing panels
-If the webview steals focus from the editor, then the system shall restore focus and cursor position
+If the webview steals focus from the editor, then the system shall prevent focus theft by using preserveFocus: true during panel creation and reveal operations
 If LaTeX placeholders conflict with markdown syntax, then the system shall use syntax-neutral placeholder formats
 If LaTeX expressions fail to render, then the system shall display error messages instead of raw placeholders
 If image paths resolve to non-existent files, then the system shall handle gracefully without breaking the webview rendering
@@ -81,6 +81,13 @@ While providing real-time updates, when content changes occur, the system shall 
 While managing the webview lifecycle, when panels are created or updated, the system shall handle creation, updates, and disposal without disrupting the user's editing experience
 While processing LaTeX expressions, when markdown conversion occurs, the system shall use placeholder substitution strategy to prevent markdown parser interference with LaTeX syntax, then restore rendered LaTeX content after HTML conversion is complete
 While processing images in markdown content, when workspace contains multiple folders including data folder, the system shall implement intelligent folder detection strategy to locate correct image paths by checking for data folders directly in workspace, checking for data subfolders in workspace folders, and providing fallback path construction with proper debugging output for troubleshooting path resolution issues
+
+## Technical Implementation
+The webview focus prevention system shall use the following mechanisms:
+- Webview panel creation shall use `{ viewColumn: vscode.ViewColumn.Beside, preserveFocus: true }` to prevent initial focus theft
+- Webview content updates shall be followed by `panel.reveal(vscode.ViewColumn.Beside, true)` to maintain visibility without taking focus
+- The system shall not attempt focus restoration after webview updates, as prevention is more reliable than restoration
+- This approach eliminates the `cursorSurroundingLines` effect that occurs when focus is stolen and then restored
 
 
 
@@ -128,7 +135,7 @@ If a file named `Premises.md` is open and each first level heading doesn't have 
 If a file named `Premises.md` is open and each second level heading doesn't have exactly 2 blank lines above it, then the system shall output this in the VS Code Problems panel
 If webview updates occur too frequently, then the system shall debounce updates to prevent performance issues
 If the webview panel flickers or recreates unnecessarily, then the system shall reuse existing panels
-If the webview steals focus from the editor, then the system shall restore focus and cursor position
+If the webview steals focus from the editor, then the system shall prevent focus theft by using preserveFocus: true during panel creation and reveal operations
 If LaTeX placeholders conflict with markdown syntax, then the system shall use syntax-neutral placeholder formats
 If LaTeX expressions fail to render, then the system shall display error messages instead of raw placeholders
 If image paths resolve to non-existent files, then the system shall handle gracefully without breaking the webview rendering

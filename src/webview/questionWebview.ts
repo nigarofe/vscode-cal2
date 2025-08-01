@@ -83,7 +83,7 @@ export class QuestionWebview {
 				this.panel = vscode.window.createWebviewPanel(
 					'questionViewer',
 					`Question: ${questionHeading}`,
-					vscode.ViewColumn.Beside,
+					{ viewColumn: vscode.ViewColumn.Beside, preserveFocus: true },
 					{
 						enableScripts: true,
 						localResourceRoots: this.getLocalResourceRoots()
@@ -106,19 +106,11 @@ export class QuestionWebview {
 			// Convert markdown to HTML
 			const htmlContent = await markdownRenderer.convertMarkdownToHtml(questionContent, this.panel.webview);
 			
-			// Update the webview content
+			// Update the webview content without taking focus
 			this.panel.webview.html = markdownRenderer.getWebviewContent(htmlContent);
 			
-			// Restore focus and cursor position to the original editor
-			setTimeout(() => {
-				if (activeEditor && originalSelection) {
-					vscode.window.showTextDocument(activeEditor.document, {
-						viewColumn: activeEditor.viewColumn,
-						selection: originalSelection,
-						preserveFocus: false
-					});
-				}
-			}, 50);
+			// Ensure the panel is visible but doesn't take focus
+			this.panel.reveal(vscode.ViewColumn.Beside, true);
 		}
 	}
 
@@ -174,6 +166,9 @@ export class QuestionWebview {
 			// Convert markdown to HTML and update content
 			const htmlContent = await markdownRenderer.convertMarkdownToHtml(questionContent, this.panel.webview);
 			this.panel.webview.html = markdownRenderer.getWebviewContent(htmlContent);
+			
+			// Reveal the panel without taking focus
+			this.panel.reveal(vscode.ViewColumn.Beside, true);
 		}
 	}
 
