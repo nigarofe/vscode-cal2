@@ -33,9 +33,13 @@ export function isPremisesFile(fileName: string): boolean {
 }
 
 export function isRelevantFile(fileName: string): boolean {
-	return isRequirementsFile(fileName) || isPremisesFileForValidation(fileName) || isQuestionsFile(fileName);
+	// Check if it's a .md file in the data folder
+	const normalizedPath = fileName.replace(/\\/g, '/');
+	return normalizedPath.includes('/data/') && isMarkdownFile(fileName);
 }
 
 export function needsSpacingFormatting(fileName: string): boolean {
-	return isQuestionsFile(fileName) || isPremisesFile(fileName);
+	// Check if it's a .md file in the data folder
+	const normalizedPath = fileName.replace(/\\/g, '/');
+	return normalizedPath.includes('/data/') && isMarkdownFile(fileName);
 }

@@ -8,15 +8,17 @@
 
 
 
-# Requirements for document validation and automatic spacing
+# Requirements for document validation and automatic spacing for all markdown files
 
 
 ## Generic
-While `markdown files in the data folder are being edited`, when `structure validation is required`, the `document validation system` shall `validate proper structure and format`
-While `markdown files in the data folder are being edited`, when `spacing rules are violated`, the `automatic spacing system` shall `enforce proper spacing between headings`
+While `any markdown file in the data folder is being edited`, when `structure validation is required`, the `document validation system` shall `validate proper structure and format`
+While `any markdown file in the data folder is being edited`, when `spacing rules are violated`, the `automatic spacing system` shall `enforce proper spacing between headings`
 
 
 ## Ubiquitous
+The `document validation system` shall `apply to all markdown files in the data folder including Questions.md, Premises.md, Requirements.md, and TEMPLATE.md`
+The `automatic spacing system` shall `apply to all markdown files in the data folder including Questions.md, Premises.md, Requirements.md, and TEMPLATE.md`
 The `document validation system` shall `output validation errors to the VS Code Problems panel`
 The `automatic spacing system` shall `automatically format spacing after the user stops typing`
 The `automatic spacing system` shall `enforce 10 blank lines before level 1 headings and 2 blank lines before level 2 headings`
@@ -25,32 +27,78 @@ The `automatic spacing system` shall `preserve user cursor position during forma
 
 ## State driven
 While `any markdown file in the data folder is open`, the `document validation system` shall `continuously validate the document structure`
-While `a user is actively typing in a markdown document`, the `automatic spacing system` shall `wait before applying automatic formatting`
-While `markdown files in the data folder are open`, the `automatic spacing system` shall `monitor for spacing violations`
+While `a user is actively typing in any markdown document in the data folder`, the `automatic spacing system` shall `wait before applying automatic formatting`
+While `any markdown file in the data folder is open`, the `automatic spacing system` shall `monitor for spacing violations`
 
 
 ## Event driven
 When `any markdown file in the data folder is opened or modified`, the `document validation system` shall `validate document structure according to file-specific rules`
 When `a user stops typing for 2 seconds in any markdown file in the data folder`, the `automatic spacing system` shall `automatically add correct spacing before level 1 and level 2 headings`
-When `automatic spacing is applied`, the `automatic spacing system` shall `preserve the user's cursor position relative to the content`
-When `spacing corrections are made`, the `automatic spacing system` shall `update the document using VS Code edit operations`
+When `automatic spacing is applied to any markdown file in the data folder`, the `automatic spacing system` shall `preserve the user's cursor position relative to the content`
+When `spacing corrections are made in any markdown file in the data folder`, the `automatic spacing system` shall `update the document using VS Code edit operations`
 
 
 ## Optional feature
-Where `automatic formatting is enabled`, the `automatic spacing system` shall `provide visual feedback when spacing corrections are applied`
-Where `automatic formatting is enabled`, the `automatic spacing system` shall `provide configuration options to enable or disable the feature`
+Where `automatic formatting is enabled`, the `automatic spacing system` shall `provide visual feedback when spacing corrections are applied to any markdown file in the data folder`
+Where `automatic formatting is enabled`, the `automatic spacing system` shall `provide configuration options to enable or disable the feature for all markdown files in the data folder`
 
 
 ## Unwanted behavior
-If `automatic spacing is applied while the user is still typing`, then the `automatic spacing system` shall `cancel the formatting to avoid disrupting the user's flow`
-If `automatic spacing changes the user's cursor position unexpectedly`, then the `automatic spacing system` shall `restore the cursor to the appropriate location`
-If `formatting occurs while user is still typing`, then the `automatic spacing system` shall `cancel the operation to prevent workflow disruption`
-If `formatting creates infinite loops`, then the `automatic spacing system` shall `implement safeguards to prevent recursive formatting`
+If `automatic spacing is applied while the user is still typing in any markdown file in the data folder`, then the `automatic spacing system` shall `cancel the formatting to avoid disrupting the user's flow`
+If `automatic spacing changes the user's cursor position unexpectedly in any markdown file in the data folder`, then the `automatic spacing system` shall `restore the cursor to the appropriate location`
+If `formatting occurs while user is still typing in any markdown file in the data folder`, then the `automatic spacing system` shall `cancel the operation to prevent workflow disruption`
+If `formatting creates infinite loops in any markdown file in the data folder`, then the `automatic spacing system` shall `implement safeguards to prevent recursive formatting`
 
 
 ## Complex
 While `any markdown file in the data folder is open`, when `the document content changes`, the `document validation system` shall `parse all headings and validate the complete document structure against the required format for that specific file type`
 While `a user is editing any markdown file in the data folder`, when `typing activity stops for 2 seconds`, the `automatic spacing system` shall `debounce the formatting operation, analyze the entire document to identify all level 1 and level 2 headings, calculate current spacing and required spacing for each heading, generate workspace edits that add or remove blank lines as needed, preserve the user's cursor position by calculating line offset changes, apply all edits atomically using VS Code's workspace edit API, and restore focus to the editor without disrupting the user's workflow`
+
+
+
+
+
+
+
+
+
+
+# Requirements for expanded markdown file support
+
+
+## Generic
+While `the VS Code extension previously only supported specific markdown files`, when `broader file support is required`, the `file detection system` shall `extend autoformatting and validation to all markdown files in the data folder`
+
+
+## Ubiquitous
+The `file detection system` shall `recognize all .md files located in the data folder regardless of filename`
+The `file detection system` shall `apply autoformatting to TEMPLATE.md, Requirements.md, Questions.md, Premises.md and any other .md files in the data folder`
+The `file detection system` shall `use path normalization to handle Windows and Unix path separators consistently`
+
+
+## State driven
+While `any .md file in the data folder is open`, the `file detection system` shall `identify it as a relevant file for processing`
+While `file detection logic is executed`, the `file detection system` shall `normalize path separators for cross-platform compatibility`
+
+
+## Event driven
+When `isRelevantFile function is called`, the `file detection system` shall `check if the file path contains '/data/' and has .md extension`
+When `needsSpacingFormatting function is called`, the `file detection system` shall `check if the file path contains '/data/' and has .md extension`
+When `file path contains backslashes`, the `file detection system` shall `convert them to forward slashes for consistent path matching`
+
+
+## Optional feature
+Where `additional file types need autoformatting support`, the `file detection system` shall `provide extensible logic for adding new file patterns`
+
+
+## Unwanted behavior
+If `non-markdown files in the data folder are processed`, then the `file detection system` shall `exclude them from autoformatting and validation`
+If `markdown files outside the data folder are processed`, then the `file detection system` shall `exclude them from autoformatting to maintain scope`
+If `path separators cause detection failures`, then the `file detection system` shall `handle both Windows backslashes and Unix forward slashes correctly`
+
+
+## Complex
+While `the extension processes files`, when `determining which files need autoformatting`, the `file detection system` shall `normalize the file path by replacing backslashes with forward slashes, check if the normalized path contains '/data/' substring, verify the file has a .md extension, and return true only if both conditions are met, ensuring that all markdown files in the data folder receive autoformatting regardless of their specific filename while excluding markdown files in other locations`
 
 
 
