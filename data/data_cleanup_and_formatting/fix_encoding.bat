@@ -15,8 +15,8 @@ if %errorlevel% neq 0 (
 )
 
 REM Run the encoding fix script
-echo Running encoding fix on all .md files...
-python fix_encoding_batch.py
+echo Running encoding fix on Premises.md (or specify a file as argument)...
+python fix_encoding.py
 
 echo.
 echo Encoding fix completed!

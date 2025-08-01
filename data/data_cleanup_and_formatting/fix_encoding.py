@@ -7,7 +7,6 @@ Converts corrupted UTF-8 characters back to their correct form.
 
 import os
 import sys
-import shutil
 from typing import Dict
 
 def create_replacement_mapping() -> Dict[str, str]:
@@ -34,20 +33,6 @@ def create_replacement_mapping() -> Dict[str, str]:
         'Ã´': 'ô',  # o with circumflex
         'Ã¼': 'ü',  # u with diaeresis
         'Ã±': 'ñ',  # n with tilde
-        
-        # Capital letters
-        'Á': 'Á',
-        'À': 'À',
-        'Â': 'Â',
-        'Ã': 'Ã',
-        'Ç': 'Ç',
-        'É': 'É',
-        'Ê': 'Ê',
-        'Í': 'Í',
-        'Ó': 'Ó',
-        'Ô': 'Ô',
-        'Õ': 'Õ',
-        'Ú': 'Ú',
         
         # Special symbols and punctuation
         'â€™': "'",  # right single quotation mark
@@ -100,13 +85,12 @@ def create_replacement_mapping() -> Dict[str, str]:
     
     return replacements
 
-def fix_encoding_in_file(file_path: str, backup: bool = True) -> bool:
+def fix_encoding_in_file(file_path: str) -> bool:
     """
     Fix encoding issues in a file.
     
     Args:
         file_path (str): Path to the file to fix
-        backup (bool): Whether to create a backup of the original file
         
     Returns:
         bool: True if fixes were applied, False otherwise
@@ -114,12 +98,6 @@ def fix_encoding_in_file(file_path: str, backup: bool = True) -> bool:
     if not os.path.exists(file_path):
         print(f"Error: File {file_path} does not exist")
         return False
-    
-    # Create backup if requested
-    if backup:
-        backup_path = file_path + '.backup'
-        shutil.copy2(file_path, backup_path)
-        print(f"Created backup: {backup_path}")
     
     # Read the file
     try:
@@ -161,13 +139,14 @@ def main():
     if len(sys.argv) < 2:
         # Default to Premises.md if no file specified
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(script_dir, 'Premises.md')
+        # Premises.md is in the parent directory (data folder)
+        file_path = os.path.join(script_dir, '..', 'Premises.md')
     else:
         file_path = sys.argv[1]
     
     print(f"Fixing encoding issues in: {file_path}")
     
-    success = fix_encoding_in_file(file_path, backup=True)
+    success = fix_encoding_in_file(file_path)
     
     if success:
         print("Encoding fix completed successfully!")

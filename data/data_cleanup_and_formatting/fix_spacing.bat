@@ -11,7 +11,7 @@ if "%1"=="--help" (
     echo   --dry-run    Show what would be changed without making changes
     echo   --help       Show this help message
     echo.
-    echo If no files are specified, will process Questions.md by default
+    echo If no files are specified, will process Questions.md and Premises.md by default
     goto :eof
 )
 

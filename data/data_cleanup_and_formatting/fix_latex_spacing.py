@@ -157,17 +157,11 @@ def process_file(file_path: Path, dry_run: bool = False) -> bool:
                 print(f"Would fix spacing in: {file_path}")
                 return True
             else:
-                # Create backup
-                backup_path = file_path.with_suffix(file_path.suffix + '.backup')
-                with open(backup_path, 'w', encoding='utf-8') as f:
-                    f.write(original_content)
-                
                 # Write fixed content
                 with open(file_path, 'w', encoding='utf-8') as f:
                     f.write(fixed_content)
                 
                 print(f"Fixed spacing in: {file_path}")
-                print(f"Backup created: {backup_path}")
                 return True
         else:
             print(f"No changes needed: {file_path}")
@@ -202,7 +196,8 @@ def main():
                 print(f"File not found: {file_path}")
     else:
         # Default to Questions.md and Premises.md if they exist
-        default_files = [Path('Questions.md'), Path('Premises.md')]
+        # These files are in the parent directory (data folder)
+        default_files = [Path('../Questions.md'), Path('../Premises.md')]
         for default_file in default_files:
             if default_file.exists():
                 files_to_process.append(default_file)
