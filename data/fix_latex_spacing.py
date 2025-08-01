@@ -9,13 +9,18 @@ For Questions.md files:
 - 2 blank lines before each ## (h2) heading
 - 1 blank line after each heading
 
+For Premises.md files:
+- 10 blank lines before each # (h1) heading (except at the beginning of file)
+- 2 blank lines before each ## (h2) heading
+- 1 blank line after each heading
+
 For other markdown files:
 - 2 blank lines before each # (h1) heading (except at the beginning of file)
 - 1 blank line before each ## (h2) heading
 - 1 blank line after each heading
 
 Additional features:
-- Removes multiple consecutive blank lines (max 2)
+- Removes multiple consecutive blank lines (max appropriate for file type)
 - Preserves content within code blocks and LaTeX math blocks
 """
 
@@ -42,8 +47,9 @@ def fix_heading_spacing(content: str, file_name: str = "") -> str:
     in_code_block = False
     in_math_block = False
     
-    # Check if this is a Questions.md file (special spacing requirements)
+    # Check if this is a Questions.md or Premises.md file (special spacing requirements)
     is_questions_file = file_name.lower().endswith('questions.md')
+    is_premises_file = file_name.lower().endswith('premises.md')
     
     while i < len(lines):
         line = lines[i].rstrip()
@@ -74,8 +80,8 @@ def fix_heading_spacing(content: str, file_name: str = "") -> str:
         
         if h1_match or h2_match:
             # Determine required blank lines before heading based on file type
-            if is_questions_file:
-                # Questions.md specific requirements from Requirements.md:
+            if is_questions_file or is_premises_file:
+                # Questions.md and Premises.md specific requirements from Requirements.md:
                 # - 10 blank lines before # headings
                 # - 2 blank lines before ## headings
                 required_blanks = 10 if h1_match else 2
@@ -107,9 +113,9 @@ def fix_heading_spacing(content: str, file_name: str = "") -> str:
         i += 1
     
     # Clean up multiple consecutive blank lines 
-    # For Questions.md files, allow up to 10 consecutive blank lines (for heading spacing)
+    # For Questions.md and Premises.md files, allow up to 10 consecutive blank lines (for heading spacing)
     # For other files, keep max 2
-    max_blanks = 10 if is_questions_file else 2
+    max_blanks = 10 if (is_questions_file or is_premises_file) else 2
     final_result = []
     blank_count = 0
     
@@ -195,12 +201,14 @@ def main():
             else:
                 print(f"File not found: {file_path}")
     else:
-        # Default to Questions.md if it exists
-        default_file = Path('Questions.md')
-        if default_file.exists():
-            files_to_process.append(default_file)
-        else:
-            print("No files specified and Questions.md not found.")
+        # Default to Questions.md and Premises.md if they exist
+        default_files = [Path('Questions.md'), Path('Premises.md')]
+        for default_file in default_files:
+            if default_file.exists():
+                files_to_process.append(default_file)
+        
+        if not files_to_process:
+            print("No files specified and neither Questions.md nor Premises.md found.")
             print("Use --help for usage information.")
             sys.exit(1)
     

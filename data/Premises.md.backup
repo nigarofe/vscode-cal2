@@ -19,8 +19,7 @@ Express your knowledge of line integrals by providing its essential formulas usi
 
 
 ## Pythagoras's Theorem
-
-**2D Space**: Suppose you have two points, A and B, on a 2D plane. Let **dx** be the difference in their x-coordinates and **dy** be the difference in their y-coordinates. The straight-line distance **D** between these points is given by:
+**2D Space**: Suppose you have two points, A and B, on a 2D plane. Let **dx** be the difference in their x-coordinates and **dy** be the difference in their y-coordinates. The straight-line distance **D** between these points is given by: 
 $$D = \sqrt{(dx)^2 + (dy)^2}$$
 
 **3D Space**: When we move to three dimensions, we add a third component. Let **dz** be the difference in their z-coordinates. Now, the distance between the two points becomes:
@@ -28,22 +27,15 @@ $$D = \sqrt{(dx)^2 + (dy)^2 + (dz)^2}$$
 
 
 ## Arc length of a curve
-
 $$\boxed{\;L \;=\;\displaystyle\int_C ds \;=\;\int_{t=a}^{t=b} \bigl\lVert \mathbf r'(t) \bigr\rVert\,dt\;}$$
 $$ r(t)=\langle x(t),y(t),z(t)\rangle\ for (t\in[a,b]) $$
 $$ds = \|\mathbf{r}'(t)\|\, dt$$
 $$ \mathbf r'(t)=\bigl\langle x'(t),\,y'(t),\,z'(t)\bigr\rangle.$$
 $$\|\mathbf{r}'(t)\| = \sqrt{ \left( \frac{dx(t)}{dt} \right)^2 + \left( \frac{dy(t)}{dt} \right)^2 + \left( \frac{dz(t)}{dt} \right)^2 }.$$
-
-
 ## Line integral of a scalar field
-
 $$\int_C f(x, y, z)\, ds = \int_{t=a}^{t=b} f(x(t), y(t), z(t)) \|\mathbf{r}'(t)\|\, dt \\ $$
 where f(x,y,z) can be interpreted as the density of a wire in the position x,y,z.
-
-
 ## Line integral of a vector field
-
 $$\boxed{\;
 \int_{C}\mathbf F\cdot d\mathbf r
 =\int_{C} P\,dx+Q\,dy+R\,dz
@@ -62,9 +54,7 @@ $$
 
 [](Questions.md#question-16)
 
-
 ## Line integral of a **conservative** vector field in 2D
-
 A vector field is conservative when the net work done over any closed loop is zero. That meansâ€”ignoring any other lossesâ€”if you start with some kinetic energy (i.e. speed) and let only the conservative field and your perfectlyÂ efficient regenâ€‘brakes act, youâ€™ll end up with exactly the same kinetic energy you began with, no matter what loop you take.
 $$\oint_C \mathbf F\!\cdot\!d\mathbf r \;=\; 0$$
 
@@ -77,7 +67,7 @@ To check if the field is conservative
 $$
 \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}
 $$
-When the field is conservative, there exists a potential function f(x,y) such that
+When the field is conservative, there exists a potential function f(x,y) such that 
 $$ F(x,y) = \nabla f $$
 $$ \langle P(x,y),Q(x,y)\rangle = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle$$
 $$ \frac{\partial f}{\partial x} = P(x, y), \quad \frac{\partial f}{\partial y} = Q(x, y) $$
@@ -92,10 +82,11 @@ $$ \int_{t=a}^{t=b}\!\bigl[P(x(t),y(t))\,x'(t)+Q(x(t),y(t))\,y'(t)\bigr]\,dt = f
 
 
 
+
 # Premise Set 2
 
 
-
+  
 
 $$\int_C f \, ds = \int_{t=a}^{t=b} f(\vec{r}(t)) \|\vec{r}'(t)\| \, dt$$
 
@@ -113,7 +104,6 @@ $$\iint_S \vec{F} \cdot d\vec{S} = \iint_D \vec{F}(x, y, g(x, y)) \cdot \left(-\
 
 
 o elemento de Ã¡rea dA no domÃ­nio dos parÃ¢metros u e v
-
 
 
 
@@ -184,20 +174,18 @@ Essa simetria reduz de 9 para 6 o nÃºmero de componentes independentes do tens
 
 # Premise Set 4
 
-
-## Calculating stress tensor rotation
+# Calculating stress tensor rotation	
 - [[r2 Video MACETE - MultiplicacÌ§aÌƒo de matrizes]]
 - matrixcalc.org/pt/
 
-
-## Calculating  $\sigma'$
-### Definitions
+# Calculating  $\sigma'$
+## Definitions
 $$\sigma' =
 \begin{bmatrix}
 \sigma'_{xx} & \sigma'_{xy} & \sigma'_{xz} \\
 \sigma'_{yx} & \sigma'_{yy} & \sigma'_{yz} \\
 \sigma'_{zx} & \sigma'_{zy} & \sigma'_{zz}
-\end{bmatrix}= L \sigma L^T$$
+\end{bmatrix}= L \sigma L^T$$ 
 $$
 L =
 \begin{bmatrix}
@@ -223,7 +211,7 @@ L_{xy} & L_{yy} & L_{zy} \\
 L_{xz} & L_{yz} & L_{zz}
 \end{bmatrix}$$
 
-$$L \sigma =
+$$L \sigma = 
 \begin{bmatrix}
 (L \sigma)_{xx} & (L \sigma)_{xy} & (L \sigma)_{xz} \\
 (L \sigma)_{yx} & (L \sigma)_{yy} & (L \sigma)_{yz} \\
@@ -232,8 +220,7 @@ $$L \sigma =
 $$
 
 
-### Calculating $L \sigma$
-
+## Calculating $L \sigma$
 To calculate $\sigma'$, we can first calculate only the products of the two first matrixes
 
 $$
@@ -264,9 +251,7 @@ $$
 (L\sigma)_{zz} = L_{zx} \sigma_{xz} + L_{zy} \sigma_{yz} + L_{zz} \sigma_{zz}.
 $$
 
-
-### Calculating $(L \sigma) L^T$
-
+## Calculating $(L \sigma) L^T$
 $$
 \sigma'_{xx} = (L\sigma)_{xx} L_{xx} + (L\sigma)_{xy} L_{xy} + (L\sigma)_{xz} L_{xz},
 $$
@@ -296,7 +281,7 @@ $$
 $$
 
 
-### Example with rotation about the Y axis by $\thetaÂ°$
+## Example with rotation about the Y axis by $\thetaÂ°$
 
 $$
 L =
@@ -343,14 +328,14 @@ c & 0 & s \\
 \end{bmatrix}
 \quad
 \begin{bmatrix}
-c\,\sigma_{xx} + 0\,\tau_{yx} + s\,\tau_{zx}
-& c\,\tau_{xy} + 0\,\sigma_{yy} + s\,\tau_{zy}
+c\,\sigma_{xx} + 0\,\tau_{yx} + s\,\tau_{zx} 
+& c\,\tau_{xy} + 0\,\sigma_{yy} + s\,\tau_{zy} 
 & c\,\tau_{xz} + 0\,\tau_{yz} + s\,\sigma_{zz} \\[6pt]
-0\,\sigma_{xx} + 1\,\tau_{yx} + 0\,\tau_{zx}
-& 0\,\tau_{xy} + 1\,\sigma_{yy} + 0\,\tau_{zy}
+0\,\sigma_{xx} + 1\,\tau_{yx} + 0\,\tau_{zx} 
+& 0\,\tau_{xy} + 1\,\sigma_{yy} + 0\,\tau_{zy} 
 & 0\,\tau_{xz} + 1\,\tau_{yz} + 0\,\sigma_{zz} \\[6pt]
- -s\,\sigma_{xx} + 0\,\tau_{yx} + c\,\tau_{zx}
-& -s\,\tau_{xy} + 0\,\sigma_{yy} + c\,\tau_{zy}
+ -s\,\sigma_{xx} + 0\,\tau_{yx} + c\,\tau_{zx} 
+& -s\,\tau_{xy} + 0\,\sigma_{yy} + c\,\tau_{zy} 
 & -s\,\tau_{xz} + 0\,\tau_{yz} + c\,\sigma_{zz}
 \end{bmatrix}.
 $$
@@ -385,13 +370,6 @@ $$
 
 
 
-
-
-
-
-
-
-
 # Where does $[L]$ come from in a numerical example
 
 ![[ps18#$ cos(A pm B)$]]
@@ -400,9 +378,9 @@ $$
 Rotation of 30Â° CCW in Z axis
 ![[ps4.png|300]]
 1. FaÃ§a um esboÃ§o apenas do sistema original, indicando:
-	- os eixos $x$, $y$ e $z$;
+	- os eixos $x$, $y$ e $z$;  
 2. No mesmo esboÃ§o, acrescente:
-	- o sistema rotacionado $(x', y', z')$;
+	- o sistema rotacionado $(x', y', z')$;  
 	-  os 9 Ã¢ngulos Ã¢ngulos entre os eixos rotaÃ§Ã£o entre os dois sistemas.
 
 
@@ -448,8 +426,12 @@ $$= \begin{bmatrix}
 
 
 
-# Numerical example
 
+
+
+
+
+# Numerical example
 [[q88]]
 
 
@@ -498,16 +480,8 @@ $$
 
 
 
-
-
-
-
-
-
 # Questions to be answered
-
 - Regardless of orientation, what quantities remain constant on a Cauchy stress tensor on an infinitesimal element, common â€œorientationâ€independentâ€ measures.
-
 
 
 
@@ -519,21 +493,10 @@ $$
 
 # Premise Set 5
 
-
-
-
-
-
-
-
-
-
 # Tensor TensÃ£o vs Tensor DeformaÃ§Ã£o
 
-
 ## IntroduÃ§Ã£o
-
-- A unidade do tensor tensÃ£o Ã© $MPa$, enquanto o tensor deformaÃ§Ã£o Ã© adimensional. Isso porque o tensor deformaÃ§Ã£o mede a deformaÃ§Ã£o que um elemento infinitesimal de um corpo sofre. A mediÃ§Ã£o de deformaÃ§Ã£o pode ser pensada da seguinte forma: vamos supor que se eu aplicar uma forÃ§a $F$ em uma barra que tem $0,5\,m$ de comprimento, ela vai sofrer um alongamento medido de $0,002\,m = 2\,mm$.
+- A unidade do tensor tensÃ£o Ã© $MPa$, enquanto o tensor deformaÃ§Ã£o Ã© adimensional. Isso porque o tensor deformaÃ§Ã£o mede a deformaÃ§Ã£o que um elemento infinitesimal de um corpo sofre. A mediÃ§Ã£o de deformaÃ§Ã£o pode ser pensada da seguinte forma: vamos supor que se eu aplicar uma forÃ§a $F$ em uma barra que tem $0,5\,m$ de comprimento, ela vai sofrer um alongamento medido de $0,002\,m = 2\,mm$. 
 - Ou seja, a deformaÃ§Ã£o da barra Ã©:
 $$
 \varepsilon = \frac{\Delta L}{L_0} = \frac{0,002\,m}{0,5\,m} = 0,004.
@@ -542,9 +505,7 @@ Como $0,004$ Ã© apenas uma razÃ£o, nÃ£o hÃ¡ unidade associada a $\vareps
 
 - $\textbf{Tensor de tensÃ£o}$ tem unidade de pressÃ£o (por exemplo MPa), porque ele mede forÃ§as internas por Ã¡rea.
 - $\textbf{Tensor de deformaÃ§Ã£o}$ Ã© adimensional, pois descreve a variaÃ§Ã£o relativa de comprimento (ou Ã¢ngulo) de um elemento infinitesimal do corpo. Em outras palavras, Ã© a razÃ£o entre o deslocamento e a dimensÃ£o original, sem unidades.
--
-
-
+- 
 ## Tensor de tensÃµes
 
 $$
@@ -638,7 +599,7 @@ $$
 Esta fÃ³rmula reÃºne, em um Ãºnico objeto simÃ©trico, todas as deformaÃ§Ãµes normais e de cisalhamento, servindo de base para relaÃ§Ãµes constitutivas (Lei de Hooke, por exemplo) e para o cÃ¡lculo de deformaÃ§Ãµes a partir de campos de deslocamentos experimentais ou numÃ©ricos.
 
 
-## Alfabeto grego utilizado
+## Alfabeto grego utilizado 
 
 
 
@@ -651,19 +612,8 @@ Esta fÃ³rmula reÃºne, em um Ãºnico objeto simÃ©trico, todas as deformaÃ
 
 # Premise Set 6
 
-
-## Conjunto de Premissas
-
+## Conjunto de Premissas %% fold %%
 - [[ps32]]
-
-
-
-
-
-
-
-
-
 
 # Nome das variÃ¡veis, tensores e matrizes mais utilizados em MecÃ¢nica dos sÃ³lidos
 
@@ -690,8 +640,8 @@ $$
 \tau_{zx} & \tau_{zy} & \sigma_{zz}
 \end{bmatrix}
 $$
-Seguindo a convenÃ§Ã£o de sinais mais comum em MecÃ¢nica dos SÃ³lidos â€”â€¯isto Ã©,
-_normal_ positiva quando o vetorâ€‘traÃ§Ã£o aponta para fora da face positiva do eixo,
+Seguindo a convenÃ§Ã£o de sinais mais comum em MecÃ¢nica dos SÃ³lidos â€”â€¯isto Ã©,  
+_normal_ positiva quando o vetorâ€‘traÃ§Ã£o aponta para fora da face positiva do eixo,  
 e _cisalhante_ positiva quando, na face positiva **i**, o vetor estÃ¡ na direÃ§Ã£o positiva **j**
 
 Em mecÃ¢nica dos sÃ³lidos Ã© hÃ¡bito distinguir na escrita os $\textbf{esforÃ§os normais}$ (que atuam $\textbf{perpendicularmente}$ Ã  face) dos $\textbf{esforÃ§os de cisalhamento}$ (que atuam $\textbf{tangencialmente}$ Ã  face), usando:
@@ -742,9 +692,9 @@ $$
 ![[ps32#[Matriz identidade](https //en.wikipedia.org/wiki/Identity_matrix) e [Delta de Kronecker](https //en.wikipedia.org/wiki/Kronecker_delta)]]
 
 
----
+--- 
 $$
-\text{Matriz de rigidez / elasticidade } [\mathbf{C}] =
+\text{Matriz de rigidez / elasticidade } [\mathbf{C}] = 
 \begin{pmatrix}
 \lambda + 2\mu & \lambda & \lambda & 0 & 0 & 0 \\
 \lambda & \lambda + 2\mu & \lambda & 0 & 0 & 0 \\
@@ -756,7 +706,7 @@ $$
 $$
 ---
 $$
-\text{Matriz de conformidade / compliÃ¢ncia } [\mathbf{S}] =
+\text{Matriz de conformidade / compliÃ¢ncia } [\mathbf{S}] = 
 \begin{pmatrix}
 \frac{1}{E} & -\frac{\nu}{E} & -\frac{\nu}{E} & 0 & 0 & 0 \\
 -\frac{\nu}{E} & \frac{1}{E} & -\frac{\nu}{E} & 0 & 0 & 0 \\
@@ -781,18 +731,10 @@ A matriz $S$ satisfaz $[S] = [C]^{-1},$ de modo que $\{\varepsilon\} = [S]\{\sig
 
 # Premise Set 7
 
-
-
-
-
-
-
-
-
-
 # EquaÃ§Ãµes Constitutivas da Elasticidade Linear IsotrÃ³pica
-
 Este Ã© o nome mais formal e completo. "Constitutiva" porque descreve a constituiÃ§Ã£o (o comportamento intrÃ­nseco) do material. "Elasticidade Linear" porque a relaÃ§Ã£o entre tensÃ£o e deformaÃ§Ã£o Ã© linear (se vocÃª dobrar a tensÃ£o, dobra a deformaÃ§Ã£o) e elÃ¡stica (o material retorna Ã  sua forma original). "IsotrÃ³pica" porque as propriedades do material sÃ£o as mesmas em todas as direÃ§Ãµes.
+
+
 
 
 ## Resumo Lei de Hooke Generalizada (ou Tridimensional)
@@ -821,8 +763,9 @@ $$\varepsilon_{ij} = \frac{\gamma_{ij}}{2}= \frac{1 + \nu}{E} \, \tau_{ij}  =\fr
 ^equacoesDaDeformacao
 
 
-## EquaÃ§Ãµes tensÃ£o plana
 
+
+## EquaÃ§Ãµes tensÃ£o plana
 Por manipulaÃ§Ã£o algÃ©brica, obtÃ©m-se as duas fÃ³rmulas abaixo para estado de **tensÃ£o plana** $(\sigma_{zz} = 0,\; \sigma_{xz} = \sigma_{yz} = 0)$
 
 $$\varepsilon_{zz} = -\frac{\nu}{1-\nu}(\varepsilon_{xx} + \varepsilon_{yy})$$
@@ -831,12 +774,18 @@ $$\sigma_{yy} = \frac{E}{1 - \nu^2}(\varepsilon_{yy} + \nu\varepsilon_{xx})$$
 $$\tau_{xy} = \frac{E}{2(1 + \nu)}\gamma_{xy}$$^equacoesTensaoPlana
 
 
+
+
+
+
+
+
 ## InterpretaÃ§Ã£o das fÃ³rmulas para ajudar a memorizar
 
 $$
 \varepsilon_{ii} = \frac{1}{E} \Bigl(\sigma_{ii} \;-\; \nu \sum_{j \neq i} \sigma_{jj}\Bigr)  \quad \text{(Componentes normais)}
 $$
-Se o coeficiente de Poisson de um material for 0, uma deformaÃ§Ã£o normal do corpo daquele material nÃ£o vai se importar com tensÃµes nas outras direÃ§Ãµes, sÃ³ na direÃ§Ã£o normal Ã  ela.
+Se o coeficiente de Poisson de um material for 0, uma deformaÃ§Ã£o normal do corpo daquele material nÃ£o vai se importar com tensÃµes nas outras direÃ§Ãµes, sÃ³ na direÃ§Ã£o normal Ã  ela. 
 PorÃ©m, quanto maior o coeficiente de Poisson, mais a deformaÃ§Ã£o vai se importar com as outras tensÃµes normais, pois as deformaÃ§Ãµes que elas estÃ£o tentando causar no corpo sobrepÃµe com a deformaÃ§Ã£o da tensÃ£o normal sendo analisada. Ou seja, se ocorrer traÃ§Ã£o nas tensÃµes $jj$, elas vÃ£o atrapalhar a deformaÃ§Ã£o que a tensÃ£o $ii$ causaria, e se fossem de compressÃ£o, ajudariam, por isso o sinal negativo.
 
 
@@ -848,8 +797,14 @@ $$
 A deformaÃ§Ã£o de cisalhamento no plano de um corpo Ã© a metade de sua conformidade ao cisalhamento $(J)$ vezes a tensÃ£o de cisalhamento naquele plano
 
 
-## Forma geral em tensores (componentes arbitrÃ¡rias $i, j$)
 
+
+
+
+
+
+
+## Forma geral em tensores (componentes arbitrÃ¡rias $i, j$)
 $$
 \varepsilon_{ij} = \frac{1 + \nu}{E} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij}
 $$
@@ -862,9 +817,7 @@ onde
 - $\sigma_{kk} = \sigma_{11} + \sigma_{22} + \sigma_{33}$ (soma de tensÃµes normais),
 - $\delta_{ij}$ Ã© o delta de Kronecker.
 
-
 ## FÃ³rmula para componentes normais (diagonais) da deformaÃ§Ã£o
-
 Para $i = 1, 2, 3$,
 $$
 \varepsilon_{ii} = \frac{1}{E} \Bigl(\sigma_{ii} \;-\; \nu \sum_{j \neq i} \sigma_{jj}\Bigr)
@@ -881,9 +834,7 @@ $$
 \varepsilon_{33} = \frac{1}{E}\bigl(\sigma_{33} \;-\; \nu \,[\sigma_{11} + \sigma_{22}]\bigr)
 $$
 
-
 ## FÃ³rmula para componentes de cisalhamento
-
 Para $i \neq j$, ou seja, $i, j = 1, 2, 3$ com $i \neq j$,
 $$
 \varepsilon_{ij} = \frac{1 + \nu}{E} \, \tau_{ij}
@@ -898,19 +849,10 @@ $$
 
 
 
+
 # Premise Set 8
 
-
-
-
-
-
-
-
-
-
 # Constantes elÃ¡sticas em materiais isotrÃ³picos
-
 
 ## Tabela de Propriedades do Material com base no par $$(E, \nu)$$
 
@@ -930,7 +872,6 @@ $$
 
 
 ---
-
 
 ## Tabela 2
 
@@ -971,15 +912,6 @@ $$
 
 # Premise Set 9
 
-
-
-
-
-
-
-
-
-
 # DefiniÃ§Ã£o coeficiente de Poisson
 
 O coeficiente de Poisson pode ser pensado em quanto o corpo vai se empenhar para mudar sua Ã¡rea de seÃ§Ã£o transversal por causa da variaÃ§Ã£o do comprimento.
@@ -998,36 +930,14 @@ E os demais coeficientes de Poisson podem ser deduzidos como o quanto a Ã¡rea 
 
 
 
-
 # Premise Set 10
 
-
-
-
-
-
-
-
-
-
 # Conjunto de premissas
-
 - [[ps18]]
-
-
-
-
-
-
-
-
-
 
 # Ã‚ngulos diretores e cossenos diretores
 
-
 ## Caso 2D
-
 ### Ã‚ngulos diretores
 **Premissa**: Os eixos de coordenadas sÃ£o $X$ e $Y$; Existe um vetor $\vec v = (v_x, v_y)$ Ã  um Ã¢ngulo $\theta_x$ de $X$
 
@@ -1069,8 +979,8 @@ Determine os Ã¢ngulos diretores e cossenos diretores do vetor $\vec v = (4, 3)
 - $\vec v=(v_x,v_y)=(4,3)$
 - $\|\vec v\|=\sqrt{4^2+3^2}=5$
 - $\cos\theta_x=\frac{v_x}{\|\vec v\|}=\frac{4}{5}$
-- $\cos(\theta_y)=\sin(\theta_x)=\frac{v_y}{\|\vec v\|}=\frac{3}{5}$
-- $L= \hat v=(l_x,l_y)=(\cos\theta_x,\cos\theta_y)=\left(\frac{v_x}{\|v\|}, \frac{v_y}{\|v\|}\right)=(\tfrac{4}{5},\tfrac{3}{5})$
+- $\cos(\theta_y)=\sin(\theta_x)=\frac{v_y}{\|\vec v\|}=\frac{3}{5}$ 
+- $L= \hat v=(l_x,l_y)=(\cos\theta_x,\cos\theta_y)=\left(\frac{v_x}{\|v\|}, \frac{v_y}{\|v\|}\right)=(\tfrac{4}{5},\tfrac{3}{5})$  
   Note que $\|L\|=\sqrt{\bigl(\tfrac{4}{5}\bigr)^2+\bigl(\tfrac{3}{5}\bigr)^2}=1$, pois $L= \hat v$ que Ã© um vetor unitÃ¡rio
 - $\Theta=(\theta_x,\theta_y)=(\arccos(4/5),\arccos(3/5))\to(36.87^\circ,\,53.13^\circ)$
 - Note que $\theta_y=90^\circ-\theta_x$
@@ -1081,60 +991,60 @@ Determine os Ã¢ngulos diretores e cossenos diretores do vetor $\vec v = (4, 3)
 ## Caso 3D
 ### Ã‚ngulos diretores
 
-Premissa: Os eixos de coordenadas sÃ£o $X$, $Y$ e $Z$; existe um vetor
-$$\vec{v} = (v_x,\, v_y,\, v_z)$$ que forma os Ã¢ngulos
+Premissa: Os eixos de coordenadas sÃ£o $X$, $Y$ e $Z$; existe um vetor  
+$$\vec{v} = (v_x,\, v_y,\, v_z)$$ que forma os Ã¢ngulos  
 
-$$\alpha = \angle(\vec{v},\vec{i}),
-\qquad
-\beta = \angle(\vec{v},\vec{j}),
-\qquad
+$$\alpha = \angle(\vec{v},\vec{i}), 
+\qquad 
+\beta = \angle(\vec{v},\vec{j}), 
+\qquad 
 \gamma = \angle(\vec{v},\vec{k})$$
-com os versos positivos dos eixos $X$, $Y$ e $Z$, onde
-$$\vec{i} = (1,0,0),
-\qquad
-\vec{j} = (0,1,0),
-\qquad
-\vec{k} = (0,0,1).$$
-Assim, o vetor de Ã¢ngulos diretores Ã©
+com os versos positivos dos eixos $X$, $Y$ e $Z$, onde  
+$$\vec{i} = (1,0,0), 
+\qquad 
+\vec{j} = (0,1,0), 
+\qquad 
+\vec{k} = (0,0,1).$$  
+Assim, o vetor de Ã¢ngulos diretores Ã©  
 $$\Theta = (\alpha, \beta, \gamma).$$
 ### Cossenos diretores
->Os cossenos diretores sÃ£o
+>Os cossenos diretores sÃ£o  
 >$$L = (l_x, l_y, l_z) = (\cos\alpha, \cos\beta, \cos\gamma).$$
->Partindo da definiÃ§Ã£o de produto escalar, nota-se que
+>Partindo da definiÃ§Ã£o de produto escalar, nota-se que  
 >$$\cos\alpha = \frac{\vec{v}\!\cdot\!\vec{i}}{\lVert\vec{v}\rVert} = \frac{v_x}{\lVert\vec{v}\rVert},\qquad
 \cos\beta  = \frac{v_y}{\lVert\vec{v}\rVert},\qquad
-\cos\gamma = \frac{v_z}{\lVert\vec{v}\rVert}$$
->isto Ã©, $L$ coincide com o vetor unitÃ¡rio $\hat{v}$:
->$$L = \hat{v} = \frac{\vec{v}}{\lVert\vec{v}\rVert}= \left(\frac{v_x}{\lVert\vec{v}\rVert},\frac{v_y}{\lVert\vec{v}\rVert}, \frac{v_z}{\lVert\vec{v}\rVert}             \right), \qquad \lVert\vec{v}\rVert = \sqrt{v_x^{2}+v_y^{2}+v_z^{2}}$$
->Os cossenos diretores satisfazem a identidade fundamental
+\cos\gamma = \frac{v_z}{\lVert\vec{v}\rVert}$$  
+>isto Ã©, $L$ coincide com o vetor unitÃ¡rio $\hat{v}$:  
+>$$L = \hat{v} = \frac{\vec{v}}{\lVert\vec{v}\rVert}= \left(\frac{v_x}{\lVert\vec{v}\rVert},\frac{v_y}{\lVert\vec{v}\rVert}, \frac{v_z}{\lVert\vec{v}\rVert}             \right), \qquad \lVert\vec{v}\rVert = \sqrt{v_x^{2}+v_y^{2}+v_z^{2}}$$  
+>Os cossenos diretores satisfazem a identidade fundamental  
 >$$\cos^{2}\alpha + \cos^{2}\beta + \cos^{2}\gamma = 1$$
->confirmando que $L$ tem comprimento unitÃ¡rio.
+>confirmando que $L$ tem comprimento unitÃ¡rio.  
 ^cossenosDiretores
 
 
 ### Exemplo
-Determine os Ã¢ngulos e cossenos diretores do vetor
-$$\vec{v} = (4,\,3,\,12).$$
-1. Norma
+Determine os Ã¢ngulos e cossenos diretores do vetor  
+$$\vec{v} = (4,\,3,\,12).$$  
+1. Norma  
 $$
 \lVert\vec{v}\rVert = \sqrt{4^{2}+3^{2}+12^{2}}
                      = \sqrt{16+9+144}
                      = \sqrt{169}
                      = 13.
-$$  2. Cossenos diretores
+$$  2. Cossenos diretores  
 $$
 l_x = \frac{4}{13},\qquad
 l_y = \frac{3}{13},\qquad
 l_z = \frac{12}{13}.
-$$
-2. Ã‚ngulos diretores
+$$  
+2. Ã‚ngulos diretores  
 $$
 \alpha = \arccos\!\left(\frac{4}{13}\right) \approx 72,54^{\circ},\qquad
 \beta  = \arccos\!\left(\frac{3}{13}\right) \approx 76,68^{\circ},\qquad
 \gamma = \arccos\!\left(\frac{12}{13}\right) \approx 22,62^{\circ}.
-$$
+$$  
 
-3. VerificaÃ§Ã£o da identidade
+3. VerificaÃ§Ã£o da identidade  
 $$
 \left(\tfrac{4}{13}\right)^{2}+
 \left(\tfrac{3}{13}\right)^{2}+
@@ -1143,7 +1053,7 @@ $$
    = \tfrac{169}{169}
    = 1.
 $$ Portanto,  $$
-\Theta = (\alpha, \beta, \gamma) \approx (72,54^{\circ},\,76,68^{\circ},\,22,62^{\circ}),
+\Theta = (\alpha, \beta, \gamma) \approx (72,54^{\circ},\,76,68^{\circ},\,22,62^{\circ}), 
 \qquad
 L = (l_x, l_y, l_z) = \left(\tfrac{4}{13},\,\tfrac{3}{13},\,\tfrac{12}{13}\right).
 $$  Esses valores demonstram como, em 3 D, o vetor unitÃ¡rio $\hat{v}$ coincide exatamente com os cossenos diretores, generalizando o resultado observado no caso 2 D.
@@ -1159,20 +1069,17 @@ $$  Esses valores demonstram como, em 3 D, o vetor unitÃ¡rio $\hat{v}$ coincid
 
 # Premise Set 11
 
-
-## Conjunto de Premissas
+# Conjunto de Premissas %% fold %%
 - [[ps5]]
 - [[ps6]]
 - [[ps10]]
 
-
-## AnÃ¡lise de tensÃµes em um corpo estÃ¡tico (Elemento de estresse e cÃ­rculo de Mohr)
+# AnÃ¡lise de tensÃµes em um corpo estÃ¡tico (Elemento de estresse e cÃ­rculo de Mohr)
 
 (Premissa: o corpo encontraâ€‘se em equilÃ­brio estÃ¡tico. NÃ£o consideraremos aceleraÃ§Ãµes ou variaÃ§Ãµes de temperatura)
 
-
-## 1 Elemento de estresse (ou tensÃ£o)
-### 1.1 Conceito
+# 1 Elemento de estresse (ou tensÃ£o)
+## 1.1 Conceito
 O elemento de estresse Ã© um **recorte imaginÃ¡rio** de um ponto de interesse do corpo para avaliarmos as tensÃµes normais $(\sigma)$ e de cisalhamento $(\tau)$. Matematicamente, as tensÃµes sÃ£o obtidas como o limite da razÃ£o entre a forÃ§a $F$ aplicada e a Ã¡rea $A$ do recorte quando esta tende a zero:
 $$
 \sigma, \tau = \lim_{A \to 0} \frac{F}{A}
@@ -1180,15 +1087,14 @@ $$
 
 **O que nÃ£o Ã©:** NÃ£o se trata de um grÃ£o ou partÃ­cula material do corpo sendo estudado. EntÃ£o, quando falamos sobre rotaÃ§Ã£o do elemento de estresse, nÃ£o hÃ¡ rotaÃ§Ã£o do corpo, mas sim da nossa anÃ¡lise.
 
-
-### 1.2 OrientaÃ§Ã£o dos planos principais
+## 1.2 OrientaÃ§Ã£o dos planos principais
 Nem sempre o elemento estÃ¡ inicialmente orientado de forma a expor as magnitudes extremas de tensÃ£o, especialmente relevantes para critÃ©rios de falha. Portanto precisamos saber quantos graus devemos rotacionar nosso recorte imaginÃ¡rio para que ele revele esses dois valores. Ao girar o elemento em torno de seu ponto, podemos alinhar nossa anÃ¡lise com:
 - **Planos principais** â€“ revelam as **tensÃµes normais mÃ¡ximas e mÃ­nimas** $(\sigma_{\max},\sigma_{\min})$.
 - **Planos de cisalhamento mÃ¡ximo** â€“ revelam a **tensÃ£o de cisalhamento mÃ¡xima** $(\tau_{\max})$.
 
 
 
-### 1.3 DefiniÃ§Ãµes e cÃ¡lculos
+## 1.3 DefiniÃ§Ãµes e cÃ¡lculos
 $$\phi_1 = \text{Ã‚ngulo de rotaÃ§Ã£o para atingir tensÃ£o normal mÃ¡xima } (\sigma_{1})$$
 $$\phi_S = \text{Ã‚ngulo de rotaÃ§Ã£o para atingir tensÃ£o de cisalhamento mÃ¡xima}$$
 $$
@@ -1307,6 +1213,11 @@ Para detalhar um pouco mais:
 
 
 
+
+
+
+
+
 #### 1.3.1.1 Vetor de tensÃµes
 A primeira linha (ou coluna, por simetria) do tensor de tensÃµes Ã©, por definiÃ§Ã£o, o vetor de tensÃ£o que atua na face de um cubo infinitesimal cuja normal aponta na direÃ§Ã£o correspondente ao nÃºmero da linha (linha 1 = X, linha 2 = Y, linha 3 = Z)
 $$
@@ -1369,14 +1280,19 @@ t_{xz}
 $$
 
 
-## 2 [CÃ­rculo de Mohr](https://en.wikipedia.org/wiki/Mohr%27s_circle)
+
+
+
+
+
+# 2 [CÃ­rculo de Mohr](https://en.wikipedia.org/wiki/Mohr%27s_circle)
 - https://www.pantelisliolios.com/mohr-circle/
 - https://www.pantelisliolios.com/mohr-circle-3d/
-
+ 
 - O cÃ­rculo de Mohr representa graficamente o conjunto de todos os pares $(\sigma \, , \tau)$ que podemos obter ao rotacionar o elemento de estresse
 - O eixo horizontal representa a tensÃ£o normal $\sigma$ e o vertical, a tensÃ£o de cisalhamento $\tau$
 
-### Eixo vertical para baixo
+## Eixo vertical para baixo
 O cÃ­rculo de Mohr Ã© convencionalmente desenhado com o sentido positiva do eixo vertical para baixo. A principal vantagem Ã© a correspondÃªncia direta do sentido de rotaÃ§Ã£o entre o elemento e o cÃ­rculo. Uma rotaÃ§Ã£o anti-horÃ¡ria no elemento Ã© representada por uma rotaÃ§Ã£o anti-horÃ¡ria no cÃ­rculo.
 ![[ps11.png]]
 
@@ -1400,10 +1316,17 @@ A resposta Ã© que seu valor nÃ£o estÃ¡ no cÃ¡lculo inicial, mas sim na v
 
 
 
+
+
+
+
+
+
+
+
 # Premise Set 12
 
-
-## EDO Linear HomogÃªnea de 2Âª ordem com coeficientes constantes
+# EDO Linear HomogÃªnea de 2Âª ordem com coeficientes constantes
 
 $$
 \text{EquaÃ§Ã£o diferencial:} \qquad a_2 y'' + a_1 y' + a_0 y = 0.
@@ -1433,10 +1356,7 @@ y_2(x) = u(x) y_1(x) = y_1(x) \int \frac{e^{-\int p(x)\,dx}}{[y_1(x)]^2}\,dx
 $$
 
 ---
-
-
 ## Wronskiano
-
 ### DefiniÃ§Ã£o geral
 
 Seja um conjunto de $n$ funÃ§Ãµes
@@ -1457,9 +1377,7 @@ $$
 - Se $W(x) \neq 0$ em $I$, as funÃ§Ãµes sÃ£o linearmente independentes em $I$.
 - Se $W(x) = 0$, pode haver dependÃªncia linear (nÃ£o Ã© garantia de dependÃªncia para $n > 2$, mas geralmente indica falta de independÃªncia).
 
-
 ## EDO de 2Âª ordem
-
 Para duas soluÃ§Ãµes $y_1, y_2$ de uma EDO de $2^a$ ordem, o Wronskiano Ã©
 $$
 W(y_1, y_2)(x) =
@@ -1489,11 +1407,14 @@ que nunca se anula, logo as duas soluÃ§Ãµes sÃ£o independentes.
 
 
 
+
+
+
+
 # Premise Set 13
 
 
 ## EDO NÃ£o HomogÃªnea
-
 $$
 y'' + p(t)y' + q(t)y = f(t)
 $$
@@ -1538,9 +1459,7 @@ $$
 y_p(x) = A \cos(\omega x) + B \sin(\omega x).
 $$
 
-
 ## Exponencial + PolinÃ´mio
-
 Para funÃ§Ãµes da forma
 $$
 f(x) = (b_0 + b_1 x + \dots + b_m x^m) e^{\beta x},
@@ -1555,6 +1474,9 @@ $$
 \end{aligned}
 }
 $$
+
+
+
 
 
 
@@ -1620,6 +1542,23 @@ $$
 
 
 
+
+
+
+# LLM Solution %% fold %%
+
+
+# Question answer %% fold %%
+
+
+
+
+
+
+
+
+
+
 # Premise Set 16
 
 [[q50]]
@@ -1634,21 +1573,19 @@ $$
 
 
 
+
 # Premise Set 17
 
+# Tabela 1: Regras de DerivaÃ§Ã£o e IntegraÃ§Ã£o por FunÃ§Ã£o
 
-## Tabela 1: Regras de DerivaÃ§Ã£o e IntegraÃ§Ã£o por FunÃ§Ã£o
-
-
-### Regras Gerais
+## Regras Gerais
 
 | Regra / FunÃ§Ã£o     | Derivada $$\frac{d}{dx}$$                                    | Integral Indefinida $$\int \dots dx$$                                    |
 | :----------------- | :----------------------------------------------------------- | :----------------------------------------------------------------------- |
 | MÃºltiplo Constante | $$\frac{d}{dx}[k \cdot f(x)] = k \cdot f'(x)$$                | $$\int k \cdot f(x) \, dx = k \int f(x) \, dx$$                          |
 | Soma / SubtraÃ§Ã£o   | $$\frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$$             | $$\int [f(x) \pm g(x)] \, dx = \int f(x)\,dx \pm \int g(x)\,dx$$         |
 
-
-### PotÃªncias e PolinÃ´mios
+## PotÃªncias e PolinÃ´mios
 
 | Regra / FunÃ§Ã£o           | Derivada $$\frac{d}{dx}$$                       | Integral Indefinida $$\int \dots dx$$                          |
 | :----------------------- | :---------------------------------------------- | :------------------------------------------------------------- |
@@ -1656,8 +1593,7 @@ $$
 | Regra da PotÃªncia        | $$\frac{d}{dx}(x^n) = n x^{n-1}$$               | $$\int x^n \, dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1)$$ |
 | Regra da PotÃªncia (n=-1) | $$\frac{d}{dx}(\ln\|x\|) = \frac{1}{x}$$         | $$\int \frac{1}{x} \, dx = \ln\|x\| + C$$                     |
 
-
-### Exponenciais e LogarÃ­tmicas
+## Exponenciais e LogarÃ­tmicas
 
 | FunÃ§Ã£o               | Derivada $$\frac{d}{dx}$$                             | Integral Indefinida $$\int \dots dx$$                                        |
 | :------------------- | :---------------------------------------------------- | :--------------------------------------------------------------------------- |
@@ -1665,8 +1601,7 @@ $$
 | Exponencial (base a) | $$\frac{d}{dx}(a^x) = a^x \ln(a)$$                    | $$\int a^x \, dx = \frac{a^x}{\ln(a)} + C$$                                  |
 | Logaritmo Natural    | $$\frac{d}{dx}(\ln x) = \frac{1}{x}, \quad (x>0)$$     | $$\int \ln(x) \, dx = x\ln(x) - x + C$$ (via IntegraÃ§Ã£o por Partes)          |
 
-
-### FunÃ§Ãµes TrigonomÃ©tricas
+## FunÃ§Ãµes TrigonomÃ©tricas
 
 | FunÃ§Ã£o     | Derivada $$\frac{d}{dx}$$                                   | Integral Indefinida $$\int \dots dx$$                                        |
 | :--------- | :---------------------------------------------------------- | :--------------------------------------------------------------------------- |
@@ -1677,8 +1612,7 @@ $$
 | Secante    | $$\frac{d}{dx}(\sec x) = \sec x \tan x$$                    | $$\int \sec x \, dx = \ln\|\sec x + \tan x\| + C$$                           |
 | Cosecante  | $$\frac{d}{dx}(\csc x) = -\csc x \cot x$$                   | $$\int \csc x \, dx = \ln\|\csc x - \cot x\| + C$$                           |
 
-
-### FunÃ§Ãµes TrigonomÃ©tricas Inversas
+## FunÃ§Ãµes TrigonomÃ©tricas Inversas
 
 | FunÃ§Ã£o        | Derivada $$\frac{d}{dx}$$                                    | Integral Indefinida $$\int \dots dx$$                        |
 | :------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -1688,8 +1622,7 @@ $$
 
 ---
 
-
-## Tabela 2: TÃ©cnicas Principais de DerivaÃ§Ã£o e IntegraÃ§Ã£o (RelaÃ§Ã£o Inversa)
+# Tabela 2: TÃ©cnicas Principais de DerivaÃ§Ã£o e IntegraÃ§Ã£o (RelaÃ§Ã£o Inversa)
 
 | TÃ©cnica                   | DerivaÃ§Ã£o (Regra)                                                      | IntegraÃ§Ã£o (TÃ©cnica Inversa/Relacionada)                                                |
 | :------------------------ | :--------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
@@ -1708,12 +1641,10 @@ $$
 
 # Premise Set 18
 
-
-## RelaÃ§Ãµes trigonomÃ©tricas
+# RelaÃ§Ãµes trigonomÃ©tricas
 
 
 ## $\cos(A \pm B)$
-
 $$\cos(A \pm B) = \cos A \cos B \mp \sin A \sin B$$
 
 ---
@@ -1738,14 +1669,10 @@ $$= \sin \theta$$
 
 # Premise Set 19
 
-
-## Conjunto de Premissas
-
+## Conjunto de Premissas %% fold %%
 - [[ps28]]
 
-
 ## [Green's Theorem](https://en.wikipedia.org/wiki/Green%27s_theorem)
-
 $$
 \oint_{C}\vec{F}\cdot d\mathbf r =
 \oint_{C} P\,dx + Q\,dy
@@ -1753,9 +1680,7 @@ $$
 $$
 $$ \vec{F}(x,y)=\langle P(x,y),\;Q(x,y)\rangle $$
 
-
 ## [Stokes's Theorem](https://en.wikipedia.org/wiki/Stokes%27_theorem)
-
 >$$\oint_{C=\partial S} \vec{F}\cdot d\vec{r}
   = \iint_{S} (\nabla \times \vec{F})\cdot d\vec{S}
   = \iint_{S} (\nabla \times \vec{F})\cdot \hat{n}\,dS$$
@@ -1796,7 +1721,7 @@ $$
   - \dfrac{\partial y}{\partial u}\,\dfrac{\partial x}{\partial v}
 \Bigr\rangle
 $$
-#### Example with polar coordinates 
+#### Example with polar coordinates  %% fold %% 
 $$
 \hat{n}\,dS
 = \Bigl(\frac{\partial\vec r}{\partial r}\times\frac{\partial\vec r}{\partial\theta}\Bigr)
@@ -1804,7 +1729,7 @@ $$
 
 $$
 \frac{\partial\vec r}{\partial r}\times\frac{\partial\vec r}{\partial\theta}
-=
+= 
 \begin{vmatrix}
   \mathbf i & \mathbf j & \mathbf k \\[6pt]
   \dfrac{\partial x}{\partial r} & \dfrac{\partial y}{\partial r} & \dfrac{\partial z}{\partial r} \\[6pt]
@@ -1823,9 +1748,16 @@ $$
 $$
 
 
-## [Divergence Theorem](https://en.wikipedia.org/wiki/Divergence_theorem)
 
->$$ \\{{\rlap{\mspace{1mu}\boldsymbol{\bigcirc}}{\rlap{\int}{\;\int}}}}_{S=\partial V} \vec{F} \cdot \hat{n}\, dS
+
+
+
+
+
+
+
+## [Divergence Theorem](https://en.wikipedia.org/wiki/Divergence_theorem)
+>$$ \\{{\rlap{\mspace{1mu}\boldsymbol{\bigcirc}}{\rlap{\int}{\;\int}}}}_{S=\partial V} \vec{F} \cdot \hat{n}\, dS 
 \;=\;
 \iiint_{V} (\nabla \cdot \vec{F})\, dV$$
 >$$ dV = dx\,dy\,dz \quad \text{Cartesian coordinates}$$
@@ -1843,16 +1775,8 @@ $$
 
 
 
+
 # Premise Set 20
-
-
-
-
-
-
-
-
-
 
 # EDO's BÃ¡sicas
 
@@ -1864,26 +1788,13 @@ $$
 
 
 
-
 # Premise Set 21
 
-
-## Conjunto de Premissas
-
+## Conjunto de Premissas %% fold %%
 - [[ps19]]
 - [[ps28]]
 
-
-
-
-
-
-
-
-
-
 # Green's Theorem as a special case of Stokes's Theorem
-
 As said in [[ps19]]
 $$
 \oint_{C} \vec{F}\cdot d\vec{r}
@@ -1900,7 +1811,7 @@ $$
 ![[ps28#^rot]]
 
 
-A special case, when the Curve $C$ is on the plane, $z=0$ and $R(x,y,z) = 0$, making
+A special case, when the Curve $C$ is on the plane, $z=0$ and $R(x,y,z) = 0$, making 
 $$ \vec{F}(x,y)=\langle P(x,y),\;Q(x,y)\rangle $$
 $$
 \nabla \times \vec{F} = \left(0,\,0,\, \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)
@@ -1909,7 +1820,7 @@ $$
 \vec n = (0,0,1)
 $$
 $$
-(\nabla \times \vec{F})\cdot \hat{n}\,dS
+(\nabla \times \vec{F})\cdot \hat{n}\,dS 
 = \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) \, dS
 = \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) \, dA
 $$
@@ -1928,17 +1839,7 @@ $$\oint_{C}\vec{F}\cdot d\mathbf r =
 
 # Premise Set 22
 
-
-
-
-
-
-
-
-
-
 # IntroduÃ§Ã£o Ã  campos escalares e vetoriais
-
 
 ## Notation and Preliminaries
 
@@ -1953,7 +1854,6 @@ $$
 Throughout, we use
 - a lower-case letter $f$ to denote a scalar field, i.e.\ a function that assigns a real number to each point in space;
 - an upper-case letter $F$ (or $\mathbf{F}$, $\vec{F}$) to denote a vector field, i.e.\ a function that assigns a vector to each point in space.
-
 
 ## 1D: Scalar vs. Vector Fields
 
@@ -1970,9 +1870,8 @@ Examples:
 ### Vector field
 
 $$F(x):\mathbb{R}\to\mathbb{R}^1$$
-In 1D every â€œvectorâ€ has only one component, so we rarely distinguish $F(x)$ from $f(x)$.
+In 1D every â€œvectorâ€ has only one component, so we rarely distinguish $F(x)$ from $f(x)$.  
 Interpretation: â€œAt position $x$, the force on a test particle is $F(x)$ newtons to the right (or left if negative).â€
-
 
 ## 2D: Adding a Second Dimension
 
@@ -1992,7 +1891,7 @@ Visualization: level curves (contours) where $f(x,y)=C$.
 
 ### Vector field
 
-$$\mathbf{F}(x,y)=\langle P(x,y),\,Q(x,y)\rangle:\mathbb{R}^2\to\mathbb{R}^2$$
+$$\mathbf{F}(x,y)=\langle P(x,y),\,Q(x,y)\rangle:\mathbb{R}^2\to\mathbb{R}^2$$ 
 Interpretation: â€œWind velocity at each point on a map.â€
 
 Examples:
@@ -2001,14 +1900,13 @@ Examples:
 
 Visualization: arrow-plots showing an arrow at each $(x,y)$ with components $\langle P,Q\rangle$.
 
-
 ## 3D: The Physical World
 
 Points now live in $\mathbb{R}^3$, $(x,y,z)\in\mathbb{R}^3$.
 
 ### Scalar field
 
-$$f(x,y,z):\mathbb{R}^3\to\mathbb{R}$$
+$$f(x,y,z):\mathbb{R}^3\to\mathbb{R}$$  
 Interpretation: â€œTemperature inside a room.â€
 
 Examples:
@@ -2028,10 +1926,8 @@ Examples:
 - Electric field in space: vector at each $(x,y,z)$ giving magnitude and direction of force on a positive test charge.
 - Magnetic field around a magnet: $\mathbf{F}(x,y,z)$ gives both strength and orientation.
 
-
 ## Why It Matters
-
-**Scalar fields** model quantities that have magnitude only (temperature, pressure, density, potential).
+**Scalar fields** model quantities that have magnitude only (temperature, pressure, density, potential).  
 **Vector fields** model quantities that have both magnitude and direction (velocity, force, electromagnetic fields).
 
 These ideas form the foundation for
@@ -2064,8 +1960,7 @@ z = f(x,y)
 1. InclinaÃ§Ã£o da curva em um ponto em relaÃ§Ã£o Ã  x e y
 2. Plano normal Ã  curva em um ponto
 3. Vetor normal Ã  superfÃ­cie em um ponto
-4.
-
+4. 
 
 
 
@@ -2077,21 +1972,14 @@ z = f(x,y)
 
 # Premise Set 24
 
-
-## Conjunto de Premissas
-
+## Conjunto de Premissas %% fold %%
 - Relaciona-se com [[ps11]]
 
-
 ## DefiniÃ§Ã£o dos vetores
-
 $$
 \mathbf{a} = \vec a = (a_1, a_2, \ldots, a_n), \quad \mathbf{b} = \vec b = (b_1, b_2, \ldots, b_n)
 $$
-
-
 ## [Dot product / Scalar product (Produto escalar)](https://en.wikipedia.org/wiki/Dot_product)
-
 **Definition**
 $$\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^{n} a_i b_i $$
 $$
@@ -2103,17 +1991,17 @@ $$\cos \theta = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \, \|\vec{b}\|}$$
 $$\theta = \arccos \left( \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \, \|\vec{b}\|} \right)$$
 $$\theta = \theta_{ab} = \angle (\vec{a}, \vec{b}) = \angle AOB$$
 
-**Numerical example**
+**Numerical example** 
 $$\vec{a} = [1,\, 3,\,-5] \qquad \vec{b} = [4,\,-2,\,-1]$$
 **Dot product $\left(\vec{a} \cdot \vec{b} = 3 \right)$**
 $$\vec{a} \cdot \vec{b} =[1,\, 3,\,-5] \cdot [4,\,-2,\,-1] $$
 $$= (1 \times 4) + (3 \times -2) + (-5 \times -1) $$
 $$= 4 - 6 + 5 = 3$$
-**Angle between vectors $\left( \theta = 83.7^\circ \right)$**
+**Angle between vectors $\left( \theta = 83.7^\circ \right)$** 
 $$\vec{a} \cdot \vec{b} = 3$$
 $$\|\vec{a}\| = \sqrt{1^2 + 3^2 + (-5)^2} = \sqrt{1 + 9 + 25} = \sqrt{35}$$
 $$\|\vec{b}\| = \sqrt{4^2 + (-2)^2 + (-1)^2} = \sqrt{16 + 4 + 1} = \sqrt{21}$$
-$$\theta = \arccos \left( \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \, \|\vec{b}\|} \right) = \arccos \left(\frac{3}{\sqrt{35} \, \sqrt{21}}\right)
+$$\theta = \arccos \left( \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \, \|\vec{b}\|} \right) = \arccos \left(\frac{3}{\sqrt{35} \, \sqrt{21}}\right) 
 $$
 $$
 \approx 1.4595 \, \text{rad}  \approx 1.4595 \times \frac{180}{\pi} \approx 83.7^\circ
@@ -2151,7 +2039,7 @@ Graficamente, esse produto projeta o ponto original sobre a direÃ§Ã£o do nov
 
 # Premise Set 25
 
-## Conjunto de Premissas
+## Conjunto de Premissas %% fold %%
 
 ## DefiniÃ§Ã£o dos vetores
 $$
@@ -2244,7 +2132,7 @@ AplicaÃ§Ãµes em MecÃ¢nica
 
 # Premise Set 26
 
-## Conjunto de Premissas
+## Conjunto de Premissas %% fold %%
 
 
 
@@ -2302,7 +2190,7 @@ a & b & c \\
 d & e & f \\
 g & h & i
 \end{vmatrix}
-= a
+= a 
 \begin{vmatrix}
 e & f \\
 h & i
@@ -2330,8 +2218,7 @@ $$
 
 # Premise Set 27
 
-
-## Conjunto de Premissas
+## Conjunto de Premissas %% fold %%
 
 
 ## MultiplicaÃ§Ã£o de matrizes
@@ -2344,17 +2231,14 @@ $$
 
 
 
-
 # Premise Set 28
 
-
-## Conjunto de Premissas
-
+## Conjunto de Premissas %% fold %%
 - [[ps26]]
 
 
-## IntroduÃ§Ã£o ao campo gradiente
 
+## IntroduÃ§Ã£o ao campo gradiente
 Seja
 $$f: \mathbb{R}^3 \to \mathbb{R}, \quad f(x,y,z)$$
 uma funÃ§Ã£o escalar, ou seja, que a cada ponto $(x,y,z)$ associa um Ãºnico valor numÃ©rico. Em fÃ­sica, costuma-se chamar $f$ de potencial, pois ele representa a energia potencial de uma partÃ­cula na posiÃ§Ã£o $(x,y,z)$.
@@ -2366,6 +2250,8 @@ $$
 \nabla f(x,y,z) = \bigl(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\bigr).
 $$
 O vetor $\nabla f$ chama-se gradiente de $f$. Ele aponta, em cada ponto, na direÃ§Ã£o de maior aumento de $f$ e tem magnitude proporcional Ã  taxa de variaÃ§Ã£o local. Se o objetivo for deslocar-se no sentido de reduzir o potencial (p.ex., buscar o estado de menor energia), utiliza-se o vetor $-\nabla f$, que indica o caminho de descida mais acentuada.
+
+
 
 
 ## [Operador Nabla](https://en.wikipedia.org/wiki/Del) e notaÃ§Ã£o para Teorema de Green, Teorema de Stokes e Teorema da divergÃªncia
@@ -2409,7 +2295,7 @@ Obs.: Nabla nÃ£o Ã© um vetor no sentido convencional, Ã© um operador, por 
 #### Operador rotacional
 
 >$$\vec{F}(x,y,z)=\langle P(x,y,z),\;Q(x,y,z),\;R(x,y,z)\rangle$$
->$$\text{rot} \, \vec F = \nabla \times \vec{F}
+>$$\text{rot} \, \vec F = \nabla \times \vec{F} 
 = \text{"Det"}\begin{bmatrix}
 \mathbf{i} & \mathbf{j} & \mathbf{k} \\[6pt]
 \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\[6pt]
@@ -2426,20 +2312,20 @@ P & Q & R
 ^rot
 
 
-ObservaÃ§Ã£o: Esse cÃ¡lculo, apesar de assemelhar-se muito com o determinante dessa matriz, nÃ£o Ã© (Veja [[ps26]]), por isso o determinante estÃ¡ entre aspas. Isso Ã© apenas uma maneira mais fÃ¡cil de lembrar como fazer a conta
+ObservaÃ§Ã£o: Esse cÃ¡lculo, apesar de assemelhar-se muito com o determinante dessa matriz, nÃ£o Ã© (Veja [[ps26]]), por isso o determinante estÃ¡ entre aspas. Isso Ã© apenas uma maneira mais fÃ¡cil de lembrar como fazer a conta 
 
 >[!attention] AtenÃ§Ã£o
 > $$ \nabla f \ne \nabla \cdot f $$
 > $$ \nabla f \ne \text{div} \, f$$
-> $$\nabla \cdot f \quad \text{e} \quad \text{div} \, f = \nabla \cdot f $$
+> $$\nabla \cdot f \quad \text{e} \quad \text{div} \, f = \nabla \cdot f $$ 
 > NÃ£o estÃ£o definidos pois "$\cdot$" indica multiplicaÃ§Ã£o de dois vetores, porÃ©m $f$ nÃ£o Ã© um vetor, Ã© um escalar.
->
+> 
 > **Veja**
 > ![[Summary#^tabelaDeAlgebraLinear]]
 
 
-## Conservatividade
 
+## Conservatividade
 Todo "campo gradiente" Ã©, tambÃ©m um "campo conservativo", por isso essas duas maneiras de se referir Ã  um campo sÃ£o usadas independentemente.
 Um "campo gradiente" recebe esse nome pois vem da operaÃ§Ã£o do gradiente
 ![[ps28#^grad]]
@@ -2459,7 +2345,7 @@ $$\nabla \times F = \vec 0 \implies F = \nabla f.$$
 Ou seja, sendo
 ![[ps28#^rot]]
 
-Se
+Se 
 $$\vec F = \nabla f \implies \left(
 \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z},\;
 \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x},\;
@@ -2472,8 +2358,6 @@ $$
 = \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
 $$
 $$\vec F = \nabla f \implies \frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x} \iff \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 0$$
-
-
 ## Contas parecidas
 
 #### Rotacional de um campo vetorial gradiente
@@ -2522,8 +2406,10 @@ $$
 $$
 
 
-## Laplacian operator
 
+
+
+## Laplacian operator
 $$\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$$
 $$= \partial_x^2 + \partial_y^2 + \, \partial_z^2$$
 $$\text{div}(\nabla) =\nabla \cdot \nabla = \nabla^2= \Delta$$
@@ -2552,24 +2438,20 @@ $$
 
 
 
+
 # Premise Set 29
 
-
-## Conjunto de Premissas
+## Conjunto de Premissas %% fold %%
 
 
 ## Resumo
-
 - Calcular $\vec r_u$ e $\vec r_v$.
 - Formar $\vec N = \vec r_u \times \vec r_v$.
 - Escrever a equaÃ§Ã£o do plano usando $\vec N$ e $P_0$.
 
 
 ---
-
-
 ## Como encontrar o vetor tangente Ã  um ponto de uma funÃ§Ã£o
-
 Sendo $\vec r(u,v) = (x,y,z)$, para encontrar o plano tangente Ã  um ponto dessa funÃ§Ã£o podemos encontrar primeiro o vetor normal Ã  ele. O vetor normal $\vec N$ em um ponto $(x,y,z)$ qualquer na imagem da funÃ§Ã£o $\vec r$ Ã© $\vec r_u \times \vec r_v$ quando $\vec r(u,v) = (x,y,z)$.
 
 $$\vec r(u,v) = (r_x(u,v), r_y(u,v), r_z(u,v))$$
@@ -2588,11 +2470,9 @@ $$
     r_{vx} & r_{vy} & r_{vz}
   \end{vmatrix}
   $$
-
+  
 $$\vec N(u,v) = (r_{uy}r_{vz} - r_{uz}r_{vy},\; r_{uz}r_{vx} - r_{ux}r_{vz},\; r_{ux}r_{vy} - r_{uy}r_{vx})$$
 ---
-
-
 ## Encontrar o plano tangente Ã  um vetor
 
 Um plano $\Pi$ que Ã© tangente a um vetor $\vec{N}$ â€” isto Ã©, cujo vetor normal Ã© $\vec{N}$ â€” possui exatamente as mesmas â€œinclinaÃ§Ãµesâ€ de $\vec{N}$. Se
@@ -2642,26 +2522,13 @@ Dessa maneira, $d$ aparece naturalmente como o negativo do produto interno entre
 
 # Premise Set 30
 
-
-## Conjunto de Premissas
-
+## Conjunto de Premissas %% fold %%
 - [[ps29]]
 - [[ps25]]
 
 
-
-
-
-
-
-
-
-
 # Fluxo e densidade de fluxo
-
-
 ## Fluxo
-
 Fluxo Ã© uma quantidade por tempo. Pode ser pensado em litros por minuto, por exemplo, se vocÃª tem uma caixa d'Ã¡gua com volume conhecido e sabe o fluxo/vazÃ£o de Ã¡gua que entra nela, vocÃª consegue calcular quanto tempo ela vai demorar para encher.
 
 $$Q = \frac{\Delta V}{\Delta t} \quad \left[\frac{m^3}{s} ,\, \frac{L}{min}\right]$$
@@ -2669,10 +2536,7 @@ $$\text{VazÃ£o volumÃ©trica (Volume por tempo)}$$
 ---
 $$\dot m = \frac{\Delta m}{\Delta t} \quad \left[kg/s\right]$$
 $$\text{VazÃ£o mÃ¡ssica (Massa por tempo)}$$
-
-
 ## Densidade de fluxo
-
 $$
 j_V = \frac{Q}{A} = \frac{1}{A}\,\frac{\Delta V}{\Delta t} \quad \left[\frac{m^3}{s\cdot m^2} = \frac{m}{s}\right]
 $$
@@ -2686,10 +2550,7 @@ $$\text{Fluxo mÃ¡ssico superficial (massa por Ã¡rea e tempo)}$$
 
 
 ---
-
-
 ## [Surface integrals of vector fields](https://en.wikipedia.org/wiki/Surface_integral#Surface_integrals_of_vector_fields)
-
 - [Flux as a surface integral](https://en.wikipedia.org/wiki/Flux#Flux_as_a_surface_integral)
 
 
@@ -2705,7 +2566,7 @@ Com isso jÃ¡ podemos refletir sobre algumas coisas: se mudarmos a orientaÃ§�
 $$ \Phi_F = \iint_S \vec{F} \cdot \hat{n} \cdot dS$$
 Na imagem acima, o plano foi rotacionado $\theta$ em apenas um eixo, por isso o vetor unitÃ¡rio ao plano, corresponde Ã  simplesmente $\cos \theta$, mas implicitamente. Ou seja, sendo $\phi_i$ o Ã¢ngulo entre o vetor normal e o eixo $i$:
 $$\hat{n} = (\cos\phi_x,\cos\phi_y,\cos\phi_z)$$
-Se a rotaÃ§Ã£o Ã© sÃ³ em torno de $y$, entÃ£o $\phi_x = \theta$, $\phi_y = 90^\circ$, $\phi_z = 90^\circ - \theta$, isto Ã©
+Se a rotaÃ§Ã£o Ã© sÃ³ em torno de $y$, entÃ£o $\phi_x = \theta$, $\phi_y = 90^\circ$, $\phi_z = 90^\circ - \theta$, isto Ã© 
 $$\hat{n} = (\cos \theta, 0, \sin \theta)$$
 e como o fluxo na imagem sÃ³ tem o componente X
 $$\vec{F}(x,y,z) = (B(x,y,z), 0, 0)$$
@@ -2722,13 +2583,19 @@ $$\vec{F} \cdot \hat{n} =B\cos \theta $$
 
 A fÃ³rmula mais simples para calcularmos o fluxo $\Phi_F$ Ã©
 $$\Phi_F =\iint_S \vec{F} \cdot d\vec{S}$$
-Leia: O fluxo **Phi sub F** Ã© a igual Ã  **integral dupla** na superfÃ­cie orientada **S** do campo de vetores **F** em cada elemento infinitesimal da superfÃ­cie orientada $d\vec{S}$
+Leia: O fluxo **Phi sub F** Ã© a igual Ã  **integral dupla** na superfÃ­cie orientada **S** do campo de vetores **F** em cada elemento infinitesimal da superfÃ­cie orientada $d\vec{S}$ 
 
 O que faz essa Ã¡rea infinitesimal ser orientada Ã© um vetor normal unitÃ¡rio, ou seja
 $$d\vec{S} =\hat{n} \cdot dS$$
 EntÃ£o podemos reescrever o fluxo como
 $$ \Phi_F = \iint_S \vec{F} \cdot \hat{n} \cdot dS$$
 Essa conta toda pode ser simplesmente entendida como "O fluxo em um superfÃ­cie Ã© a densidade de fluxo vezes a Ã¡rea dessa superfÃ­cie" (tendo em vista que a densidade de fluxo, orientaÃ§Ã£o da densidade de fluxo em relaÃ§Ã£o Ã  Ã¡rea e a Ã¡rea em si nÃ£o sÃ£o iguais em todos os pontos do espaÃ§o).
+
+
+
+
+
+
 
 
 
@@ -2766,8 +2633,9 @@ Pode se ver que em $\vec{n} \cdot dS$ jÃ¡ estÃ¡ "embutido" tanto a Ã¡rea q
 
 
 
-# Resumo
 
+
+# Resumo
 $$ \Phi_F =\iint_S \vec{F} \cdot d\vec{S} = \iint_S \vec{F} \cdot \hat{n} \cdot dS$$
 $$\Phi_F = \iint_{(u,v)} \vec{F}(\vec{r}(u,v)) \cdot \left(\frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v}\right) du\, dv$$
 $$\vec{n} = \frac{\left(\vec{r}_u \times \vec{r}_v\right)}{\|\vec{r}_u \times \vec{r}_v\|} \quad dS = \|\vec{r}_u \times \vec{r}_v\| \, du\, dv$$
@@ -2787,34 +2655,30 @@ $$\hat{n} \cdot dS = \frac{\left(\frac{\partial \vec{r}}{\partial u} \times \fra
 
 
 
+
 # Premise Set 31
 
 
 
 - [[q119]] has a lot of examples
 
-
 ## [Function]()
-
 - Arrow notation
 
 
-## [Set-builder notation](https://en.wikipedia.org/wiki/Set-builder_notation)
 
+
+## [Set-builder notation](https://en.wikipedia.org/wiki/Set-builder_notation)
 - Pode ser entendido como "Ã‰ o conjunto de todos os valores que estÃ£o nesse conjunto do lado esquerdo que seguem as regras do lado direito"
 - "tal que"
 
 $$T = \{(x,y,z)\in \mathbb{R}^3 : z = 1,\; x^2 + y^2 \le 1\}$$
 
-
 ## [Implicit surface](https://en.wikipedia.org/wiki/Implicit_surface)
-
 - Ã‰ chamada de implÃ­cita por nÃ£o ser possÃ­vel isolar uma variÃ¡vel de apenas um lado da equaÃ§Ã£o
 $$F(x,y,z) = 0$$
 $$x + 2y - 3z + 1 = 0 \quad \text{The plane}$$
 $$x^2 + y^2 + z^2 - 4 = 0 \quad \text{The sphere}$$
-
-
 ## [Parametric equatio](https://en.wikipedia.org/wiki/Parametric_equation)
 
 $$x = a\cos(t)$$
@@ -2835,7 +2699,6 @@ $$x^2 + y^2 = a^2$$
 
 
 # Premise Set 32
-
 
 ## [Matriz identidade](https://en.wikipedia.org/wiki/Identity_matrix) e [Delta de Kronecker](https://en.wikipedia.org/wiki/Kronecker_delta)
 
@@ -2868,13 +2731,6 @@ $$\text{DefiniÃ§Ã£o Delta de Kronecker}$$
 
 
 
-
-
-
-
-
-
-
 # [Rotation Matrix](https://en.wikipedia.org/wiki/Rotation_matrix)
 
 $$R(\alpha) = \begin{pmatrix} \cos(\alpha) & -\sin(\alpha) \\ \sin(\alpha) & \cos(\alpha) \end{pmatrix}$$
@@ -2900,9 +2756,7 @@ $$\begin{pmatrix} v_{2x} \\ v_{2y} \end{pmatrix} = \begin{pmatrix} (0 \cdot v_{1
 
 # Premise Set 34
 
-
 ## FÃ³rmula Mestra para decorar
-
 >$$Valor_{normal} = \text{MÃ©dia} + (...) \cos(2\theta) + (...) \sin(2\theta)$$
 >$$\sigma_{\theta} = \left(\frac{\sigma_{xx} + \sigma_{yy}}{2}\right) + \left(\frac{\sigma_{xx} - \sigma_{yy}}{2}\right) \cos(2\theta) + \tau_{xy} \sin(2\theta)$$
 >Para Achar Cisalhamento $(\tau_{ij})$ ou $(\frac{\gamma_{ij}}{2})$:
@@ -2916,6 +2770,9 @@ $$\begin{pmatrix} v_{2x} \\ v_{2y} \end{pmatrix} = \begin{pmatrix} (0 \cdot v_{1
 ^formulaMestraRotacao
 
 A componente de cisalhamento (seja de tensÃ£o ou deformaÃ§Ã£o) Ã© **igual Ã ** metade da derivada da componente normal em relaÃ§Ã£o ao **Ã¢ngulo de rotaÃ§Ã£o do plano**, Î¸
+
+
+
 
 
 ## Resumos fÃ³rmulas de rotaÃ§Ã£o (tensÃ£o e deformaÃ§Ã£o)
@@ -2952,12 +2809,13 @@ Acima estÃ£o todas as fÃ³rmula e algumas variaÃ§Ãµes delas. PorÃ©m, pa
 
 
 
+
+
 # Premise Set 35
 
 
 
 - https://en.wikipedia.org/wiki/Yield_(engineering)
-
 
 ## [Von Mises](https://en.wikipedia.org/wiki/Von_Mises_yield_criterion)
 
@@ -2972,7 +2830,8 @@ Acima estÃ£o todas as fÃ³rmula e algumas variaÃ§Ãµes delas. PorÃ©m, pa
 
 
 ## [Tresca](https://en.wikipedia.org/wiki/Yield_surface#Tresca_yield_surface)
-
 $$\frac{1}{2}\max(|\sigma_1 - \sigma_2|, |\sigma_2 - \sigma_3|, |\sigma_3 - \sigma_1|) = S_{sy} = \frac{1}{2}S_y$$
 $$S_{sy} \text{ is the yield strength in shear}$$
 $$S_y \text{ is the tensile yield}$$
+
+
