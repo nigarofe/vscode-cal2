@@ -381,15 +381,7 @@ $$
 $$
 
 
-
-
-
-
-
-
-
-
-# Where does $[L]$ come from in a numerical example
+## Where does $[L]$ come from in a numerical example
 
 ![[ps18#$ cos(A pm B)$]]
 
@@ -437,15 +429,7 @@ $$= \begin{bmatrix}
 \end{bmatrix}$$
 
 
-
-
-
-
-
-
-
-
-# Numerical example
+## Numerical example
 
 [[q88]]
 
@@ -493,15 +477,7 @@ $$
 $$
 
 
-
-
-
-
-
-
-
-
-# Questions to be answered
+## Questions to be answered
 
 - Regardless of orientation, what quantities remain constant on a Cauchy stress tensor on an infinitesimal element, common â€œorientationâ€independentâ€ measures.
 
@@ -517,18 +493,9 @@ $$
 # Premise Set 5
 
 
+## Tensor TensÃ£o vs Tensor DeformaÃ§Ã£o
 
-
-
-
-
-
-
-
-# Tensor TensÃ£o vs Tensor DeformaÃ§Ã£o
-
-
-## IntroduÃ§Ã£o
+### IntroduÃ§Ã£o
 
 - A unidade do tensor tensÃ£o Ã© $MPa$, enquanto o tensor deformaÃ§Ã£o Ã© adimensional. Isso porque o tensor deformaÃ§Ã£o mede a deformaÃ§Ã£o que um elemento infinitesimal de um corpo sofre. A mediÃ§Ã£o de deformaÃ§Ã£o pode ser pensada da seguinte forma: vamos supor que se eu aplicar uma forÃ§a $F$ em uma barra que tem $0,5\,m$ de comprimento, ela vai sofrer um alongamento medido de $0,002\,m = 2\,mm$.
 - Ou seja, a deformaÃ§Ã£o da barra Ã©:
@@ -541,8 +508,7 @@ Como $0,004$ Ã© apenas uma razÃ£o, nÃ£o hÃ¡ unidade associada a $\vareps
 - $\textbf{Tensor de deformaÃ§Ã£o}$ Ã© adimensional, pois descreve a variaÃ§Ã£o relativa de comprimento (ou Ã¢ngulo) de um elemento infinitesimal do corpo. Em outras palavras, Ã© a razÃ£o entre o deslocamento e a dimensÃ£o original, sem unidades.
 -
 
-
-## Tensor de tensÃµes
+### Tensor de tensÃµes
 
 $$
 \text{Tensor de tensÃµes } (\sigma)  =
@@ -572,8 +538,7 @@ $$
 
 Em outras palavras, cada subÃ­ndice na notaÃ§Ã£o $\tau_{ij}$ indica primeiro a face sobre a qual a forÃ§a Ã© aplicada (o Ã­ndice $i$, que determina qual face Ã© â€œperpendicularâ€ ao eixo $i$) e depois a direÃ§Ã£o da forÃ§a (o Ã­ndice $j$, que diz em que direÃ§Ã£o, entre $x$, $y$, $z$, a tensÃ£o estÃ¡ atuando).
 
-
-## Tensor de deformaÃ§Ãµes
+### Tensor de deformaÃ§Ãµes
 
 $$
 \text{Tensor de deformaÃ§Ãµes } (\varepsilon) =
@@ -634,8 +599,7 @@ $$
 
 Esta fÃ³rmula reÃºne, em um Ãºnico objeto simÃ©trico, todas as deformaÃ§Ãµes normais e de cisalhamento, servindo de base para relaÃ§Ãµes constitutivas (Lei de Hooke, por exemplo) e para o cÃ¡lculo de deformaÃ§Ãµes a partir de campos de deslocamentos experimentais ou numÃ©ricos.
 
-
-## Alfabeto grego utilizado
+### Alfabeto grego utilizado
 
 
 
@@ -654,15 +618,7 @@ Esta fÃ³rmula reÃºne, em um Ãºnico objeto simÃ©trico, todas as deformaÃ
 - [[ps32]]
 
 
-
-
-
-
-
-
-
-
-# Nome das variÃ¡veis, tensores e matrizes mais utilizados em MecÃ¢nica dos sÃ³lidos
+## Nome das variÃ¡veis, tensores e matrizes mais utilizados em MecÃ¢nica dos sÃ³lidos
 
 | Nome utilizado                           | SÃ­mbolo       | Nome do sÃ­mbolo                             |
 | ---------------------------------------- | ------------- | ------------------------------------------- |
@@ -779,30 +735,21 @@ A matriz $S$ satisfaz $[S] = [C]^{-1},$ de modo que $\{\varepsilon\} = [S]\{\sig
 # Premise Set 7
 
 
-
-
-
-
-
-
-
-
-# EquaÃ§Ãµes Constitutivas da Elasticidade Linear IsotrÃ³pica
+## EquaÃ§Ãµes Constitutivas da Elasticidade Linear IsotrÃ³pica
 
 Este Ã© o nome mais formal e completo. "Constitutiva" porque descreve a constituiÃ§Ã£o (o comportamento intrÃ­nseco) do material. "Elasticidade Linear" porque a relaÃ§Ã£o entre tensÃ£o e deformaÃ§Ã£o Ã© linear (se vocÃª dobrar a tensÃ£o, dobra a deformaÃ§Ã£o) e elÃ¡stica (o material retorna Ã  sua forma original). "IsotrÃ³pica" porque as propriedades do material sÃ£o as mesmas em todas as direÃ§Ãµes.
 
-
-## Resumo Lei de Hooke Generalizada (ou Tridimensional)
+### Resumo Lei de Hooke Generalizada (ou Tridimensional)
 
 - Lei constitutiva que relaciona tensÃ£o com a deformaÃ§Ã£o total e a temperatura
 - Lei constitutiva que relaciona deformaÃ§Ã£o com a tensÃ£o total e a temperatura
 
-### 2 fÃ³rmulas principais
+#### 2 fÃ³rmulas principais
 $$\sigma_{ij} = 2\mu \,\varepsilon_{ij} + \lambda \,(\varepsilon_{kk})\delta_{ij} -(3\lambda + 2\mu)\alpha\Delta T$$
 $$\varepsilon_{ij} = \frac{1}{2\mu} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij} +(\alpha \Delta T)\delta_{ij}$$
 $$\mu= \frac{E}{2(1+\nu)} \quad\lambda = \frac{\nu E}{(1 + \nu)(1 - 2\nu)}$$
 
-### EquaÃ§Ãµes da tensÃ£o
+#### EquaÃ§Ãµes da tensÃ£o
 - Calcula a tensÃ£o gerada por uma deformaÃ§Ã£o conhecida.
 $$\sigma_{ij} = \frac{E}{1 + \nu}\varepsilon_{ij} + \frac{\nu E}{(1 + \nu)(1 - 2\nu)}(\varepsilon_{kk})\delta_{ij} \quad \text{(FÃ³rmula geral)}$$
 $$\sigma_{ij} = 2\mu \,\varepsilon_{ij} + \lambda \,(\varepsilon_{kk})\delta_{ij}$$
@@ -810,7 +757,7 @@ $$\sigma_{ii} = \frac{E}{(1 + \nu)(1 - 2\nu)}\left((1 - \nu)\varepsilon_{ii} + \
 $$\tau_{ij} = \frac{E}{1 + \nu}\varepsilon_{ij} = 2\mu \,\varepsilon_{ij}\quad \text{para } i \neq j \quad \text{(Componentes de cisalhamento)}$$
 ^equacoesDaTensao
 
-### EquaÃ§Ãµes da deformaÃ§Ã£o
+#### EquaÃ§Ãµes da deformaÃ§Ã£o
 - Calcula a deformaÃ§Ã£o resultante de uma tensÃ£o conhecida.
 $$\varepsilon_{ij} = \frac{1 + \nu}{E} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij}  \quad \text{(FÃ³rmula geral)}$$
 $$\varepsilon_{ij} = \frac{1}{2\mu} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij} $$
@@ -818,8 +765,7 @@ $$\varepsilon_{ii} = \frac{1}{E} \Bigl(\sigma_{ii} \;-\; \nu \sum_{j \neq i} \si
 $$\varepsilon_{ij} = \frac{\gamma_{ij}}{2}= \frac{1 + \nu}{E} \, \tau_{ij}  =\frac{1}{2\mu}\, \tau_{ij}\quad \text{(Componentes de cisalhamento)}$$
 ^equacoesDaDeformacao
 
-
-## EquaÃ§Ãµes tensÃ£o plana
+### EquaÃ§Ãµes tensÃ£o plana
 
 Por manipulaÃ§Ã£o algÃ©brica, obtÃ©m-se as duas fÃ³rmulas abaixo para estado de **tensÃ£o plana** $(\sigma_{zz} = 0,\; \sigma_{xz} = \sigma_{yz} = 0)$
 
@@ -828,8 +774,7 @@ $$\sigma_{xx} = \frac{E}{1-\nu^2}(\varepsilon_{xx} + \nu\varepsilon_{yy})$$
 $$\sigma_{yy} = \frac{E}{1 - \nu^2}(\varepsilon_{yy} + \nu\varepsilon_{xx})$$
 $$\tau_{xy} = \frac{E}{2(1 + \nu)}\gamma_{xy}$$^equacoesTensaoPlana
 
-
-## InterpretaÃ§Ã£o das fÃ³rmulas para ajudar a memorizar
+### InterpretaÃ§Ã£o das fÃ³rmulas para ajudar a memorizar
 
 $$
 \varepsilon_{ii} = \frac{1}{E} \Bigl(\sigma_{ii} \;-\; \nu \sum_{j \neq i} \sigma_{jj}\Bigr)  \quad \text{(Componentes normais)}
@@ -845,8 +790,7 @@ $$
 
 A deformaÃ§Ã£o de cisalhamento no plano de um corpo Ã© a metade de sua conformidade ao cisalhamento $(J)$ vezes a tensÃ£o de cisalhamento naquele plano
 
-
-## Forma geral em tensores (componentes arbitrÃ¡rias $i, j$)
+### Forma geral em tensores (componentes arbitrÃ¡rias $i, j$)
 
 $$
 \varepsilon_{ij} = \frac{1 + \nu}{E} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij}
@@ -860,8 +804,7 @@ onde
 - $\sigma_{kk} = \sigma_{11} + \sigma_{22} + \sigma_{33}$ (soma de tensÃµes normais),
 - $\delta_{ij}$ Ã© o delta de Kronecker.
 
-
-## FÃ³rmula para componentes normais (diagonais) da deformaÃ§Ã£o
+### FÃ³rmula para componentes normais (diagonais) da deformaÃ§Ã£o
 
 Para $i = 1, 2, 3$,
 $$
@@ -879,8 +822,7 @@ $$
 \varepsilon_{33} = \frac{1}{E}\bigl(\sigma_{33} \;-\; \nu \,[\sigma_{11} + \sigma_{22}]\bigr)
 $$
 
-
-## FÃ³rmula para componentes de cisalhamento
+### FÃ³rmula para componentes de cisalhamento
 
 Para $i \neq j$, ou seja, $i, j = 1, 2, 3$ com $i \neq j$,
 $$
@@ -899,18 +841,9 @@ $$
 # Premise Set 8
 
 
+## Constantes elÃ¡sticas em materiais isotrÃ³picos
 
-
-
-
-
-
-
-
-# Constantes elÃ¡sticas em materiais isotrÃ³picos
-
-
-## Tabela de Propriedades do Material com base no par $$(E, \nu)$$
+### Tabela de Propriedades do Material com base no par $$(E, \nu)$$
 
 | Achar $\downarrow$ Dado o par $\rightarrow$      | VariÃ¡vel                | $$(E, \nu)$$                         |
 | :----------------------------------------------- | :---------------------- | :----------------------------------- |
@@ -929,8 +862,7 @@ $$
 
 ---
 
-
-## Tabela 2
+### Tabela 2
 
 | Achar $\downarrow$ Dado o par $\rightarrow$      | VariÃ¡vel                | $$(E, G)$$               | $$(E, K)$$                | $$(E, \nu)$$                         | $$(K, \nu)$$                        |
 | :----------------------------------------------- | :---------------------- | :----------------------- | :------------------------ | :----------------------------------- | :---------------------------------- |
@@ -944,8 +876,7 @@ $$
 | RazÃ£o de Poisson                                 | $$\nu$$                 | $$\frac{E}{2G}-1$$       | $$\frac{3K-E}{6K}$$       | $$\nu$$                              | $$\nu$$                             |
 | MÃ³dulo longitudinal /<br>MÃ³dulo P ou M           | $$M$$                   | $$\frac{G(4G-E)}{3G-E}$$ | $$\frac{3K(3K+E)}{9K-E}$$ | $$\frac{E(1-\nu)}{(1+\nu)(1-2\nu)}$$ | $$\frac{3K(1 - \nu)}{1 + \nu}$$     |
 
-
-## Tabela 3
+### Tabela 3
 
 | Achar $\downarrow$ Dado o par $\rightarrow$ | VariÃ¡vel    | $$(K, G)$$                | $$(G, \nu)$$                    | $$(\lambda, G)$$                     |
 | :------------------------------------------ | :---------- | :------------------------ | :------------------------------ | :----------------------------------- |
@@ -970,15 +901,7 @@ $$
 # Premise Set 9
 
 
-
-
-
-
-
-
-
-
-# DefiniÃ§Ã£o coeficiente de Poisson
+## DefiniÃ§Ã£o coeficiente de Poisson
 
 O coeficiente de Poisson pode ser pensado em quanto o corpo vai se empenhar para mudar sua Ã¡rea de seÃ§Ã£o transversal por causa da variaÃ§Ã£o do comprimento.
 
@@ -1000,33 +923,16 @@ E os demais coeficientes de Poisson podem ser deduzidos como o quanto a Ã¡rea 
 # Premise Set 10
 
 
-
-
-
-
-
-
-
-
-# Conjunto de premissas
+## Conjunto de premissas
 
 - [[ps18]]
 
 
+## Ã‚ngulos diretores e cossenos diretores
 
+### Caso 2D
 
-
-
-
-
-
-
-# Ã‚ngulos diretores e cossenos diretores
-
-
-## Caso 2D
-
-### Ã‚ngulos diretores
+#### Ã‚ngulos diretores
 **Premissa**: Os eixos de coordenadas sÃ£o $X$ e $Y$; Existe um vetor $\vec v = (v_x, v_y)$ Ã  um Ã¢ngulo $\theta_x$ de $X$
 
 Em 2D, os â€œÃ¢ngulos diretoresâ€ de um vetor $\vec v$ sÃ£o de fato os Ã¢ngulos que ele forma com cada um dos versos dos eixos do sistema, normalmente:
@@ -1040,7 +946,7 @@ $$
 
 - Como os eixos X e Y sÃ£o perpendiculares, $\theta_y = 90^\circ - \theta_x$.
 
-### Cossenos diretores
+#### Cossenos diretores
 Os cossenos diretores sÃ£o simplesmente os cossenos dos Ã¢ngulos diretores, ou seja:
 $$
 L = (l_x, l_y) = (\cos \theta_x, \cos \theta_y) = (\cos \theta_x, \cos(90^\circ - \theta_x)) = (\cos \theta_x, \sin \theta_x).
@@ -1061,7 +967,7 @@ $$
 $$
 o que confirma que $L$ Ã© de comprimento unitÃ¡rio.
 
-### Exemplo
+#### Exemplo
 Determine os Ã¢ngulos diretores e cossenos diretores do vetor $\vec v = (4, 3)$
 - $\vec v=(v_x,v_y)=(4,3)$
 - $\|\vec v\|=\sqrt{4^2+3^2}=5$
@@ -1072,10 +978,9 @@ Determine os Ã¢ngulos diretores e cossenos diretores do vetor $\vec v = (4, 3)
 - $\Theta=(\theta_x,\theta_y)=(\arccos(4/5),\arccos(3/5))\to(36.87^\circ,\,53.13^\circ)$
 - Note que $\theta_y=90^\circ-\theta_x$
 
+### Caso 3D
 
-## Caso 3D
-
-### Ã‚ngulos diretores
+#### Ã‚ngulos diretores
 
 Premissa: Os eixos de coordenadas sÃ£o $X$, $Y$ e $Z$; existe um vetor
 $$\vec{v} = (v_x,\, v_y,\, v_z)$$ que forma os Ã¢ngulos
@@ -1094,7 +999,7 @@ $$\vec{i} = (1,0,0),
 Assim, o vetor de Ã¢ngulos diretores Ã©
 $$\Theta = (\alpha, \beta, \gamma).$$
 
-### Cossenos diretores
+#### Cossenos diretores
 >Os cossenos diretores sÃ£o
 >$$L = (l_x, l_y, l_z) = (\cos\alpha, \cos\beta, \cos\gamma).$$
 >Partindo da definiÃ§Ã£o de produto escalar, nota-se que
@@ -1108,7 +1013,7 @@ $$\Theta = (\alpha, \beta, \gamma).$$
 >confirmando que $L$ tem comprimento unitÃ¡rio.
 ^cossenosDiretores
 
-### Exemplo
+#### Exemplo
 Determine os Ã¢ngulos e cossenos diretores do vetor
 $$\vec{v} = (4,\,3,\,12).$$
 1. Norma
@@ -1821,15 +1726,7 @@ $$
 # Premise Set 20
 
 
-
-
-
-
-
-
-
-
-# EDO's BÃ¡sicas
+## EDO's BÃ¡sicas
 
 
 
@@ -1849,15 +1746,7 @@ $$
 - [[ps28]]
 
 
-
-
-
-
-
-
-
-
-# Green's Theorem as a special case of Stokes's Theorem
+## Green's Theorem as a special case of Stokes's Theorem
 
 As said in [[ps19]]
 $$
@@ -1904,18 +1793,9 @@ $$\oint_{C}\vec{F}\cdot d\mathbf r =
 # Premise Set 22
 
 
+## IntroduÃ§Ã£o Ã  campos escalares e vetoriais
 
-
-
-
-
-
-
-
-# IntroduÃ§Ã£o Ã  campos escalares e vetoriais
-
-
-## Notation and Preliminaries
+### Notation and Preliminaries
 
 We denote by $\mathbb{R}^n$ the $n$-dimensional real coordinate space:
 
@@ -1929,12 +1809,11 @@ Throughout, we use
 - a lower-case letter $f$ to denote a scalar field, i.e.\ a function that assigns a real number to each point in space;
 - an upper-case letter $F$ (or $\mathbf{F}$, $\vec{F}$) to denote a vector field, i.e.\ a function that assigns a vector to each point in space.
 
-
-## 1D: Scalar vs. Vector Fields
+### 1D: Scalar vs. Vector Fields
 
 On the real line $\mathbb{R}^1$, points are just $x\in\mathbb{R}$.
 
-### Scalar field
+#### Scalar field
 $$f(x):\mathbb{R}\to\mathbb{R}$$
 Interpretation: â€œAt position $x$, the temperature is $f(x)^\circ\mathrm{C}$.â€
 
@@ -1942,18 +1821,17 @@ Examples:
 - Height of a wall as you walk along its base: if $x$ metres from one end, $f(x)$ metres is the wallâ€™s height.
 - Water depth along a channel: $f(x)$ metres deep at position $x$.
 
-### Vector field
+#### Vector field
 
 $$F(x):\mathbb{R}\to\mathbb{R}^1$$
 In 1D every â€œvectorâ€ has only one component, so we rarely distinguish $F(x)$ from $f(x)$.
 Interpretation: â€œAt position $x$, the force on a test particle is $F(x)$ newtons to the right (or left if negative).â€
 
-
-## 2D: Adding a Second Dimension
+### 2D: Adding a Second Dimension
 
 Now points are $(x,y)\in\mathbb{R}^2$.
 
-### Scalar field
+#### Scalar field
 
 $$f(x,y):\mathbb{R}^2\to\mathbb{R}$$
 
@@ -1965,7 +1843,7 @@ Examples:
 
 Visualization: level curves (contours) where $f(x,y)=C$.
 
-### Vector field
+#### Vector field
 
 $$\mathbf{F}(x,y)=\langle P(x,y),\,Q(x,y)\rangle:\mathbb{R}^2\to\mathbb{R}^2$$
 Interpretation: â€œWind velocity at each point on a map.â€
@@ -1976,12 +1854,11 @@ Examples:
 
 Visualization: arrow-plots showing an arrow at each $(x,y)$ with components $\langle P,Q\rangle$.
 
-
-## 3D: The Physical World
+### 3D: The Physical World
 
 Points now live in $\mathbb{R}^3$, $(x,y,z)\in\mathbb{R}^3$.
 
-### Scalar field
+#### Scalar field
 
 $$f(x,y,z):\mathbb{R}^3\to\mathbb{R}$$
 Interpretation: â€œTemperature inside a room.â€
@@ -1990,7 +1867,7 @@ Examples:
 - Density of air at each point $(x,y,z)$.
 - Gravitational potential field: the potential energy per unit mass.
 
-### Vector field
+#### Vector field
 
 $$
 \mathbf{F}(x,y,z)=\langle P(x,y,z),\,Q(x,y,z),\,R(x,y,z)\rangle:\mathbb{R}^3\to\mathbb{R}^3.
@@ -2003,8 +1880,7 @@ Examples:
 - Electric field in space: vector at each $(x,y,z)$ giving magnitude and direction of force on a positive test charge.
 - Magnetic field around a magnet: $\mathbf{F}(x,y,z)$ gives both strength and orientation.
 
-
-## Why It Matters
+### Why It Matters
 
 **Scalar fields** model quantities that have magnitude only (temperature, pressure, density, potential).
 **Vector fields** model quantities that have both magnitude and direction (velocity, force, electromagnetic fields).
@@ -2617,18 +2493,9 @@ Dessa maneira, $d$ aparece naturalmente como o negativo do produto interno entre
 - [[ps25]]
 
 
+## Fluxo e densidade de fluxo
 
-
-
-
-
-
-
-
-# Fluxo e densidade de fluxo
-
-
-## Fluxo
+### Fluxo
 
 Fluxo Ã© uma quantidade por tempo. Pode ser pensado em litros por minuto, por exemplo, se vocÃª tem uma caixa d'Ã¡gua com volume conhecido e sabe o fluxo/vazÃ£o de Ã¡gua que entra nela, vocÃª consegue calcular quanto tempo ela vai demorar para encher.
 
@@ -2638,8 +2505,7 @@ $$\text{VazÃ£o volumÃ©trica (Volume por tempo)}$$
 $$\dot m = \frac{\Delta m}{\Delta t} \quad \left[kg/s\right]$$
 $$\text{VazÃ£o mÃ¡ssica (Massa por tempo)}$$
 
-
-## Densidade de fluxo
+### Densidade de fluxo
 
 $$
 j_V = \frac{Q}{A} = \frac{1}{A}\,\frac{\Delta V}{\Delta t} \quad \left[\frac{m^3}{s\cdot m^2} = \frac{m}{s}\right]
@@ -2655,8 +2521,7 @@ $$\text{Fluxo mÃ¡ssico superficial (massa por Ã¡rea e tempo)}$$
 
 ---
 
-
-## [Surface integrals of vector fields](https://en.wikipedia.org/wiki/Surface_integral#Surface_integrals_of_vector_fields)
+### [Surface integrals of vector fields](https://en.wikipedia.org/wiki/Surface_integral#Surface_integrals_of_vector_fields)
 
 - [Flux as a surface integral](https://en.wikipedia.org/wiki/Flux#Flux_as_a_surface_integral)
 
@@ -2726,15 +2591,7 @@ Como explicado na [[ps25]], o mÃ³dulo do produto vetorial de dois vetores reto
 Pode se ver que em $\vec{n} \cdot dS$ jÃ¡ estÃ¡ "embutido" tanto a Ã¡rea quanto a direÃ§Ã£o, por isso Ã© chamado tambÃ©m de â€œvetor-Â­Ã¡reaâ€ orientado.
 
 
-
-
-
-
-
-
-
-
-# Resumo
+## Resumo
 
 $$ \Phi_F =\iint_S \vec{F} \cdot d\vec{S} = \iint_S \vec{F} \cdot \hat{n} \cdot dS$$
 $$\Phi_F = \iint_{(u,v)} \vec{F}(\vec{r}(u,v)) \cdot \left(\frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v}\right) du\, dv$$
@@ -2835,15 +2692,7 @@ $$\text{DefiniÃ§Ã£o Delta de Kronecker}$$
 # Premise Set 33
 
 
-
-
-
-
-
-
-
-
-# [Rotation Matrix](https://en.wikipedia.org/wiki/Rotation_matrix)
+## [Rotation Matrix](https://en.wikipedia.org/wiki/Rotation_matrix)
 
 $$R(\alpha) = \begin{pmatrix} \cos(\alpha) & -\sin(\alpha) \\ \sin(\alpha) & \cos(\alpha) \end{pmatrix}$$
 $$R(90^{\circ}) = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$$
