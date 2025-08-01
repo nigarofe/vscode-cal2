@@ -10,10 +10,11 @@ Usage:
     python format_md_headings.py
 
 The script will:
-1. Create backups of original files (.backup extension)
-2. Process each .md file in the directory
-3. Apply the formatting rules
-4. Save the formatted content back to the original files
+1. Process each .md file in the directory
+2. Apply the formatting rules
+3. Save the formatted content back to the original files
+
+Note: Make sure your files are committed to git before running this script.
 """
 
 import os
@@ -21,15 +22,7 @@ import re
 import glob
 from typing import List, Tuple
 
-def backup_file(filepath: str) -> str:
-    """Create a backup of the original file"""
-    backup_path = filepath + '.backup'
-    with open(filepath, 'r', encoding='utf-8') as original:
-        content = original.read()
-    with open(backup_path, 'w', encoding='utf-8') as backup:
-        backup.write(content)
-    print(f"Backup created: {backup_path}")
-    return backup_path
+
 
 def format_markdown_headings(content: str) -> str:
     """
@@ -90,9 +83,6 @@ def process_markdown_file(filepath: str) -> bool:
             print(f"No changes needed for: {filepath}")
             return False
         
-        # Create backup before modifying
-        backup_file(filepath)
-        
         # Write the formatted content back
         with open(filepath, 'w', encoding='utf-8') as file:
             file.write(formatted_content)
@@ -134,10 +124,6 @@ def main():
     print(f"Files processed: {len(md_files)}")
     print(f"Files modified: {modified_count}")
     print(f"Files unchanged: {len(md_files) - modified_count}")
-    
-    if modified_count > 0:
-        print("\nBackup files (.backup) have been created for all modified files.")
-        print("You can restore original files by renaming the .backup files if needed.")
 
 if __name__ == "__main__":
     main()
