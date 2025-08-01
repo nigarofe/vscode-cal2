@@ -191,6 +191,7 @@ Essa simetria reduz de 9 para 6 o nÃºmero de componentes independentes do tens
 
 
 ## Calculating  $\sigma'$
+
 ### Definitions
 $$\sigma' =
 \begin{bmatrix}
@@ -231,7 +232,6 @@ $$L \sigma =
 \end{bmatrix}
 $$
 
-
 ### Calculating $L \sigma$
 
 To calculate $\sigma'$, we can first calculate only the products of the two first matrixes
@@ -264,7 +264,6 @@ $$
 (L\sigma)_{zz} = L_{zx} \sigma_{xz} + L_{zy} \sigma_{yz} + L_{zz} \sigma_{zz}.
 $$
 
-
 ### Calculating $(L \sigma) L^T$
 
 $$
@@ -295,7 +294,6 @@ $$
 \sigma'_{zz} = (L\sigma)_{zx} L_{zx} + (L\sigma)_{zy} L_{zy} + (L\sigma)_{zz} L_{zz}.
 $$
 
-
 ### Example with rotation about the Y axis by $\thetaÂ°$
 
 $$
@@ -325,8 +323,6 @@ s & 0 & c
 \end{bmatrix}
 $$
 
-
-
 ### Calculate $L \sigma$
 $$
 \begin{bmatrix}
@@ -355,6 +351,7 @@ c\,\sigma_{xx} + 0\,\tau_{yx} + s\,\tau_{zx}
 \end{bmatrix}.
 $$
 $$c = \cos(\theta) \quad \text{and} \quad s = \sin(\theta)$$
+
 ### Calculate $\sigma' = (L \sigma) L^T$
 
 $$
@@ -799,6 +796,7 @@ Este Ã© o nome mais formal e completo. "Constitutiva" porque descreve a consti
 
 - Lei constitutiva que relaciona tensÃ£o com a deformaÃ§Ã£o total e a temperatura
 - Lei constitutiva que relaciona deformaÃ§Ã£o com a tensÃ£o total e a temperatura
+
 ### 2 fÃ³rmulas principais
 $$\sigma_{ij} = 2\mu \,\varepsilon_{ij} + \lambda \,(\varepsilon_{kk})\delta_{ij} -(3\lambda + 2\mu)\alpha\Delta T$$
 $$\varepsilon_{ij} = \frac{1}{2\mu} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij} +(\alpha \Delta T)\delta_{ij}$$
@@ -1063,7 +1061,6 @@ $$
 $$
 o que confirma que $L$ Ã© de comprimento unitÃ¡rio.
 
-
 ### Exemplo
 Determine os Ã¢ngulos diretores e cossenos diretores do vetor $\vec v = (4, 3)$
 - $\vec v=(v_x,v_y)=(4,3)$
@@ -1076,9 +1073,8 @@ Determine os Ã¢ngulos diretores e cossenos diretores do vetor $\vec v = (4, 3)
 - Note que $\theta_y=90^\circ-\theta_x$
 
 
-
-
 ## Caso 3D
+
 ### Ã‚ngulos diretores
 
 Premissa: Os eixos de coordenadas sÃ£o $X$, $Y$ e $Z$; existe um vetor
@@ -1097,6 +1093,7 @@ $$\vec{i} = (1,0,0),
 \vec{k} = (0,0,1).$$
 Assim, o vetor de Ã¢ngulos diretores Ã©
 $$\Theta = (\alpha, \beta, \gamma).$$
+
 ### Cossenos diretores
 >Os cossenos diretores sÃ£o
 >$$L = (l_x, l_y, l_z) = (\cos\alpha, \cos\beta, \cos\gamma).$$
@@ -1110,7 +1107,6 @@ $$\Theta = (\alpha, \beta, \gamma).$$
 >$$\cos^{2}\alpha + \cos^{2}\beta + \cos^{2}\gamma = 1$$
 >confirmando que $L$ tem comprimento unitÃ¡rio.
 ^cossenosDiretores
-
 
 ### Exemplo
 Determine os Ã¢ngulos e cossenos diretores do vetor
@@ -1172,6 +1168,7 @@ $$  Esses valores demonstram como, em 3 D, o vetor unitÃ¡rio $\hat{v}$ coincid
 
 
 ## 1 Elemento de estresse (ou tensÃ£o)
+
 ### 1.1 Conceito
 O elemento de estresse Ã© um **recorte imaginÃ¡rio** de um ponto de interesse do corpo para avaliarmos as tensÃµes normais $(\sigma)$ e de cisalhamento $(\tau)$. Matematicamente, as tensÃµes sÃ£o obtidas como o limite da razÃ£o entre a forÃ§a $F$ aplicada e a Ã¡rea $A$ do recorte quando esta tende a zero:
 $$
@@ -1180,13 +1177,10 @@ $$
 
 **O que nÃ£o Ã©:** NÃ£o se trata de um grÃ£o ou partÃ­cula material do corpo sendo estudado. EntÃ£o, quando falamos sobre rotaÃ§Ã£o do elemento de estresse, nÃ£o hÃ¡ rotaÃ§Ã£o do corpo, mas sim da nossa anÃ¡lise.
 
-
 ### 1.2 OrientaÃ§Ã£o dos planos principais
 Nem sempre o elemento estÃ¡ inicialmente orientado de forma a expor as magnitudes extremas de tensÃ£o, especialmente relevantes para critÃ©rios de falha. Portanto precisamos saber quantos graus devemos rotacionar nosso recorte imaginÃ¡rio para que ele revele esses dois valores. Ao girar o elemento em torno de seu ponto, podemos alinhar nossa anÃ¡lise com:
 - **Planos principais** â€“ revelam as **tensÃµes normais mÃ¡ximas e mÃ­nimas** $(\sigma_{\max},\sigma_{\min})$.
 - **Planos de cisalhamento mÃ¡ximo** â€“ revelam a **tensÃ£o de cisalhamento mÃ¡xima** $(\tau_{\max})$.
-
-
 
 ### 1.3 DefiniÃ§Ãµes e cÃ¡lculos
 $$\phi_1 = \text{Ã‚ngulo de rotaÃ§Ã£o para atingir tensÃ£o normal mÃ¡xima } (\sigma_{1})$$
@@ -1267,10 +1261,6 @@ $$
 - Um mesmo elemento revela $\tau_{\max}$ apenas quando girado de $\phi_S$ em relaÃ§Ã£o Ã  orientaÃ§Ã£o original.
 - Ao contrÃ¡rio das tensÃµes normais principais, o elemento de estresse, quando orientado de forma a revelar $\tau_\text{max}$, apresenta tensÃµes normais nÃ£o sÃ£o nulas.  $\sigma_{\text{med}}$ Ã© o valor das tensÃµes normais atuando nas faces.
 
-
-
-
-
 ### 1.3.1 TensÃµes principais, [autovalores e autovetores](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors)
 - As **tensÃµes principais** sÃ£o os **autovalores** do tensor de tensÃµes, e as **direÃ§Ãµes principais** sÃ£o seus **autovetores**.
 - Existe uma orientaÃ§Ã£o especial do elemento de estresse na qual todas as tensÃµes de cisalhamento $\tau_{ij}$ sÃ£o zero e todas as tensÃµes normais sÃ£o extremas (mÃ¡ximo, mÃ­nimo e um valor intermediÃ¡rio)). Estas sÃ£o chamadas de tensÃµes principais, denotadas por $\sigma_{1}, \sigma_{2} \text{ e } \sigma_{3}$ ou $\lambda_{1}, \lambda_{2} \, { e } \, \lambda_{3}$ **(autovalor)**
@@ -1288,8 +1278,6 @@ $$\theta_{p_{1}} = \arctan \left( \frac{v_{1y}}{v_{1x}} \right) \quad \hat{n}_i 
 
 NuÃ¢ncia da definiÃ§Ã£o: existe sim uma orientaÃ§Ã£o na qual uma face tem tensÃ£o normal igual a $\sigma_{1}$ e as outras nÃ£o tÃªm $\sigma_{2} \text{ e } \sigma_{3}$. Esse estado **nÃ£o** estÃ¡ orientado segundo as direÃ§Ãµes principais.
 
-
-
 #### $\hat{n}_{1}$ vai indicar o vetor normal que a face do elemento $yz$ vai ter apÃ³s a rotaÃ§Ã£o para alcanÃ§ar mÃ¡xima deformaÃ§Ã£o normal?
 O vetor $\hat{n}_1$, que Ã© o autovetor associado ao autovalor $\varepsilon_1$, representa exatamente a direÃ§Ã£o normal a um plano que, apÃ³s a deformaÃ§Ã£o, experimenta a mÃ¡xima deformaÃ§Ã£o normal $\varepsilon_1$
 
@@ -1297,15 +1285,6 @@ Para detalhar um pouco mais:
 - Estado Inicial: Imagine um cubo infinitesimal de material perfeitamente alinhado com os eixos x, y, z. A face yz deste cubo tem um vetor normal apontando na direÃ§Ã£o do eixo x, ou seja, $\hat{i} = [1, 0, 0]^T$.
 - Estado Deformado e RotaÃ§Ã£o: Quando o tensor de deformaÃ§Ã£o $[\varepsilon]$ Ã© aplicado, este cubo nÃ£o apenas se deforma, mas tambÃ©m pode ser visto como girando no espaÃ§o. As direÃ§Ãµes principais $(\hat{n}_1, \hat{n}_2, \hat{n}_3)$ definem a orientaÃ§Ã£o de um novo sistema de eixos $(x', y', z')$ no qual a deformaÃ§Ã£o Ã© "pura", ou seja, sem componentes de cisalhamento.
 - $\hat{n}_1$ Ã© o vetor unitÃ¡rio que define a direÃ§Ã£o do novo eixo $x'$. Um plano perpendicular a este vetor (ou seja, o novo plano $y'z'$) Ã© o plano que sofre a deformaÃ§Ã£o normal principal $\varepsilon_1$.
-
-
-
-
-
-
-
-
-
 
 #### 1.3.1.1 Vetor de tensÃµes
 A primeira linha (ou coluna, por simetria) do tensor de tensÃµes Ã©, por definiÃ§Ã£o, o vetor de tensÃ£o que atua na face de um cubo infinitesimal cuja normal aponta na direÃ§Ã£o correspondente ao nÃºmero da linha (linha 1 = X, linha 2 = Y, linha 3 = Z)
@@ -1379,8 +1358,6 @@ $$
 ### Eixo vertical para baixo
 O cÃ­rculo de Mohr Ã© convencionalmente desenhado com o sentido positiva do eixo vertical para baixo. A principal vantagem Ã© a correspondÃªncia direta do sentido de rotaÃ§Ã£o entre o elemento e o cÃ­rculo. Uma rotaÃ§Ã£o anti-horÃ¡ria no elemento Ã© representada por uma rotaÃ§Ã£o anti-horÃ¡ria no cÃ­rculo.
 ![[ps11.png]]
-
-
 
 ### CÃ­rculo de Mohr 3D e soluÃ§Ã£o analÃ­tica
 Para desenhar o CÃ­rculo de Mohr para um estado 3D de deformaÃ§Ã£o (ou tensÃ£o), vocÃª geralmente precisa primeiro encontrar as deformaÃ§Ãµes principais (Îµâ‚, Îµâ‚‚, Îµâ‚ƒ) atravÃ©s do mÃ©todo analÃ­tico (resolvendo a equaÃ§Ã£o de autovalores).
@@ -1502,6 +1479,7 @@ y(x) = y_h(x) + y_p(x),
 $$
 
 ### MÃ©todo dos coeficientes indeterminados
+
 ### PolinÃ´mio
 Se $f$ Ã© um polinÃ´mio de grau $m$, admitimos
 $$
@@ -1639,14 +1617,12 @@ $$
 
 ## Tabela 1: Regras de DerivaÃ§Ã£o e IntegraÃ§Ã£o por FunÃ§Ã£o
 
-
 ### Regras Gerais
 
 | Regra / FunÃ§Ã£o     | Derivada $$\frac{d}{dx}$$                                    | Integral Indefinida $$\int \dots dx$$                                    |
 | :----------------- | :----------------------------------------------------------- | :----------------------------------------------------------------------- |
 | MÃºltiplo Constante | $$\frac{d}{dx}[k \cdot f(x)] = k \cdot f'(x)$$                | $$\int k \cdot f(x) \, dx = k \int f(x) \, dx$$                          |
 | Soma / SubtraÃ§Ã£o   | $$\frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$$             | $$\int [f(x) \pm g(x)] \, dx = \int f(x)\,dx \pm \int g(x)\,dx$$         |
-
 
 ### PotÃªncias e PolinÃ´mios
 
@@ -1656,7 +1632,6 @@ $$
 | Regra da PotÃªncia        | $$\frac{d}{dx}(x^n) = n x^{n-1}$$               | $$\int x^n \, dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1)$$ |
 | Regra da PotÃªncia (n=-1) | $$\frac{d}{dx}(\ln\|x\|) = \frac{1}{x}$$         | $$\int \frac{1}{x} \, dx = \ln\|x\| + C$$                     |
 
-
 ### Exponenciais e LogarÃ­tmicas
 
 | FunÃ§Ã£o               | Derivada $$\frac{d}{dx}$$                             | Integral Indefinida $$\int \dots dx$$                                        |
@@ -1664,7 +1639,6 @@ $$
 | Exponencial Natural  | $$\frac{d}{dx}(e^x) = e^x$$                           | $$\int e^x \, dx = e^x + C$$                                                 |
 | Exponencial (base a) | $$\frac{d}{dx}(a^x) = a^x \ln(a)$$                    | $$\int a^x \, dx = \frac{a^x}{\ln(a)} + C$$                                  |
 | Logaritmo Natural    | $$\frac{d}{dx}(\ln x) = \frac{1}{x}, \quad (x>0)$$     | $$\int \ln(x) \, dx = x\ln(x) - x + C$$ (via IntegraÃ§Ã£o por Partes)          |
-
 
 ### FunÃ§Ãµes TrigonomÃ©tricas
 
@@ -1676,7 +1650,6 @@ $$
 | Cotangente | $$\frac{d}{dx}(\cot x) = -\csc^2 x$$                        | $$\int \cot x \, dx = \ln\|\sin x\| + C$$                                    |
 | Secante    | $$\frac{d}{dx}(\sec x) = \sec x \tan x$$                    | $$\int \sec x \, dx = \ln\|\sec x + \tan x\| + C$$                           |
 | Cosecante  | $$\frac{d}{dx}(\csc x) = -\csc x \cot x$$                   | $$\int \csc x \, dx = \ln\|\csc x - \cot x\| + C$$                           |
-
 
 ### FunÃ§Ãµes TrigonomÃ©tricas Inversas
 
@@ -1772,6 +1745,7 @@ $$
 \left(\frac{\partial\vec r}{\partial u}\times\frac{\partial\vec r}{\partial v}\right)\,du\,dv \quad = \quad(-f_x,\,-f_y,\,1)\,dx\,dy
 $$
 - This formula is obtained through the general parametric surface, as explained below, when $u=x$ and $v=y$
+
 ### General parametric surface $\vec r(u,v)$
 $$
 \hat{n}\,dS
@@ -1796,6 +1770,7 @@ $$
   - \dfrac{\partial y}{\partial u}\,\dfrac{\partial x}{\partial v}
 \Bigr\rangle
 $$
+
 #### Example with polar coordinates 
 $$
 \hat{n}\,dS
@@ -2123,11 +2098,6 @@ $$
 ![[ps24-1.svg|300]]
 ![[ps24-2.svg|400]]
 
-
-
-
-
-
 #### CÃ­rculo de Mohr ([[ps11]])
 Isso Ã© especialmente Ãºtil no cÃ­rculo de Mohr para deformaÃ§Ãµes, cada ponto no diagrama representa um estado bidimensional de deformaÃ§Ã£o $(\varepsilon_x, \gamma_{xy})$ obtido por combinaÃ§Ã£o de componentes normais e de cisalhamento. Ao girarmos o sistema de eixos reais em um Ã¢ngulo $\theta$, esse mesmo ponto â€œvarreâ€ o cÃ­rculo de Mohr por um Ã¢ngulo $2\theta$. Em termos de produto escalar, se
 
@@ -2149,14 +2119,18 @@ Graficamente, esse produto projeta o ponto original sobre a direÃ§Ã£o do nov
 
 
 
+
 # Premise Set 25
 
+
 ## Conjunto de Premissas
+
 
 ## DefiniÃ§Ã£o dos vetores
 $$
 \mathbf{a} = \vec a = (a_1, a_2, \ldots, a_n), \quad \mathbf{b} = \vec b = (b_1, b_2, \ldots, b_n)
 $$
+
 
 ## [Cross product / Vector product (Produto vetorial)](https://en.wikipedia.org/wiki/Cross_product)
 
@@ -2242,10 +2216,11 @@ AplicaÃ§Ãµes em MecÃ¢nica
 
 
 
+
 # Premise Set 26
 
-## Conjunto de Premissas
 
+## Conjunto de Premissas
 
 
 ## [Determinante](https://en.wikipedia.org/wiki/Determinant)
@@ -2283,12 +2258,6 @@ g & h & i
 \end{vmatrix}
 = aei + bfg + cdh - ceg - bdi - afh.
 $$
-
-
-
-
-
-
 
 ### [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus)
 ![[ps26-1.svg|300]]
@@ -2378,8 +2347,6 @@ $$ =\frac{\partial}{\partial x} \,\vec i + \frac{\partial}{\partial y} \,\vec j+
 $$ = \mathbf{i} \, \partial_x + \mathbf{j} \, \partial_y + \mathbf{k} \, \partial_z $$
 Obs.: Nabla nÃ£o Ã© um vetor no sentido convencional, Ã© um operador, por isso existem algumas diferenÃ§as quando ele Ã© usado nas aplicaÃ§Ãµes abaixo.
 
-
-
 ### Nabla aplicado de diferentes formas
 
 | OperaÃ§Ã£o                                                       | ExpressÃ£o                                        | Entrada | SaÃ­da   |
@@ -2387,7 +2354,6 @@ Obs.: Nabla nÃ£o Ã© um vetor no sentido convencional, Ã© um operador, por 
 | [Gradiente](https://en.wikipedia.org/wiki/Gradient)            | $$ \mathrm{grad}\,f = \nabla f$$                 | Escalar | Vetor   |
 | [Rotacional](https://en.wikipedia.org/wiki/Curl_(mathematics)) | $$ \mathrm{rot}\,\vec F = \nabla \times \vec F$$ | Vetor   | Vetor   |
 | [Divergente](https://en.wikipedia.org/wiki/Divergence)         | $$ \mathrm{div}\,\vec F = \nabla \cdot \vec F$$  | Vetor   | Escalar |
-
 
 #### Operador gradiente
 >$$\text{grad} \, f =\nabla f= \left(\frac{\partial f}{\partial x}, \, \frac{\partial f}{\partial y}, \,\frac{\partial f}{\partial z} \right)$$
@@ -2397,6 +2363,7 @@ Obs.: Nabla nÃ£o Ã© um vetor no sentido convencional, Ã© um operador, por 
 
 
 ---
+
 #### Operador divergente
 >$$\vec{F}(x,y,z)=\langle P(x,y,z),\;Q(x,y,z),\;R(x,y,z)\rangle$$
 >$$\text{div} \, \vec{F} = \nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
@@ -2406,6 +2373,7 @@ Obs.: Nabla nÃ£o Ã© um vetor no sentido convencional, Ã© um operador, por 
 
 
 ---
+
 #### Operador rotacional
 
 >$$\vec{F}(x,y,z)=\langle P(x,y,z),\;Q(x,y,z),\;R(x,y,z)\rangle$$
@@ -2446,8 +2414,8 @@ Um "campo gradiente" recebe esse nome pois vem da operaÃ§Ã£o do gradiente
 
 Um campo conservativo possui algumas propriedades interessantes
 
-
 ### Testes de conservatividade
+
 #### Resumo
 $$\text{Sendo } \vec F \in \mathbb R^2 \implies \vec F = \nabla f\iff \left(\operatorname{rot} \vec F \right)_z = \frac{\partial Q}{\partial x} -\frac{\partial P}{\partial y} = 0$$
 $$\text{Sendo } \vec F \in \mathbb R^3 \implies \vec F = \nabla f\iff   \operatorname{rot} \vec F = (0,0,0)$$

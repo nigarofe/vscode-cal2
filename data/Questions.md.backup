@@ -4201,7 +4201,6 @@ $$\varepsilon_{zz} = - \frac{0,3}{1-0,3}(2 \times 10^{-6} - 9 \times 10^{-6}) = 
 $$[\varepsilon] = \begin{pmatrix} 2 & 9,5 & 0 \\ 9,5 & -9 & 0 \\ 0 & 0 & 3 \end{pmatrix} \times 10^{-6}$$
 
 ### Letra d
-
 #### Método 1 - Sem usar o resultado da letra c
 [[ps7]]
 ![[ps7#^equacoesTensaoPlana]]
@@ -4386,7 +4385,6 @@ $$\varepsilon_{33} = \frac{1+0,3}{2 \cdot 10^5}(-200) - \frac{0,3}{2 \cdot 10^5}
 $$\varepsilon_{12} = \frac{1+0,3}{2 \cdot 10^5}(25) = \frac{1,3 \cdot 25}{2 \cdot 10^5} = \frac{32,5}{2 \cdot 10^5} = 1,625 \times 10^{-4}$$
 
 $$[\varepsilon] = \begin{bmatrix} 4,0 & 1,625 & 0 \\ 1,625 & 7,25 & 0 \\ 0 & 0 & -12,25 \end{bmatrix} \cdot 10^{-4}$$
-
 ### Letra b
 $$\varepsilon_{\text{térmica}} = \alpha \Delta T = (10^{-6})(30) = 3 \times 10^{-5} = 0,3 \times 10^{-4}$$
 $$[\varepsilon'] = [\varepsilon]_{\text{mecânica}} + [\varepsilon]_{\text{térmica}}$$
@@ -4949,7 +4947,6 @@ $$\oint_{C}\vec F\cdot d\vec r
 =\iint_{D}(0,0,1-2y)\cdot(0,1,1)\,dA
 =\iint_{D}(1-2y)\,dA$$
 ---
-
 #### Método 1.1 Coordenadas polares
 $$x=r \cos \theta, \;y=r\sin\theta,\;D:\;0\le r\le1,\;0\le\theta\le2\pi$$
 $$\iint_{D}(1-2y)\,dA
@@ -4958,7 +4955,6 @@ $$\int_{0}^{2\pi}\int_{0}^{1}(1-2r\sin\theta)\,r\,dr\,d\theta
 =\int_{0}^{2\pi}\Bigl(\tfrac12-\tfrac23\sin\theta\Bigr)d\theta
 =\pi$$
 ---
-
 #### Método 1.2 Coordenadas cartesianas
 $$\iint_D 1\,dA = \pi$$
 
@@ -5145,7 +5141,6 @@ b) Variação $\Delta b$ da dimensão $b$ para a situação em que $a$ não seja
 
 Expresse os resultados em função de $\Delta T, \sigma_{xx}, E, \nu, a, b$ e $\alpha$
 ![](images/q123.png)
-
 ### Descrição da figura  
 A figura apresenta um diagrama de um corpo retangular, possivelmente uma placa ou um bloco, em duas dimensões.
 
