@@ -39,6 +39,15 @@ this is the q1 a
 
 
 ## Metadata
+`Discipline` Electromagnetism
+`Description` This is a question description
+`Source` An old dusty book
+`Tags` Math; Science; Physics
+
+
+### Attempts
+1. 2024-11-07T03:00:00Z 0
+2. 2024-11-07T03:00:00Z 0
 
 
 
