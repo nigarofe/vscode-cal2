@@ -34,25 +34,7 @@ export function checkPremisesFile(document: vscode.TextDocument): vscode.Diagnos
 				diagnostics.push(diagnostic);
 			}
 			
-			// Check if there are exactly 10 blank lines above this heading
-			let blankLineCount = 0;
-			for (let i = index - 1; i >= 0; i--) {
-				if (lines[i].trim() === '') {
-					blankLineCount++;
-				} else {
-					break;
-				}
-			}
-			
-			if (blankLineCount !== 10) {
-				const diagnostic = new vscode.Diagnostic(
-					new vscode.Range(index, 0, index, line.length),
-					`First-level heading in Premises.md must have exactly 10 blank lines above it. Found: ${blankLineCount} blank lines`,
-					vscode.DiagnosticSeverity.Error
-				);
-				
-				diagnostics.push(diagnostic);
-			}
+
 			
 			// Add to tracking array for potential future use
 			firstLevelHeadings.push({
@@ -71,25 +53,7 @@ export function checkPremisesFile(document: vscode.TextDocument): vscode.Diagnos
 				firstLevelHeadings[currentFirstLevelIndex].secondLevelHeadings.push(headingText);
 			}
 			
-			// Check if there are exactly 2 blank lines above this heading
-			let blankLineCount = 0;
-			for (let i = index - 1; i >= 0; i--) {
-				if (lines[i].trim() === '') {
-					blankLineCount++;
-				} else {
-					break;
-				}
-			}
-			
-			if (blankLineCount !== 2) {
-				const diagnostic = new vscode.Diagnostic(
-					new vscode.Range(index, 0, index, line.length),
-					`Second-level heading in Premises.md must have exactly 2 blank lines above it. Found: ${blankLineCount} blank lines`,
-					vscode.DiagnosticSeverity.Error
-				);
-				
-				diagnostics.push(diagnostic);
-			}
+
 		}
 	});
 
