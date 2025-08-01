@@ -35,3 +35,7 @@ export function isPremisesFile(fileName: string): boolean {
 export function isRelevantFile(fileName: string): boolean {
 	return isRequirementsFile(fileName) || isPremisesFileForValidation(fileName) || isQuestionsFile(fileName);
 }
+
+export function needsSpacingFormatting(fileName: string): boolean {
+	return isQuestionsFile(fileName) || isPremisesFile(fileName);
+}

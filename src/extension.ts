@@ -1,11 +1,12 @@
 import * as vscode from 'vscode';
 import { ExtensionState } from './types';
-import { isRelevantFile, isQuestionsFile, isPremisesFile, debounce } from './utils';
+import { isRelevantFile, isQuestionsFile, isPremisesFile, debounce, needsSpacingFormatting } from './utils';
 import { snippetCache } from './snippets/snippetCache';
 import { validateDocument } from './diagnostics/documentValidator';
 import { questionWebview } from './webview/questionWebview';
 import { premiseWebview } from './webview/premiseWebview';
 import { markdownRenderer } from './webview/markdownRenderer';
+import { spacingFormatter } from './formatting/spacingFormatter';
 
 let state: ExtensionState;
 
@@ -98,6 +99,11 @@ export async function activate(context: vscode.ExtensionContext) {
 				snippetCache.updateFromDocument(event.document);
 				validateDocument(event.document, state.diagnosticCollection);
 			}
+			
+			// Schedule automatic spacing formatting for Questions.md and Premises.md
+			if (needsSpacingFormatting(event.document.fileName)) {
+				spacingFormatter.scheduleFormatting(event.document);
+			}
 		} else {
 			validateDocument(event.document, state.diagnosticCollection);
 		}
@@ -123,6 +129,12 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	// Listen for active editor changes to cancel pending formatting
+	const onDidChangeActiveEditorDisposable = vscode.window.onDidChangeActiveTextEditor(editor => {
+		// Cancel any pending formatting when switching between editors
+		spacingFormatter.cancelFormatting();
+	});
+
 	// Listen for document close events to clear diagnostics
 	const onDidCloseDisposable = vscode.workspace.onDidCloseTextDocument(document => {
 		if (isRelevantFile(document.fileName)) {
@@ -135,12 +147,26 @@ export async function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from VSCode Cal2!');
 	});
 
+	// Add a manual formatting command for testing
+	let formatCommand = vscode.commands.registerCommand('vscode-cal2.formatSpacing', async () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor && needsSpacingFormatting(editor.document.fileName)) {
+			console.log('Manual formatting triggered');
+			spacingFormatter.scheduleFormatting(editor.document, 100); // Short delay for manual trigger
+			vscode.window.showInformationMessage('Spacing formatting triggered!');
+		} else {
+			vscode.window.showWarningMessage('Please open a Questions.md or Premises.md file to format spacing.');
+		}
+	});
+
 	context.subscriptions.push(
 		disposable,
+		formatCommand,
 		onDidOpenDisposable,
 		onDidChangeDisposable,
 		onDidCloseDisposable,
-		onDidChangeSelectionDisposable
+		onDidChangeSelectionDisposable,
+		onDidChangeActiveEditorDisposable
 	);
 }
 
@@ -150,6 +176,7 @@ export function deactivate() {
 	}
 	questionWebview.dispose();
 	premiseWebview.dispose();
+	spacingFormatter.dispose();
 	if (state?.debounceTimer) {
 		clearTimeout(state.debounceTimer);
 	}

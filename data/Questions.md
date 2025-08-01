@@ -29,13 +29,12 @@ $$\oint$$
 
 
 ## Step-by-step
-
 <ref id="teste"/>
 <ref id="newtons-law" />a
 
 
 ## Answer
-
+a
 this is the q1 a
 
 
@@ -2344,6 +2343,7 @@ $$
 
 ---
 
+
 ### A. Direct line‐integral (work)
 $$
 \begin{aligned}
@@ -2357,6 +2357,7 @@ $$
 $$
 
 ---
+
 
 ### B. Via the Fundamental Theorem for Conservative Fields
 $$
@@ -3866,6 +3867,7 @@ $$S = \vec r(u,v) = (u^2, v^2, u + 2v)$$
 
 ## Step-by-step
 
+
 ### a) S é lisa em todo ponto?
 
 - Para que a superfície seja lisa em um ponto específico, os vetores tangentes àquele ponto devem não podem ser paralelos, em outras palavras, obrigatoriamente são linearmente independentes (LI).
@@ -3877,6 +3879,7 @@ $$\vec r_u(0,0) = (0,\,0,\,1) \quad \text{e} \quad \vec r_v(0,0) = (0,\,0,\,2)$$
 - Um vetor $\vec A$ é paralelo à um outro vetor $\vec B$ quando a multiplicação de $\vec A$ por um escalar $\alpha$ qualquer é igual a $\vec B$. Como
 $$2\,\vec r_u(0,0) = r_v(0,0) \implies \vec r_u \, || \, \vec r_v$$
 - Isso mostra que S não é lisa no ponto $(0,0,0) = \vec r(0,0)$ pois $\vec r_u \, || \, \vec r_v$  quando $(u,v) = (0,0)$
+
 
 ### b) Determine o plano tangente à S no ponto $P = (1,1,3)$
 Para encontrar o plano tangente à um ponto podemos encontrar primeiro o vetor normal à ele. O vetor normal $\vec N$ em um ponto $(x,y,z)$ qualquer na imagem da função $\vec r$ é $\vec r_u \times \vec r_v$ quando $\vec r(u,v) = (x,y,z)$
@@ -4019,6 +4022,7 @@ Qual a área da superfície definida por S:  $z = x^2 + y^2$ com $z \le 1$
 
 ## Step-by-step
 
+
 ### Abordagem paramétrica (ou “integral vetorial de superfície”)
 $$\vec r(\theta,h)=(r_x(\theta,h),r_y(\theta,h),r_z(\theta,h))$$
 $$\vec r(\theta,h) =\left(h\cos\theta,h\sin\theta,(h\cos\theta)^2+(h\sin\theta)^2\right)$$
@@ -4052,6 +4056,7 @@ $$\int_0^{2\pi}\int_0^1 h\sqrt{4h^2+1}\,dh
 
 $$\frac{\pi}{4}\Bigl[\frac{u^{3/2}}{\tfrac{3}{2}}\Bigr]_1^5
 =\frac{\pi}{6}(5^{3/2}-1)$$
+
 
 ### Abordagem pelo gráfico (ou “forma de Monge”)Qual a área da superfície definida por $S=\{\,z=x^2+y^2,\ z\le1\}$
 
@@ -4158,6 +4163,7 @@ Determine:
 
 - This can also be achieved using the logic of [[q122]]
 
+
 ### Letra a
 [[ps34]]
 ![[ps34#^formulaMestraRotacao]]
@@ -4172,6 +4178,7 @@ $$6 \times 10^{-6} = \frac{2 \times 10^{-6} + (-9 \times 10^{-6})}{2} + \frac{2 
 $$\left(\frac{\gamma_{xy}}{2}\right) = -\frac{2 \times 10^{-6} + (-9 \times 10^{-6})}{2} - \frac{2 \times 10^{-6} - (-9 \times 10^{-6})}{2}(0) + 6 \times 10^{-6}$$
 $$\left(\frac{\gamma_{xy}}{2}\right) = 9.5 \times 10^{-6}$$
 $$[\varepsilon] = \begin{pmatrix} \varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\ \varepsilon_{yx} & \varepsilon_{yy} & \varepsilon_{yz} \\ \varepsilon_{zx} & \varepsilon_{zy} & \varepsilon_{zz} \end{pmatrix} = \begin{pmatrix} 2 & 9,5 & 0 \\ 9,5 & -9 & 0 \\ 0 & 0 & 0 \end{pmatrix} \times 10^{-6}$$
+
 
 ### Letra b
 [[ps7]]
@@ -4193,6 +4200,7 @@ $$\sigma_{xy} = 2\mu\varepsilon_{xy} = (1, 5385\times 10^{5})(9, 5\times 10^{-6}
 $$\sigma_{zz} = 2\mu\varepsilon_{zz} + \lambda\varepsilon_{kk} = 0 + (1, 1538\times 10^{5})(-7\times 10^{-6}) = -0, 808 \text{ MPa}$$
 $$[\sigma] = \begin{pmatrix} -0, 500 & 1, 462 & 0 \\ 1, 462 & -2, 192 & 0 \\ 0 & 0 & -0, 808 \end{pmatrix} \text{ MPa}$$
 
+
 ### Letra c
 [[ps7]]
 ![[ps7#^equacoesTensaoPlana]]
@@ -4200,7 +4208,9 @@ $$[\sigma] = \begin{pmatrix} -0, 500 & 1, 462 & 0 \\ 1, 462 & -2, 192 & 0 \\ 0 &
 $$\varepsilon_{zz} = - \frac{0,3}{1-0,3}(2 \times 10^{-6} - 9 \times 10^{-6}) = - \frac{0,3}{0,7}(-7 \times 10^{-6}) = 3 \times 10^{-6}$$
 $$[\varepsilon] = \begin{pmatrix} 2 & 9,5 & 0 \\ 9,5 & -9 & 0 \\ 0 & 0 & 3 \end{pmatrix} \times 10^{-6}$$
 
+
 ### Letra d
+
 
 #### Método 1 - Sem usar o resultado da letra c
 [[ps7]]
@@ -4210,6 +4220,7 @@ $$\sigma_{xx} = \frac{2 \times 10^{5}}{1-0,3^{2}}[2 \times 10^{-6} + 0,3(-9 \tim
 $$\sigma_{yy} = \frac{2 \times 10^{5}}{1-0,09}[-9 \times 10^{-6} + 0,3(2 \times 10^{-6})] = -1,85 \text{ MPa}$$
 $$\tau_{xy} = \frac{2 \times 10^{5}}{2(1+0,3)}(19 \times 10^{-6}) = 1,46 \text{ MPa}$$
 $$[\sigma] = \begin{pmatrix} -0,15 & 1,46 & 0 \\ 1,46 & -1,85 & 0 \\ 0 & 0 & 0 \end{pmatrix} \text{ MPa}$$
+
 
 #### Método 2 - Usando o resultado da letra c
 $$\varepsilon_{kk} = \varepsilon_{xx} + \varepsilon_{yy} + \varepsilon_{zz} = (2 - 9 + 3)\times 10^{-6} = -4\times 10^{-6}$$
@@ -4272,6 +4283,7 @@ c) maior distorção de cisalhamento em 3D
 
 ![[ps11#^autovaloreAutovetores]]
 
+
 ### Letra a
 $$\det \begin{pmatrix} 2-\lambda & 7 & 0 \\ 7 & -9-\lambda & 0 \\ 0 & 0 & 3-\lambda \end{pmatrix}=0$$
 $$(3-\lambda)[(2-\lambda)(-9-\lambda)-(7)(7)]=0$$
@@ -4283,6 +4295,7 @@ $$\lambda=\frac{-b \pm \sqrt{b^2-4ac}}{2a}=\frac{-7 \pm \sqrt{7^2-4(1)(-67)}}{2(
 $$\lambda'=\frac{-7+\sqrt{317}}{2}\approx \frac{-7+17,804}{2}\approx 5,402$$
 $$\lambda''=\frac{-7-\sqrt{317}}{2}\approx \frac{-7-17,804}{2}\approx -12,402$$
 $$\varepsilon_1 \approx 5,40 \times 10^{-6} \quad\varepsilon_2 = 3 \times 10^{-6} \quad \varepsilon_3 \approx -12,40 \times 10^{-6}$$
+
 
 ### Letra b
 
@@ -4322,6 +4335,7 @@ Pelo círculo de Mohr 2D ([[ps11]])
 $$\tan(2\theta_{p1}) = \frac{2\varepsilon_{xy}}{\varepsilon_{xx} - \varepsilon_{yy}} = \frac{2(7)}{2 - (-9)} = \frac{14}{11}$$
 $$2\theta_{p1} = \arctan\left(\frac{14}{11}\right) \approx 51,84^\circ$$
 $$\theta_{p1} \approx 25,92^\circ$$
+
 
 ### Letra c
 $$\frac{\gamma_{max}}{2} = \frac{\varepsilon_{1}-\varepsilon_{3}}{2}=\frac{( 5,40 \times 10^{-6}) -(-12,40 \times 10^{-6})}{2}=8,9\times 10^{-6}$$
@@ -4372,6 +4386,7 @@ c) Tensor tensão para a situação (b). Considere que o corpo todo foi submetid
 
 ![[ps7#2 fórmulas principais]]
 
+
 ### Letra a
 $$\varepsilon_{ij} = \frac{1}{2\mu} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij} +(\alpha \Delta T)\delta_{ij}$$
  [[ps7]]
@@ -4387,11 +4402,13 @@ $$\varepsilon_{12} = \frac{1+0,3}{2 \cdot 10^5}(25) = \frac{1,3 \cdot 25}{2 \cdo
 
 $$[\varepsilon] = \begin{bmatrix} 4,0 & 1,625 & 0 \\ 1,625 & 7,25 & 0 \\ 0 & 0 & -12,25 \end{bmatrix} \cdot 10^{-4}$$
 
+
 ### Letra b
 $$\varepsilon_{\text{térmica}} = \alpha \Delta T = (10^{-6})(30) = 3 \times 10^{-5} = 0,3 \times 10^{-4}$$
 $$[\varepsilon'] = [\varepsilon]_{\text{mecânica}} + [\varepsilon]_{\text{térmica}}$$
 $$[\varepsilon'] = \left( \begin{bmatrix} 4,0 & 1,625 & 0 \\ 1,625 & 7,25 & 0 \\ 0 & 0 & -12,25 \end{bmatrix} + \begin{bmatrix} 0,3 & 0 & 0 \\ 0 & 0,3 & 0 \\ 0 & 0 & 0,3 \end{bmatrix} \right) \cdot 10^{-4}$$
 $$[\varepsilon'] = \begin{bmatrix} 4,3 & 1,625 & 0 \\ 1,625 & 7,55 & 0 \\ 0 & 0 & -11,95 \end{bmatrix} \cdot 10^{-4}$$
+
 
 ### Letra c
 Como \"não existe restrição para expansão do corpo\", não há tensões adicionais geradas pela diferença de temperatura, ou seja
@@ -4776,6 +4793,7 @@ Determine $\iint_S \vec{F}\,d\vec{s}$ sabendo que $\vec{F}(x,y,z) = (e^{y^2},\,x
 
 ## Step-by-step
 
+
 ### Método 1
 [[ps19#^divergenceTheorem]]
 
@@ -4839,6 +4857,7 @@ $$\iint_{D}{\vec{F} \cdot \vec{n}\, dA} = \iint_{D}{1\, dA} = \pi$$
 ---
 $$\iint_{S}{\vec{F} \, d\vec{S}} = \frac{\pi}{2} -\pi = \boxed{-\frac{\pi}{2}}$$
 ---
+
 
 ### Método 2
 ![[ps30#^flux]]
@@ -4915,6 +4934,7 @@ Calcule $\oint_{C}\vec F\cdot d\vec r$ onde $\vec F=(y^2,x,z^2)$ e $C=\{\,y+z=2\
 
 ## Step-by-step
 
+
 ### Método 1 - Pelo teorema de Stokes
 ![[ps19#^stokesTheorem]]
 
@@ -4950,6 +4970,7 @@ $$\oint_{C}\vec F\cdot d\vec r
 =\iint_{D}(1-2y)\,dA$$
 ---
 
+
 #### Método 1.1 Coordenadas polares
 $$x=r \cos \theta, \;y=r\sin\theta,\;D:\;0\le r\le1,\;0\le\theta\le2\pi$$
 $$\iint_{D}(1-2y)\,dA
@@ -4958,6 +4979,7 @@ $$\int_{0}^{2\pi}\int_{0}^{1}(1-2r\sin\theta)\,r\,dr\,d\theta
 =\int_{0}^{2\pi}\Bigl(\tfrac12-\tfrac23\sin\theta\Bigr)d\theta
 =\pi$$
 ---
+
 
 #### Método 1.2 Coordenadas cartesianas
 $$\iint_D 1\,dA = \pi$$
@@ -5009,6 +5031,7 @@ Faça o desenvolvimento da questão de duas formas:
 
 ## Step-by-step
 
+
 ### Círculo de Mohr
 ![](images/q96.png)
 
@@ -5040,6 +5063,7 @@ $$\hat{n}_{s_{2}} = (\cos\theta_{s1}, \sin\theta_{s1}) = (\cos(55.161^\circ), \s
 ou, de maneira simplificada
 
 ![](images/q121.png)
+
 
 ### Autovalores e autovetores
 ![[ps11#^autovaloreAutovetores]]
@@ -5145,6 +5169,7 @@ b) Variação $\Delta b$ da dimensão $b$ para a situação em que $a$ não seja
 
 Expresse os resultados em função de $\Delta T, \sigma_{xx}, E, \nu, a, b$ e $\alpha$
 ![](images/q123.png)
+
 
 ### Descrição da figura  
 A figura apresenta um diagrama de um corpo retangular, possivelmente uma placa ou um bloco, em duas dimensões.

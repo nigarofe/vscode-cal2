@@ -45,18 +45,18 @@ export class MarkdownRenderer {
 		
 		if (this.katex) {
 			try {
-				console.log('Processing LaTeX with KaTeX...');
+				// console.log('Processing LaTeX with KaTeX...');
 				
 				// Process display math ($$...$$) - supports multi-line expressions
 				html = html.replace(/\$\$([\s\S]*?)\$\$/g, (match, latex) => {
 					try {
-						console.log('Rendering display LaTeX:', latex.trim());
+						// console.log('Rendering display LaTeX:', latex.trim());
 						const rendered = this.katex.renderToString(latex.trim(), {
 							displayMode: true,
 							throwOnError: false
 						});
 						const placeholder = `LATEXPLACEHOLDER${placeholderIndex++}LATEXPLACEHOLDER`;
-						console.log('Created placeholder:', placeholder, 'for rendered content:', rendered.substring(0, 50) + '...');
+						// console.log('Created placeholder:', placeholder, 'for rendered content:', rendered.substring(0, 50) + '...');
 						latexPlaceholders.set(placeholder, rendered);
 						return placeholder;
 					} catch (error) {
@@ -68,13 +68,13 @@ export class MarkdownRenderer {
 				// Process inline math ($...$) - but avoid double processing
 				html = html.replace(/(?<!\$)\$([^$\n]+)\$(?!\$)/g, (match, latex) => {
 					try {
-						console.log('Rendering inline LaTeX:', latex.trim());
+						// console.log('Rendering inline LaTeX:', latex.trim());
 						const rendered = this.katex.renderToString(latex.trim(), {
 							displayMode: false,
 							throwOnError: false
 						});
 						const placeholder = `LATEXPLACEHOLDER${placeholderIndex++}LATEXPLACEHOLDER`;
-						console.log('Created placeholder:', placeholder, 'for rendered content:', rendered.substring(0, 50) + '...');
+						// console.log('Created placeholder:', placeholder, 'for rendered content:', rendered.substring(0, 50) + '...');
 						latexPlaceholders.set(placeholder, rendered);
 						return placeholder;
 					} catch (error) {
@@ -106,25 +106,25 @@ export class MarkdownRenderer {
 			html = this.basicMarkdownToHtml(html);
 		}
 		
-		console.log('HTML before LaTeX restoration:', html);
-		console.log('LaTeX placeholders to restore:', Array.from(latexPlaceholders.keys()));
+		// console.log('HTML before LaTeX restoration:', html);
+		// console.log('LaTeX placeholders to restore:', Array.from(latexPlaceholders.keys()));
 		
 		// Restore LaTeX content after markdown processing
 		latexPlaceholders.forEach((rendered, placeholder) => {
-			console.log('Restoring placeholder:', placeholder);
+			// console.log('Restoring placeholder:', placeholder);
 			const beforeReplace = html.includes(placeholder);
 			
 			// Direct replacement
 			html = html.split(placeholder).join(rendered);
 			
 			const afterReplace = html.includes(placeholder);
-			console.log('Placeholder found before replacement:', beforeReplace, 'Still exists after:', afterReplace);
+			// console.log('Placeholder found before replacement:', beforeReplace, 'Still exists after:', afterReplace);
 			if (afterReplace) {
 				console.warn('Placeholder still exists after replacement:', placeholder);
 			}
 		});
 		
-		console.log('Final HTML after LaTeX restoration:', html);
+		// console.log('Final HTML after LaTeX restoration:', html);
 		
 		return html;
 	}
@@ -159,12 +159,12 @@ export class MarkdownRenderer {
 						// Try different strategies to find the correct path
 						for (const folder of workspaceFolders) {
 							const folderPath = folder.uri.fsPath;
-							console.log('Checking workspace folder:', folderPath);
+							// console.log('Checking workspace folder:', folderPath);
 							
 							// Strategy 1: If this folder ends with 'data', use it directly
 							if (folderPath.endsWith('data')) {
 								imagePath = vscode.Uri.file(path.join(folderPath, src));
-								console.log('Strategy 1 - Using data folder directly:', imagePath.fsPath);
+								// console.log('Strategy 1 - Using data folder directly:', imagePath.fsPath);
 								break;
 							}
 							
@@ -175,7 +175,7 @@ export class MarkdownRenderer {
 								const fs = require('fs');
 								if (fs.existsSync(dataSubfolder)) {
 									imagePath = vscode.Uri.file(path.join(dataSubfolder, src));
-									console.log('Strategy 2 - Using data subfolder:', imagePath.fsPath);
+									// console.log('Strategy 2 - Using data subfolder:', imagePath.fsPath);
 									break;
 								}
 							} catch (error) {
@@ -187,11 +187,11 @@ export class MarkdownRenderer {
 						if (!imagePath!) {
 							const fallbackPath = path.join(workspaceFolders[0].uri.fsPath, 'data', src);
 							imagePath = vscode.Uri.file(fallbackPath);
-							console.log('Fallback strategy:', imagePath.fsPath);
+							// console.log('Fallback strategy:', imagePath.fsPath);
 						}
 						
 						const webviewUri = webview.asWebviewUri(imagePath);
-						console.log('Final image URI:', webviewUri.toString());
+						// console.log('Final image URI:', webviewUri.toString());
 						return `![${alt}](${webviewUri})`;
 					}
 				} else {

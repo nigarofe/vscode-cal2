@@ -53,8 +53,8 @@ export function validateSnippets(document: vscode.TextDocument): vscode.Diagnost
 		if (!snippetDefs.has(snippetId)) {
 			// Check if the snippet exists in other open documents
 			const allSnippetIds = snippetCache.getAllSnippetIds();
-			console.log(`Validating snippet reference "${snippetId}". Available snippets in cache:`, allSnippetIds);
-			console.log(`Snippet cache contents:`, Array.from(snippetCache.entries()));
+			// console.log(`Validating snippet reference "${snippetId}". Available snippets in cache:`, allSnippetIds);
+			// console.log(`Snippet cache contents:`, Array.from(snippetCache.entries()));
 			
 			if (!allSnippetIds.includes(snippetId)) {
 				lineNumbers.forEach(lineNumber => {

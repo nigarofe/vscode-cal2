@@ -18,6 +18,10 @@
       {
         "command": "vscode-cal2.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "vscode-cal2.formatSpacing",
+        "title": "Format Spacing"
       }
     ]
   },
