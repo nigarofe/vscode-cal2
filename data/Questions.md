@@ -29,7 +29,6 @@ $$\oint$$
 
 
 ## Step-by-step
-<ref id="teste"/>
 <ref id="newtons-law" />a
 
 
@@ -5460,15 +5459,30 @@ d) Expresse a condição de Tresca em função de $E, \alpha, \Delta, L \text{ e
 
 
 ## Proposition
+Um dispositivo cilindro-pistão contém $0,95$ kg de oxigênio inicialmente a uma temperatura de $27^\circ\text{C}$ e a uma pressão de $150$ kPa (absoluta). Calor é adicionado ao gás até ele atingir uma temperatura de $627^\circ\text{C}$. Determine a quantidade de calor adicionado durante o processo.
+
+Dados: Cilindro-pistão contendo $\text{O}_2$, $m = 0,95$ kg.
+$$T_1 = 27^\circ\text{C} \quad T_2 = 627^\circ\text{C}$$
+Determinar: $Q_{1 \to 2}$.
 
 
 ## Step-by-step
+$$m=0,95kg \quad T_1 = 27°C \quad T_2 = 627°C$$
+$$c_p=909,4 \, \frac{J}{kg \cdot K}$$
+<ref id="eqMecFlu1"/>
+
+$$Q_{1 \to 2} = 0,95 * 909,4 (627-27) = 518,358 \, kJ$$
 
 
 ## Answer
+$$518 \, \text{kJ}$$
 
 
 ## Metadata 
+`Discipline` Mecânica dos fluidos
+`Description` Exemplo 1.1
+`Source` FOX AND McDONALD’S 8th edition
+`Tags`
 
 
 
@@ -5479,7 +5493,7 @@ d) Expresse a condição de Tresca em função de $E, \alpha, \Delta, L \text{ e
 
 
 
-# Question 
+# Question 132
 
 
 ## Proposition
@@ -5491,4 +5505,24 @@ d) Expresse a condição de Tresca em função de $E, \alpha, \Delta, L \text{ e
 ## Answer
 
 
-## Metadata 
+## Metadata
+
+
+### Attempts
+
+# Question 133
+
+
+## Proposition
+
+
+## Step-by-step
+
+
+## Answer
+
+
+## Metadata
+
+
+### Attempts

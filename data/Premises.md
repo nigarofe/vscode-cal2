@@ -192,6 +192,7 @@ Essa simetria reduz de 9 para 6 o número de componentes independentes do tensor
 
 ## Calculating  $\sigma'$
 
+
 ### Definitions
 $$\sigma' =
 \begin{bmatrix}
@@ -232,6 +233,7 @@ $$L \sigma =
 \end{bmatrix}
 $$
 
+
 ### Calculating $L \sigma$
 
 To calculate $\sigma'$, we can first calculate only the products of the two first matrixes
@@ -264,6 +266,7 @@ $$
 (L\sigma)_{zz} = L_{zx} \sigma_{xz} + L_{zy} \sigma_{yz} + L_{zz} \sigma_{zz}.
 $$
 
+
 ### Calculating $(L \sigma) L^T$
 
 $$
@@ -294,6 +297,7 @@ $$
 \sigma'_{zz} = (L\sigma)_{zx} L_{zx} + (L\sigma)_{zy} L_{zy} + (L\sigma)_{zz} L_{zz}.
 $$
 
+
 ### Example with rotation about the Y axis by $\theta°$
 
 $$
@@ -323,6 +327,7 @@ s & 0 & c
 \end{bmatrix}
 $$
 
+
 ### Calculate $L \sigma$
 $$
 \begin{bmatrix}
@@ -351,6 +356,7 @@ c\,\sigma_{xx} + 0\,\tau_{yx} + s\,\tau_{zx}
 \end{bmatrix}.
 $$
 $$c = \cos(\theta) \quad \text{and} \quad s = \sin(\theta)$$
+
 
 ### Calculate $\sigma' = (L \sigma) L^T$
 
@@ -495,6 +501,7 @@ $$
 
 ## Tensor Tensão vs Tensor Deformação
 
+
 ### Introdução
 
 - A unidade do tensor tensão é $MPa$, enquanto o tensor deformação é adimensional. Isso porque o tensor deformação mede a deformação que um elemento infinitesimal de um corpo sofre. A medição de deformação pode ser pensada da seguinte forma: vamos supor que se eu aplicar uma força $F$ em uma barra que tem $0,5\,m$ de comprimento, ela vai sofrer um alongamento medido de $0,002\,m = 2\,mm$.
@@ -507,6 +514,7 @@ Como $0,004$ é apenas uma razão, não há unidade associada a $\varepsilon$.
 - $\textbf{Tensor de tensão}$ tem unidade de pressão (por exemplo MPa), porque ele mede forças internas por área.
 - $\textbf{Tensor de deformação}$ é adimensional, pois descreve a variação relativa de comprimento (ou ângulo) de um elemento infinitesimal do corpo. Em outras palavras, é a razão entre o deslocamento e a dimensão original, sem unidades.
 -
+
 
 ### Tensor de tensões
 
@@ -537,6 +545,7 @@ $$
 - Tensões de cisalhamento ($\tau_{ij}$) podem ser imaginadas como setas "coladas" Ã  face do elemento, apontando paralelamente ao eixo $j$ sobre a face perpendicular ao eixo $i$.
 
 Em outras palavras, cada subíndice na notação $\tau_{ij}$ indica primeiro a face sobre a qual a força é aplicada (o índice $i$, que determina qual face é "perpendicular" ao eixo $i$) e depois a direção da força (o índice $j$, que diz em que direção, entre $x$, $y$, $z$, a tensão está atuando).
+
 
 ### Tensor de deformações
 
@@ -598,6 +607,7 @@ $$
 $$
 
 Esta fórmula reúne, em um único objeto simétrico, todas as deformações normais e de cisalhamento, servindo de base para relações constitutivas (Lei de Hooke, por exemplo) e para o cálculo de deformações a partir de campos de deslocamentos experimentais ou numéricos.
+
 
 ### Alfabeto grego utilizado
 
@@ -739,15 +749,18 @@ A matriz $S$ satisfaz $[S] = [C]^{-1},$ de modo que $\{\varepsilon\} = [S]\{\sig
 
 Este é o nome mais formal e completo. "Constitutiva" porque descreve a constituição (o comportamento intrínseco) do material. "Elasticidade Linear" porque a relação entre tensão e deformação é linear (se você dobrar a tensão, dobra a deformação) e elástica (o material retorna Ã  sua forma original). "Isotrópica" porque as propriedades do material são as mesmas em todas as direções.
 
+
 ### Resumo Lei de Hooke Generalizada (ou Tridimensional)
 
 - Lei constitutiva que relaciona tensão com a deformação total e a temperatura
 - Lei constitutiva que relaciona deformação com a tensão total e a temperatura
 
+
 #### 2 fórmulas principais
 $$\sigma_{ij} = 2\mu \,\varepsilon_{ij} + \lambda \,(\varepsilon_{kk})\delta_{ij} -(3\lambda + 2\mu)\alpha\Delta T$$
 $$\varepsilon_{ij} = \frac{1}{2\mu} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij} +(\alpha \Delta T)\delta_{ij}$$
 $$\mu= \frac{E}{2(1+\nu)} \quad\lambda = \frac{\nu E}{(1 + \nu)(1 - 2\nu)}$$
+
 
 #### Equações da tensão
 - Calcula a tensão gerada por uma deformação conhecida.
@@ -757,6 +770,7 @@ $$\sigma_{ii} = \frac{E}{(1 + \nu)(1 - 2\nu)}\left((1 - \nu)\varepsilon_{ii} + \
 $$\tau_{ij} = \frac{E}{1 + \nu}\varepsilon_{ij} = 2\mu \,\varepsilon_{ij}\quad \text{para } i \neq j \quad \text{(Componentes de cisalhamento)}$$
 ^equacoesDaTensao
 
+
 #### Equações da deformação
 - Calcula a deformação resultante de uma tensão conhecida.
 $$\varepsilon_{ij} = \frac{1 + \nu}{E} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigma_{kk}) \, \delta_{ij}  \quad \text{(Fórmula geral)}$$
@@ -764,6 +778,7 @@ $$\varepsilon_{ij} = \frac{1}{2\mu} \, \sigma_{ij} \;-\; \frac{\nu}{E} \, (\sigm
 $$\varepsilon_{ii} = \frac{1}{E} \Bigl(\sigma_{ii} \;-\; \nu \sum_{j \neq i} \sigma_{jj}\Bigr)  \quad \text{(Componentes normais)}$$
 $$\varepsilon_{ij} = \frac{\gamma_{ij}}{2}= \frac{1 + \nu}{E} \, \tau_{ij}  =\frac{1}{2\mu}\, \tau_{ij}\quad \text{(Componentes de cisalhamento)}$$
 ^equacoesDaDeformacao
+
 
 ### Equações tensão plana
 
@@ -773,6 +788,7 @@ $$\varepsilon_{zz} = -\frac{\nu}{1-\nu}(\varepsilon_{xx} + \varepsilon_{yy})$$
 $$\sigma_{xx} = \frac{E}{1-\nu^2}(\varepsilon_{xx} + \nu\varepsilon_{yy})$$
 $$\sigma_{yy} = \frac{E}{1 - \nu^2}(\varepsilon_{yy} + \nu\varepsilon_{xx})$$
 $$\tau_{xy} = \frac{E}{2(1 + \nu)}\gamma_{xy}$$^equacoesTensaoPlana
+
 
 ### Interpretação das fórmulas para ajudar a memorizar
 
@@ -790,6 +806,7 @@ $$
 
 A deformação de cisalhamento no plano de um corpo é a metade de sua conformidade ao cisalhamento $(J)$ vezes a tensão de cisalhamento naquele plano
 
+
 ### Forma geral em tensores (componentes arbitrárias $i, j$)
 
 $$
@@ -803,6 +820,7 @@ onde
 - $\nu$ é o coeficiente de Poisson,
 - $\sigma_{kk} = \sigma_{11} + \sigma_{22} + \sigma_{33}$ (soma de tensões normais),
 - $\delta_{ij}$ é o delta de Kronecker.
+
 
 ### Fórmula para componentes normais (diagonais) da deformação
 
@@ -821,6 +839,7 @@ $$
 $$
 \varepsilon_{33} = \frac{1}{E}\bigl(\sigma_{33} \;-\; \nu \,[\sigma_{11} + \sigma_{22}]\bigr)
 $$
+
 
 ### Fórmula para componentes de cisalhamento
 
@@ -843,6 +862,7 @@ $$
 
 ## Constantes elásticas em materiais isotrópicos
 
+
 ### Tabela de Propriedades do Material com base no par $$(E, \nu)$$
 
 | Achar $\downarrow$ Dado o par $\rightarrow$      | Variável                | $$(E, \nu)$$                         |
@@ -862,6 +882,7 @@ $$
 
 ---
 
+
 ### Tabela 2
 
 | Achar $\downarrow$ Dado o par $\rightarrow$      | Variável                | $$(E, G)$$               | $$(E, K)$$                | $$(E, \nu)$$                         | $$(K, \nu)$$                        |
@@ -875,6 +896,7 @@ $$
 | Compressibilidade volumétrica                    | $$\beta$$               |                          | $$\frac{1}{K}$$           |                                      |                                     |
 | Razão de Poisson                                 | $$\nu$$                 | $$\frac{E}{2G}-1$$       | $$\frac{3K-E}{6K}$$       | $$\nu$$                              | $$\nu$$                             |
 | Módulo longitudinal /<br>Módulo P ou M           | $$M$$                   | $$\frac{G(4G-E)}{3G-E}$$ | $$\frac{3K(3K+E)}{9K-E}$$ | $$\frac{E(1-\nu)}{(1+\nu)(1-2\nu)}$$ | $$\frac{3K(1 - \nu)}{1 + \nu}$$     |
+
 
 ### Tabela 3
 
@@ -930,7 +952,9 @@ E os demais coeficientes de Poisson podem ser deduzidos como o quanto a área de
 
 ## Ã‚ngulos diretores e cossenos diretores
 
+
 ### Caso 2D
+
 
 #### Ã‚ngulos diretores
 **Premissa**: Os eixos de coordenadas são $X$ e $Y$; Existe um vetor $\vec v = (v_x, v_y)$ Ã  um ângulo $\theta_x$ de $X$
@@ -945,6 +969,7 @@ $$
 $$
 
 - Como os eixos X e Y são perpendiculares, $\theta_y = 90^\circ - \theta_x$.
+
 
 #### Cossenos diretores
 Os cossenos diretores são simplesmente os cossenos dos ângulos diretores, ou seja:
@@ -967,6 +992,7 @@ $$
 $$
 o que confirma que $L$ é de comprimento unitário.
 
+
 #### Exemplo
 Determine os ângulos diretores e cossenos diretores do vetor $\vec v = (4, 3)$
 - $\vec v=(v_x,v_y)=(4,3)$
@@ -978,7 +1004,9 @@ Determine os ângulos diretores e cossenos diretores do vetor $\vec v = (4, 3)$
 - $\Theta=(\theta_x,\theta_y)=(\arccos(4/5),\arccos(3/5))\to(36.87^\circ,\,53.13^\circ)$
 - Note que $\theta_y=90^\circ-\theta_x$
 
+
 ### Caso 3D
+
 
 #### Ã‚ngulos diretores
 
@@ -999,6 +1027,7 @@ $$\vec{i} = (1,0,0),
 Assim, o vetor de ângulos diretores é
 $$\Theta = (\alpha, \beta, \gamma).$$
 
+
 #### Cossenos diretores
 >Os cossenos diretores são
 >$$L = (l_x, l_y, l_z) = (\cos\alpha, \cos\beta, \cos\gamma).$$
@@ -1012,6 +1041,7 @@ $$\Theta = (\alpha, \beta, \gamma).$$
 >$$\cos^{2}\alpha + \cos^{2}\beta + \cos^{2}\gamma = 1$$
 >confirmando que $L$ tem comprimento unitário.
 ^cossenosDiretores
+
 
 #### Exemplo
 Determine os ângulos e cossenos diretores do vetor
@@ -1074,6 +1104,7 @@ $$  Esses valores demonstram como, em 3 D, o vetor unitário $\hat{v}$ coincide 
 
 ## 1 Elemento de estresse (ou tensão)
 
+
 ### 1.1 Conceito
 O elemento de estresse é um **recorte imaginário** de um ponto de interesse do corpo para avaliarmos as tensões normais $(\sigma)$ e de cisalhamento $(\tau)$. Matematicamente, as tensões são obtidas como o limite da razão entre a força $F$ aplicada e a área $A$ do recorte quando esta tende a zero:
 $$
@@ -1082,10 +1113,12 @@ $$
 
 **O que não é:** Não se trata de um grão ou partícula material do corpo sendo estudado. Então, quando falamos sobre rotação do elemento de estresse, não há rotação do corpo, mas sim da nossa análise.
 
+
 ### 1.2 Orientação dos planos principais
 Nem sempre o elemento está inicialmente orientado de forma a expor as magnitudes extremas de tensão, especialmente relevantes para critérios de falha. Portanto precisamos saber quantos graus devemos rotacionar nosso recorte imaginário para que ele revele esses dois valores. Ao girar o elemento em torno de seu ponto, podemos alinhar nossa análise com:
 - **Planos principais** "“ revelam as **tensões normais máximas e mínimas** $(\sigma_{\max},\sigma_{\min})$.
 - **Planos de cisalhamento máximo** "“ revelam a **tensão de cisalhamento máxima** $(\tau_{\max})$.
+
 
 ### 1.3 Definições e cálculos
 $$\phi_1 = \text{Ã‚ngulo de rotação para atingir tensão normal máxima } (\sigma_{1})$$
@@ -1166,6 +1199,7 @@ $$
 - Um mesmo elemento revela $\tau_{\max}$ apenas quando girado de $\phi_S$ em relação Ã  orientação original.
 - Ao contrário das tensões normais principais, o elemento de estresse, quando orientado de forma a revelar $\tau_\text{max}$, apresenta tensões normais não são nulas.  $\sigma_{\text{med}}$ é o valor das tensões normais atuando nas faces.
 
+
 ### 1.3.1 Tensões principais, [autovalores e autovetores](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors)
 - As **tensões principais** são os **autovalores** do tensor de tensões, e as **direções principais** são seus **autovetores**.
 - Existe uma orientação especial do elemento de estresse na qual todas as tensões de cisalhamento $\tau_{ij}$ são zero e todas as tensões normais são extremas (máximo, mínimo e um valor intermediário)). Estas são chamadas de tensões principais, denotadas por $\sigma_{1}, \sigma_{2} \text{ e } \sigma_{3}$ ou $\lambda_{1}, \lambda_{2} \, { e } \, \lambda_{3}$ **(autovalor)**
@@ -1183,6 +1217,7 @@ $$\theta_{p_{1}} = \arctan \left( \frac{v_{1y}}{v_{1x}} \right) \quad \hat{n}_i 
 
 Nuância da definição: existe sim uma orientação na qual uma face tem tensão normal igual a $\sigma_{1}$ e as outras não têm $\sigma_{2} \text{ e } \sigma_{3}$. Esse estado **não** está orientado segundo as direções principais.
 
+
 #### $\hat{n}_{1}$ vai indicar o vetor normal que a face do elemento $yz$ vai ter após a rotação para alcançar máxima deformação normal?
 O vetor $\hat{n}_1$, que é o autovetor associado ao autovalor $\varepsilon_1$, representa exatamente a direção normal a um plano que, após a deformação, experimenta a máxima deformação normal $\varepsilon_1$
 
@@ -1190,6 +1225,7 @@ Para detalhar um pouco mais:
 - Estado Inicial: Imagine um cubo infinitesimal de material perfeitamente alinhado com os eixos x, y, z. A face yz deste cubo tem um vetor normal apontando na direção do eixo x, ou seja, $\hat{i} = [1, 0, 0]^T$.
 - Estado Deformado e Rotação: Quando o tensor de deformação $[\varepsilon]$ é aplicado, este cubo não apenas se deforma, mas também pode ser visto como girando no espaço. As direções principais $(\hat{n}_1, \hat{n}_2, \hat{n}_3)$ definem a orientação de um novo sistema de eixos $(x', y', z')$ no qual a deformação é "pura", ou seja, sem componentes de cisalhamento.
 - $\hat{n}_1$ é o vetor unitário que define a direção do novo eixo $x'$. Um plano perpendicular a este vetor (ou seja, o novo plano $y'z'$) é o plano que sofre a deformação normal principal $\varepsilon_1$.
+
 
 #### 1.3.1.1 Vetor de tensões
 A primeira linha (ou coluna, por simetria) do tensor de tensões é, por definição, o vetor de tensão que atua na face de um cubo infinitesimal cuja normal aponta na direção correspondente ao número da linha (linha 1 = X, linha 2 = Y, linha 3 = Z)
@@ -1260,9 +1296,11 @@ $$
 - O círculo de Mohr representa graficamente o conjunto de todos os pares $(\sigma \, , \tau)$ que podemos obter ao rotacionar o elemento de estresse
 - O eixo horizontal representa a tensão normal $\sigma$ e o vertical, a tensão de cisalhamento $\tau$
 
+
 ### Eixo vertical para baixo
 O círculo de Mohr é convencionalmente desenhado com o sentido positiva do eixo vertical para baixo. A principal vantagem é a correspondência direta do sentido de rotação entre o elemento e o círculo. Uma rotação anti-horária no elemento é representada por uma rotação anti-horária no círculo.
 ![[ps11.png]]
+
 
 ### Círculo de Mohr 3D e solução analítica
 Para desenhar o Círculo de Mohr para um estado 3D de deformação (ou tensão), você geralmente precisa primeiro encontrar as deformações principais (Îµâ‚, Îµâ‚‚, Îµâ‚ƒ) através do método analítico (resolvendo a equação de autovalores).
@@ -1318,6 +1356,7 @@ $$
 
 
 ## Wronskiano
+
 
 ### Definição geral
 
@@ -1383,7 +1422,9 @@ $$
 y(x) = y_h(x) + y_p(x),
 $$
 
+
 ### Método dos coeficientes indeterminados
+
 
 ### Polinômio
 Se $f$ é um polinômio de grau $m$, admitimos
@@ -1401,6 +1442,7 @@ $$
 }
 $$
 
+
 ### Exponencial
 Se $f$ é uma função exponencial da forma
 $$
@@ -1410,6 +1452,7 @@ admitimos uma solução particular da forma
 $$
 y_p(x) = Ae^{\beta x}.
 $$
+
 
 ### Seno e Cosseno
 Se $f$ é uma combinação linear das funções seno e cosseno, ou seja,
@@ -1522,12 +1565,14 @@ $$
 
 ## Tabela 1: Regras de Derivação e Integração por Função
 
+
 ### Regras Gerais
 
 | Regra / Função     | Derivada $$\frac{d}{dx}$$                                    | Integral Indefinida $$\int \dots dx$$                                    |
 | :----------------- | :----------------------------------------------------------- | :----------------------------------------------------------------------- |
 | Múltiplo Constante | $$\frac{d}{dx}[k \cdot f(x)] = k \cdot f'(x)$$                | $$\int k \cdot f(x) \, dx = k \int f(x) \, dx$$                          |
 | Soma / Subtração   | $$\frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$$             | $$\int [f(x) \pm g(x)] \, dx = \int f(x)\,dx \pm \int g(x)\,dx$$         |
+
 
 ### Potências e Polinômios
 
@@ -1537,6 +1582,7 @@ $$
 | Regra da Potência        | $$\frac{d}{dx}(x^n) = n x^{n-1}$$               | $$\int x^n \, dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1)$$ |
 | Regra da Potência (n=-1) | $$\frac{d}{dx}(\ln\|x\|) = \frac{1}{x}$$         | $$\int \frac{1}{x} \, dx = \ln\|x\| + C$$                     |
 
+
 ### Exponenciais e Logarítmicas
 
 | Função               | Derivada $$\frac{d}{dx}$$                             | Integral Indefinida $$\int \dots dx$$                                        |
@@ -1544,6 +1590,7 @@ $$
 | Exponencial Natural  | $$\frac{d}{dx}(e^x) = e^x$$                           | $$\int e^x \, dx = e^x + C$$                                                 |
 | Exponencial (base a) | $$\frac{d}{dx}(a^x) = a^x \ln(a)$$                    | $$\int a^x \, dx = \frac{a^x}{\ln(a)} + C$$                                  |
 | Logaritmo Natural    | $$\frac{d}{dx}(\ln x) = \frac{1}{x}, \quad (x>0)$$     | $$\int \ln(x) \, dx = x\ln(x) - x + C$$ (via Integração por Partes)          |
+
 
 ### Funções Trigonométricas
 
@@ -1555,6 +1602,7 @@ $$
 | Cotangente | $$\frac{d}{dx}(\cot x) = -\csc^2 x$$                        | $$\int \cot x \, dx = \ln\|\sin x\| + C$$                                    |
 | Secante    | $$\frac{d}{dx}(\sec x) = \sec x \tan x$$                    | $$\int \sec x \, dx = \ln\|\sec x + \tan x\| + C$$                           |
 | Cosecante  | $$\frac{d}{dx}(\csc x) = -\csc x \cot x$$                   | $$\int \csc x \, dx = \ln\|\csc x - \cot x\| + C$$                           |
+
 
 ### Funções Trigonométricas Inversas
 
@@ -1645,11 +1693,13 @@ $$ \vec{F}(x,y)=\langle P(x,y),\;Q(x,y)\rangle $$
 
 ![[ps19.svg|300]]
 
+
 ### For $z = f(x,y)$ (counter-clockwise $C$)
 $$
 \left(\frac{\partial\vec r}{\partial u}\times\frac{\partial\vec r}{\partial v}\right)\,du\,dv \quad = \quad(-f_x,\,-f_y,\,1)\,dx\,dy
 $$
 - This formula is obtained through the general parametric surface, as explained below, when $u=x$ and $v=y$
+
 
 ### General parametric surface $\vec r(u,v)$
 $$
@@ -1675,6 +1725,7 @@ $$
   - \dfrac{\partial y}{\partial u}\,\dfrac{\partial x}{\partial v}
 \Bigr\rangle
 $$
+
 
 #### Example with polar coordinates 
 $$
@@ -1795,6 +1846,7 @@ $$\oint_{C}\vec{F}\cdot d\mathbf r =
 
 ## Introdução Ã  campos escalares e vetoriais
 
+
 ### Notation and Preliminaries
 
 We denote by $\mathbb{R}^n$ the $n$-dimensional real coordinate space:
@@ -1809,9 +1861,11 @@ Throughout, we use
 - a lower-case letter $f$ to denote a scalar field, i.e.\ a function that assigns a real number to each point in space;
 - an upper-case letter $F$ (or $\mathbf{F}$, $\vec{F}$) to denote a vector field, i.e.\ a function that assigns a vector to each point in space.
 
+
 ### 1D: Scalar vs. Vector Fields
 
 On the real line $\mathbb{R}^1$, points are just $x\in\mathbb{R}$.
+
 
 #### Scalar field
 $$f(x):\mathbb{R}\to\mathbb{R}$$
@@ -1821,15 +1875,18 @@ Examples:
 - Height of a wall as you walk along its base: if $x$ metres from one end, $f(x)$ metres is the wall's height.
 - Water depth along a channel: $f(x)$ metres deep at position $x$.
 
+
 #### Vector field
 
 $$F(x):\mathbb{R}\to\mathbb{R}^1$$
 In 1D every "vector" has only one component, so we rarely distinguish $F(x)$ from $f(x)$.
 Interpretation: "At position $x$, the force on a test particle is $F(x)$ newtons to the right (or left if negative)."
 
+
 ### 2D: Adding a Second Dimension
 
 Now points are $(x,y)\in\mathbb{R}^2$.
+
 
 #### Scalar field
 
@@ -1843,6 +1900,7 @@ Examples:
 
 Visualization: level curves (contours) where $f(x,y)=C$.
 
+
 #### Vector field
 
 $$\mathbf{F}(x,y)=\langle P(x,y),\,Q(x,y)\rangle:\mathbb{R}^2\to\mathbb{R}^2$$
@@ -1854,9 +1912,11 @@ Examples:
 
 Visualization: arrow-plots showing an arrow at each $(x,y)$ with components $\langle P,Q\rangle$.
 
+
 ### 3D: The Physical World
 
 Points now live in $\mathbb{R}^3$, $(x,y,z)\in\mathbb{R}^3$.
+
 
 #### Scalar field
 
@@ -1866,6 +1926,7 @@ Interpretation: "Temperature inside a room."
 Examples:
 - Density of air at each point $(x,y,z)$.
 - Gravitational potential field: the potential energy per unit mass.
+
 
 #### Vector field
 
@@ -1879,6 +1940,7 @@ Examples:
 - Velocity field of a fluid: at each point, $\mathbf{F}(x,y,z)$ is the local fluid velocity vector.
 - Electric field in space: vector at each $(x,y,z)$ giving magnitude and direction of force on a positive test charge.
 - Magnetic field around a magnet: $\mathbf{F}(x,y,z)$ gives both strength and orientation.
+
 
 ### Why It Matters
 
@@ -1973,6 +2035,7 @@ $$
 
 ![[ps24-1.svg|300]]
 ![[ps24-2.svg|400]]
+
 
 #### Círculo de Mohr ([[ps11]])
 Isso é especialmente útil no círculo de Mohr para deformações, cada ponto no diagrama representa um estado bidimensional de deformação $(\varepsilon_x, \gamma_{xy})$ obtido por combinação de componentes normais e de cisalhamento. Ao girarmos o sistema de eixos reais em um ângulo $\theta$, esse mesmo ponto "varre" o círculo de Mohr por um ângulo $2\theta$. Em termos de produto escalar, se
@@ -2135,8 +2198,10 @@ g & h & i
 = aei + bfg + cdh - ceg - bdi - afh.
 $$
 
+
 ### [Rule of Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus)
 ![[ps26-1.svg|300]]
+
 
 ### Laplace expansion
 $$\det(A) = \sum_{j=1}^n (-1)^{i+j} a_{i,j} M_{i,j},$$
@@ -2215,6 +2280,7 @@ O vetor $\nabla f$ chama-se gradiente de $f$. Ele aponta, em cada ponto, na dire
 
 ## [Operador Nabla](https://en.wikipedia.org/wiki/Del) e notação para Teorema de Green, Teorema de Stokes e Teorema da divergência
 
+
 ### Diferentes notações para Nabla
 
 $$\nabla = \left(\frac{\partial}{\partial x}, \, \frac{\partial}{\partial y}, \,\frac{\partial}{\partial z} \right) $$
@@ -2223,6 +2289,7 @@ $$ =\frac{\partial}{\partial x} \,\vec i + \frac{\partial}{\partial y} \,\vec j+
 $$ = \mathbf{i} \, \partial_x + \mathbf{j} \, \partial_y + \mathbf{k} \, \partial_z $$
 Obs.: Nabla não é um vetor no sentido convencional, é um operador, por isso existem algumas diferenças quando ele é usado nas aplicações abaixo.
 
+
 ### Nabla aplicado de diferentes formas
 
 | Operação                                                       | Expressão                                        | Entrada | Saída   |
@@ -2230,6 +2297,7 @@ Obs.: Nabla não é um vetor no sentido convencional, é um operador, por isso e
 | [Gradiente](https://en.wikipedia.org/wiki/Gradient)            | $$ \mathrm{grad}\,f = \nabla f$$                 | Escalar | Vetor   |
 | [Rotacional](https://en.wikipedia.org/wiki/Curl_(mathematics)) | $$ \mathrm{rot}\,\vec F = \nabla \times \vec F$$ | Vetor   | Vetor   |
 | [Divergente](https://en.wikipedia.org/wiki/Divergence)         | $$ \mathrm{div}\,\vec F = \nabla \cdot \vec F$$  | Vetor   | Escalar |
+
 
 #### Operador gradiente
 >$$\text{grad} \, f =\nabla f= \left(\frac{\partial f}{\partial x}, \, \frac{\partial f}{\partial y}, \,\frac{\partial f}{\partial z} \right)$$
@@ -2240,6 +2308,7 @@ Obs.: Nabla não é um vetor no sentido convencional, é um operador, por isso e
 
 ---
 
+
 #### Operador divergente
 >$$\vec{F}(x,y,z)=\langle P(x,y,z),\;Q(x,y,z),\;R(x,y,z)\rangle$$
 >$$\text{div} \, \vec{F} = \nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
@@ -2249,6 +2318,7 @@ Obs.: Nabla não é um vetor no sentido convencional, é um operador, por isso e
 
 
 ---
+
 
 #### Operador rotacional
 
@@ -2290,12 +2360,15 @@ Um "campo gradiente" recebe esse nome pois vem da operação do gradiente
 
 Um campo conservativo possui algumas propriedades interessantes
 
+
 ### Testes de conservatividade
+
 
 #### Resumo
 $$\text{Sendo } \vec F \in \mathbb R^2 \implies \vec F = \nabla f\iff \left(\operatorname{rot} \vec F \right)_z = \frac{\partial Q}{\partial x} -\frac{\partial P}{\partial y} = 0$$
 $$\text{Sendo } \vec F \in \mathbb R^3 \implies \vec F = \nabla f\iff   \operatorname{rot} \vec F = (0,0,0)$$
 \*Em domínio aberto simplesmente conexo
+
 
 #### Explicação
 Muitas vezes pode ser que você encontre um campo vetorial o qual não se sabe se ele é, também um "campo vetorial gradiente"/"campo vetorial conservativo". Para verificar isso, basta aplicar o operador rotacional Ã  esse campo. Se o resultado for $\vec 0$, o campo é conservativo.
@@ -2320,17 +2393,20 @@ $$\vec F = \nabla f \implies \frac{\partial P}{\partial y} = \frac{\partial Q}{\
 
 ## Contas parecidas
 
+
 #### Rotacional de um campo vetorial gradiente
 Se partirmos do pressuposto que o campo vetorial em questão é gradiente:
 $$\vec F = \nabla f \implies\operatorname{rot}(\vec F) =\operatorname{rot}(\nabla f) = \nabla \times \nabla f = (\nabla \times \nabla) f = \vec{0}$$
 Já que o produto vetorial de dois vetores iguai sempre é $\vec 0$.
 $$(\nabla \times \nabla) = \vec 0 = (0,0,0)$$
 
+
 #### Divergente de um campo vetorial gradiente
 Se partirmos do pressuposto que o campo vetorial em questão é gradiente:
 $$\vec F = \nabla f \implies \operatorname{div}(\vec F) =\operatorname{div}(\nabla f) = \nabla \cdot (\nabla f) = (\nabla \cdot \nabla) f = \nabla^2 f = \Delta f$$
 Então o divergente de um campo vetorial gradiente é simplesmente o Laplaciano daquele campo
 $$ \operatorname{div}(\vec F) =\nabla^2 f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} $$
+
 
 #### Divergente de um campo rotacional
 Se partirmos do pressuposto que o campo vetorial em questão é rotacional (sendo gradiente ou não):
@@ -2495,6 +2571,7 @@ Dessa maneira, $d$ aparece naturalmente como o negativo do produto interno entre
 
 ## Fluxo e densidade de fluxo
 
+
 ### Fluxo
 
 Fluxo é uma quantidade por tempo. Pode ser pensado em litros por minuto, por exemplo, se você tem uma caixa d'água com volume conhecido e sabe o fluxo/vazão de água que entra nela, você consegue calcular quanto tempo ela vai demorar para encher.
@@ -2504,6 +2581,7 @@ $$\text{Vazão volumétrica (Volume por tempo)}$$
 ---
 $$\dot m = \frac{\Delta m}{\Delta t} \quad \left[kg/s\right]$$
 $$\text{Vazão mássica (Massa por tempo)}$$
+
 
 ### Densidade de fluxo
 
@@ -2520,6 +2598,7 @@ $$\text{Fluxo mássico superficial (massa por área e tempo)}$$
 
 
 ---
+
 
 ### [Surface integrals of vector fields](https://en.wikipedia.org/wiki/Surface_integral#Surface_integrals_of_vector_fields)
 
@@ -2793,3 +2872,26 @@ Acima estão todas as fórmula e algumas variações delas. Porém, para decorar
 $$\frac{1}{2}\max(|\sigma_1 - \sigma_2|, |\sigma_2 - \sigma_3|, |\sigma_3 - \sigma_1|) = S_{sy} = \frac{1}{2}S_y$$
 $$S_{sy} \text{ is the yield strength in shear}$$
 $$S_y \text{ is the tensile yield}$$
+
+
+
+
+
+
+
+
+
+
+# Premise Set 36
+
+
+## Fórmulas para Mecânica dos Fluidos
+
+<snippet id="eqMecFlu1">
+$$Q_{1 \to 2} = m \cdot c_p \cdot (T_2 - T_1) = [J] = [kg] \cdot \left[\frac{J}{kg \cdot K}\right] \cdot [K]$$
+</snippet>
+
+
+Usado na [](Questions.md#question-131)
+
+
