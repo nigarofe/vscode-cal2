@@ -13,7 +13,7 @@
 A rubric to evaluate the quality of responses to the question "What do you remember about this topic?", focusing on the depth, accuracy, organization, and clarity of the recalled information.
 
 
-## Depth and Detail of Recall (Weight: 30%)
+## Depth and Detail of Recall (Weight: 25%)
 
 4. `Excellent`: Recalls a rich and comprehensive range of information, including major concepts, specific details, and relevant examples. Demonstrates a deep and nuanced memory of the topic.
 3. `Proficient`: Recalls the main ideas and several important supporting details accurately. The core elements of the topic are well-remembered.
@@ -21,7 +21,7 @@ A rubric to evaluate the quality of responses to the question "What do you remem
 1. `Needs Improvement`: Recalls very little information, or the information is vague and generic. Fails to demonstrate a meaningful memory of the topic.
 
 
-## Accuracy of Information (Weight: 30%)
+## Accuracy of Information (Weight: 25%)
 
 4. `Excellent`: All recalled information is accurate and factually correct. Shows a precise understanding of the topic without misconceptions.
 3. `Proficient`: The vast majority of recalled information is accurate, with only minor or insignificant errors.
@@ -29,7 +29,7 @@ A rubric to evaluate the quality of responses to the question "What do you remem
 1. `Needs Improvement`: The recalled information is largely or entirely inaccurate. Demonstrates a fundamental misunderstanding of the topic.
 
 
-## Organization and Coherence (Weight: 20%)
+## Organization and Coherence (Weight: 25%)
 
 4. `Excellent`: Presents remembered information in a highly organized and logical manner. Ideas are connected coherently, making the response easy to follow.
 3. `Proficient`: Presents information in a mostly organized way. Connections between ideas are generally clear, though there may be minor lapses in structure.
@@ -37,7 +37,7 @@ A rubric to evaluate the quality of responses to the question "What do you remem
 1. `Needs Improvement`: The response is disorganized and lacks a clear structure. It's difficult to follow the train of thought.
 
 
-## Clarity of Expression (Weight: 20%)
+## Clarity of Expression (Weight: 25%)
 
 4. `Excellent`: Articulates memories using precise, clear, and effective language. The vocabulary is appropriate for the topic.
 3. `Proficient`: Expresses memories clearly for the most part. The language is generally effective, though it may lack precision at times.
