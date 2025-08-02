@@ -5467,6 +5467,16 @@ Determinar: $Q_{1 \to 2}$.
 
 
 ## Step-by-step
+
+
+### Considerações
+- O cilindro se move livremente $\implies$ Sistema isobárico
+- E = U, visto que o sistema é estacionário
+- Gás ideal com calores específicos constantes
+
+
+### Cálculos
+
 $$m=0,95kg \quad T_1 = 27°C \quad T_2 = 627°C$$
 $$c_p=909,4 \, \frac{J}{kg \cdot K}$$
 <ref id="eqMecFlu1"/>
@@ -5481,8 +5491,12 @@ $$518 \, \text{kJ}$$
 ## Metadata 
 `Discipline` Mecânica dos fluidos
 `Description` Exemplo 1.1
-`Source` FOX AND McDONALD’S 8th edition
+`Source` FOX AND McDONALD’S Edição 8 - p26
 `Tags`
+
+
+### Attempts
+1. 2025-08-02T13:28:00Z 0
 
 
 
@@ -5494,6 +5508,113 @@ $$518 \, \text{kJ}$$
 
 
 # Question 132
+
+
+## Proposition
+Um trecho de redução em um tubo de água tem um diâmetro de entrada de $50$ mm e diâmetro de saída de $30$ mm. Se a velocidade na entrada (média através da área de entrada) é $2,5$ m/s, encontre a velocidade de saída.
+
+
+## Step-by-step
+
+
+### Considerações
+- Água incompressível $ \implies \rho = \rho_i = \rho_e$ 
+
+<ref id="vazaoMassica"/>
+<ref id="vazaoMassicaConstante"/>
+
+$$V_e=2,5 * \left(\frac{50}{30}\right)^2 = 6,94$$
+
+
+### Cálculos
+
+
+## Answer
+$$6,94 \, \frac{m}{s}$$
+
+
+## Metadata
+`Discipline` Mecânica dos fluidos
+`Description` Exemplo 1.2
+`Source` FOX AND McDONALD’S Edição 8 - p29
+`Tags`
+
+
+### Attempts
+1. 2025-08-02T13:45:00Z 0
+
+
+
+
+
+
+
+
+
+
+# Question 133
+
+
+## Proposition
+A resistência do ar (força de arrasto) sobre uma bola de $200$ g em queda livre é dada por $F_D = 2 \times 10^{-4} V^2$, em que $F_D$ é dada em newtons e $V$ em metros por segundo. Se a bola for largada do repouso a $500$ m acima do solo, determine a velocidade com que ela atinge o solo. Que porcentagem da velocidade terminal esse valor representa? s(A velocidade terminal é a velocidade de regime permanente que um corpo em queda livre eventualmente atinge.)
+
+
+## Step-by-step
+$$\sum \vec{F} = \sum F_y = m\vec{a}$$
+
+---
+Um corpo atinge velocidade terminal quando a força de arrasto do ar é igual à força da gravidade.
+
+$$ \sum F_y = F_D - F_g $$
+
+$$= kV^2 - mg$$
+
+---
+
+$$\sum F_y = ma_y = m\frac{dV}{dt} = m\frac{dV}{dy}\frac{dy}{dt} = m\frac{dV}{dy}V = mV\frac{dV}{dy}.$$
+
+---
+$$\sum F_y = \sum F_y$$
+
+$$kV^2 - mg = mV\frac{dV}{dy}$$
+
+$$(kV^2 - mg) \cdot dy = mV \cdot dV$$
+
+$$dy = \frac{mV \cdot dV}{kV^2 - mg} = \frac{mV }{kV^2 - mg} dV$$
+
+---
+
+$$\int_{y_0}^y dy = \int_0^V \frac{mV }{kV^2 - mg} dV$$
+
+$$y - y_0 = \left[\frac{m}{2k}\ln(kV^2 - mg)\right]_0^V = \frac{m}{2k}\ln\frac{kV^2 - mg}{-mg}$$
+
+$$kV^2 - mg = -mg \ e^{[(2k/m)(y-y_0)]}$$
+
+$$V = \left\{\frac{mg}{k}\left(1 - e^{[(2k/m)(y-y_0)]}\right)\right\}^{1/2}$$
+
+
+## Answer
+
+
+## Metadata
+`Discipline` Mecânica dos fluidos
+`Description` Exemplo 1.3
+`Source` FOX AND McDONALD’S Edição 8 - p30
+`Tags`
+
+
+### Attempts
+
+
+
+
+
+
+
+
+
+
+# Question 134
 
 
 ## Proposition
@@ -5510,7 +5631,16 @@ $$518 \, \text{kJ}$$
 
 ### Attempts
 
-# Question 133
+
+
+
+
+
+
+
+
+
+# Question 135
 
 
 ## Proposition

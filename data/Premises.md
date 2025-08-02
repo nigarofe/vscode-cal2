@@ -2895,3 +2895,17 @@ $$Q_{1 \to 2} = m \cdot c_p \cdot (T_2 - T_1) = [J] = [kg] \cdot \left[\frac{J}{
 Usado na [](Questions.md#question-131)
 
 
+
+<snippet id="vazaoMassica">
+$$\dot{m} = \frac{VA}{v} = \rho VA$$
+</snippet>
+
+<snippet id="vazaoMassicaConstante">
+$$\rho V_i A_i = \rho V_e A_e$$
+
+$$V_e = V_i \frac{A_i}{A_e} = V_i \frac{\pi D_i^2/4}{\pi D_e^2/4} = V_i \left(\frac{D_i}{D_e}\right)^2$$
+</snippet>
+
+Usado na [](Questions.md#question-132)
+
+
